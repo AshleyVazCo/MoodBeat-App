@@ -9,7 +9,7 @@ const navigator = createStackNavigator(
   {
     initialRouteName: 'CuratorDM',
     defaultNavigationOptions: {
-      title: 'MoodBeat',
+      title: '',
     },
   }
 );
