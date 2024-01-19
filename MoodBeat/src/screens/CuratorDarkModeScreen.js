@@ -1,9 +1,9 @@
 import React from "react";
-import { Text, StyleSheet, View, Button} from "react-native";
+import { StyleSheet, View, Text, Button } from "react-native";
 import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
+import ShareSettingHeader from "../components/ShareSettingHeader";
 
-const CuratorDarkModeScreen = () => {
-
+const CuratorDarkModeScreen = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
     BarlowCondensed_400Regular,
   });
@@ -14,36 +14,35 @@ const CuratorDarkModeScreen = () => {
 
   return (
     <View style={styles.background}>
-      <View style={styles.Header}>
-        <Button
-          onPress={() => navigation.navigate('Share')}
-          title="Share Icon"
-        />
-        <Button
-          onPress={() => navigation.navigate('Setting')}
-          title="Setting Icon"
-        />
+      <ShareSettingHeader navigation={navigation} />
+      <View style={styles.profile}>
+        <Text style={styles.imageText}>Image</Text>
       </View>
+        <View style={styles.tabMenu}>
+            <Button
+                onPress={() => navigation.navigate('Setting')}
+                title="Created"
+            />
+            <Button
+                onPress={() => navigation.navigate('Setting')}
+                title="Saved"
+            />
+        </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-        backgroundColor: "#26282C",
-    },
-    Header: {
-        height: 75,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-    },
-    fontBody: {
-        fontFamily: "BarlowCondensed_400Regular",
-        fontSize: 17,
-        color: "#909090",
-    },
+  background: {
+    flex: 1,
+    backgroundColor: "#26282C",
+  },
+  profile: {
+    height: 300,
+    backgroundColor: '#8E8E8E',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default CuratorDarkModeScreen;
