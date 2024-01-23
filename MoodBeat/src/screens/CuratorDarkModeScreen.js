@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text, TouchableHighlight, ScrollView } from "react-native";
 import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
 import ShareSettingHeader from "../components/ShareSettingHeader";
-import MoodBoardCard from "../components/MoodBoardCard";
+import MoodBoardCard from "../components/MoodBoardCard"; // Import the updated MoodBoardCard
 import NavBar from "../components/NavBar";
 
 const CuratorDarkModeScreen = ({ navigation }) => {
@@ -10,9 +10,38 @@ const CuratorDarkModeScreen = ({ navigation }) => {
     BarlowCondensed_400Regular,
   });
 
+  const [selectedTab, setSelectedTab] = useState("Created");
+
   if (!fontsLoaded) {
     return null;
   }
+
+  const renderCardSet = () => {
+    if (selectedTab === "Created") {
+      return (
+        <>
+            <MoodBoardCard imageSource="https://example.com/image.jpg"
+                title="Classical"
+                cardColor="#A7A69E" />
+        </>
+      );
+    } else if (selectedTab === "Saved") {
+      return (
+        <>
+            <MoodBoardCard imageSource="https://example.com/red_image1.jpg"
+                title="Ambiance"
+                cardColor="#339392" />
+        </>
+      );
+    }
+    return (
+      <>
+            <MoodBoardCard imageSource="https://example.com/image.jpg"
+                title="Card Title 1"
+                cardColor="#CA9CE1" />
+      </>
+    );
+  };
 
   return (
     <View style={styles.background}>
@@ -22,29 +51,22 @@ const CuratorDarkModeScreen = ({ navigation }) => {
       </View>
       <View style={styles.tabMenu}>
         <TouchableHighlight
-          onPress={() => navigation.navigate('Setting')}
-          style={[styles.buttonContainer, { backgroundColor: "#4F4F4F" }]}
+          onPress={() => setSelectedTab("Created")}
+          style={selectedTab === "Created" ? styles.selectedTab : styles.tabButton}
         >
-          <Text style={[styles.buttonText, { color: "#CA9CE1" }]}>Created</Text>
+          <Text style={selectedTab === "Created" ? styles.selectedButtonText : styles.buttonText}>Created</Text>
         </TouchableHighlight>
         <TouchableHighlight
-          onPress={() => navigation.navigate('Setting')}
-          style={[styles.buttonContainer, { backgroundColor: "#161717" }]}
+          onPress={() => setSelectedTab("Saved")}
+          style={selectedTab === "Saved" ? styles.selectedTab : styles.tabButton}
         >
-          <Text style={[styles.buttonText, { color: "#909090" }]}>Saved</Text>
+          <Text style={selectedTab === "Saved" ? styles.selectedButtonText : styles.buttonText}>Saved</Text>
         </TouchableHighlight>
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.cardContainer}>
-        <MoodBoardCard
-          imageSource="https://example.com/image.jpg"
-          title="Card Title 1"
-        />
-        <MoodBoardCard
-          imageSource="https://example.com/image2.jpg"
-          title="Card Title 2"
-        />
-          </ScrollView>
-          <NavBar />
+        {renderCardSet()}
+      </ScrollView>
+      <NavBar />
     </View>
   );
 };
@@ -65,13 +87,25 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 20,
   },
-  buttonContainer: {
+  tabButton: {
     padding: 10,
     borderRadius: 5,
+    backgroundColor: "#161717",
+  },
+  selectedTab: {
+    padding: 10,
+    borderRadius: 5,
+    backgroundColor: "#4F4F4F",
   },
   buttonText: {
     fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
+    color: "#909090",
+  },
+  selectedButtonText: {
+    fontFamily: "BarlowCondensed_400Regular",
+    fontSize: 17,
+    color: "#CA9CE1",
   },
   cardContainer: {
     marginLeft: 8,
@@ -79,4 +113,3 @@ const styles = StyleSheet.create({
 });
 
 export default CuratorDarkModeScreen;
-
