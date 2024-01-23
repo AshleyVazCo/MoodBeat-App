@@ -21,7 +21,7 @@ const CuratorDMScreen = ({ navigation }) => {
       return (
         <>
           <MoodBoardCard
-            imageSource="https://example.com/image.jpg"
+            imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             title="Classical"
             cardColor="#A7A69E"
             onPress={() => navigation.navigate('CuratorSelectionDM')}
@@ -32,7 +32,7 @@ const CuratorDMScreen = ({ navigation }) => {
       return (
         <>
           <MoodBoardCard
-            imageSource="https://example.com/red_image1.jpg"
+            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
             title="Ambiance"
             cardColor="#339392"
           />
@@ -54,7 +54,7 @@ const CuratorDMScreen = ({ navigation }) => {
     <View style={styles.background}>
       <ShareSettingHeader navigation={navigation} />
       <View style={styles.profile}>
-        <Text style={styles.imageText}>Image</Text>
+        <Text style={styles.imageText}>Profile</Text>
       </View>
       <View style={styles.tabMenu}>
         <TouchableHighlight
