@@ -1,16 +1,28 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import CuratorDarkModeScreen from './src/screens/CuratorDarkModeScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import CuratorDMScreen from './src/screens/CuratorDMScreen';
+import CuratorSelectionDMScreen from './src/screens/CuratorSelectionDMScreen';
 
-const navigator = createStackNavigator(
-  {
-    CuratorDM: CuratorDarkModeScreen
-  },
-  {
-    initialRouteName: 'CuratorDM',
-    defaultNavigationOptions: {
-      title: '',
-    },
-  }
-);
-export default createAppContainer(navigator);
+const Stack = createStackNavigator();
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="CuratorDM">
+        <Stack.Screen
+          name="CuratorDM"
+          component={CuratorDMScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CuratorSelectionDM"
+          component={CuratorSelectionDMScreen}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default App;
+

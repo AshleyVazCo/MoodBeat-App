@@ -27,7 +27,7 @@ const ShareSettingHeader = ({ onNavigateSetting }) => {
 
 const styles = {
   header: {
-    height: 75,
+    height: 109,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
