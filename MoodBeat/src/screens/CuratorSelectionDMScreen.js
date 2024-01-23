@@ -1,45 +1,57 @@
-import React from "react";
-import { StyleSheet, View, Text, FlatList, Image } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 import ShareSettingHeader from "../components/ShareSettingHeader";
 import SongSelectionCard from "../components/SongSelectionCard";
 import NavBar from "../components/NavBar";
+import SongModalDM from "../components/SongModalDM"
 
 const CuratorSelectionDMScreen = ({ navigation }) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   const data = [
     {
       id: "1",
-      imageSource:
-        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      imageSource: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       title: "My Love Mine all mine",
     },
     // Add more songs as needed
   ];
 
   const renderItem = ({ item }) => (
-    <SongSelectionCard
-      imageSource={item.imageSource}
-      title={item.title}
-      onPress={() => {}}
-    />
+    <TouchableOpacity onPress={() => setModalVisible(true)}>
+      <SongSelectionCard
+        imageSource={item.imageSource}
+        title={item.title}
+        onPress={() => setModalVisible(true)}
+      />
+    </TouchableOpacity>
   );
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
 
   return (
     <View style={styles.background}>
       <ShareSettingHeader navigation={navigation} />
       <View style={styles.profile}>
         <Image
-          source={{ uri: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }} // Replace with the actual URL of the profile image
+          source={{ uri: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
           style={styles.profileImage}
         />
         <Text style={styles.profileTitle}>Jolijass</Text>
       </View>
+
       <FlatList
         data={data}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
-        numColumns={2} // Display 2 columns
+        numColumns={2}
         style={[styles.container, { marginTop: 100 }]}
       />
+
+      <SongModalDM isVisible={modalVisible} onClose={closeModal} />
+
       <NavBar />
     </View>
   );
@@ -65,10 +77,6 @@ const styles = StyleSheet.create({
     height: 152,
     borderRadius: 100,
     marginRight: 16,
-  },
-  profileInfo: {
-    flex: 1,
-    justifyContent: 'center',
   },
   profileTitle: {
     fontFamily: "BarlowCondensed_400Regular",
