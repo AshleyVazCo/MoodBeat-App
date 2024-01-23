@@ -25,12 +25,11 @@ const styles = StyleSheet.create({
     width: imageSize,
     height: imageSize,
     borderRadius: 8,
-    alignSelf: 'center', // Center the image within the card
-    marginTop: 10, // Bring the image down by 10 pixels
+    alignSelf: 'center',
+    marginTop: 10,
   },
   cardOverlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'flex-end',
     padding: 16,
   },
