@@ -12,6 +12,8 @@ const MoodBoardCard = ({ imageSource, title, onPress, cardColor }) => {
   );
 };
 
+const imageSize = 152;
+
 const styles = StyleSheet.create({
   cardContainer: {
     borderRadius: 8,
@@ -20,10 +22,11 @@ const styles = StyleSheet.create({
     height: 220,
   },
   cardImage: {
-    width: '100%',
-    height: 200,
+    width: imageSize,
+    height: imageSize,
     borderRadius: 8,
-    marginBottom: 8,
+    alignSelf: 'center', // Center the image within the card
+    marginTop: 10, // Bring the image down by 10 pixels
   },
   cardOverlay: {
     ...StyleSheet.absoluteFillObject,
