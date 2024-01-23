@@ -32,12 +32,10 @@ const styles = StyleSheet.create({
   navItem: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "center",
     paddingVertical: 10,
-    backgroundColor: "#26282C",
-    borderRadius: 5,
   },
   navText: {
-    color: "#909090",
     fontSize: 16,
   },
 });
