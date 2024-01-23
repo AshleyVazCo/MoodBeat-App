@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   },
   cardOverlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0)', // Overlay background
     justifyContent: 'flex-end',
     padding: 16,
   },
