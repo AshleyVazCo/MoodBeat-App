@@ -24,7 +24,7 @@ const CuratorLMScreen = ({ navigation }) => {
             imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             title="Classical"
             cardColor="#A7A69E"
-            onPress={() => navigation.navigate('CuratorSelectionDM')}
+            onPress={() => navigation.navigate('CuratorSelectionLM')}
           />
         </>
       );
@@ -78,7 +78,7 @@ const CuratorLMScreen = ({ navigation }) => {
         {renderCardSet()}
       </ScrollView>
       <View style={styles.navBar }>
-        <NavBar style={styles.navBarText} />
+        <NavBar />
       </View>
     </View>
   );
@@ -136,9 +136,6 @@ const styles = StyleSheet.create({
   },
   navBar: {
     backgroundColor: "#FFFFFC",
-  },
-  navBarText: {
-    color: "white"
   }
 });
 

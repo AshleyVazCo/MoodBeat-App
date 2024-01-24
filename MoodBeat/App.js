@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import CuratorDMScreen from './src/screens/CuratorDMScreen';
 import CuratorSelectionDMScreen from './src/screens/CuratorSelectionDMScreen';
 import CuratorLMScreen from './src/screens/CuratorLMScreen';
+import CuratorSelectionLMScreen from './src/screens/CuratorSelectionLMScreen';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,11 @@ const App = () => {
           <Stack.Screen
           name="CuratorLM"
           component={CuratorLMScreen}
+          options={{ headerShown: false }}
+        />
+          <Stack.Screen
+          name="CuratorSelectionLM"
+          component={CuratorSelectionLMScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
