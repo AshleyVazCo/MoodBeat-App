@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, FlatList, Image, TouchableOpacity } from "react
 import ShareSettingHeader from "../components/ShareSettingHeader";
 import SongSelectionCard from "../components/SongSelectionCard";
 import NavBar from "../components/NavBar";
-import SongModalDM from "../components/SongModalDM"
+import SongModalLM from "../components/SongModalLM"
 
 const CuratorSelectionLMScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -50,7 +50,7 @@ const CuratorSelectionLMScreen = ({ navigation }) => {
         style={[styles.container, { marginTop: 100 }]}
       />
 
-      <SongModalDM isVisible={modalVisible} onClose={closeModal} />
+      <SongModalLM isVisible={modalVisible} onClose={closeModal} />
 
       <View style={styles.navBar }>
         <NavBar />
