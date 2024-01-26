@@ -18,7 +18,11 @@ const App = () => {
           component={CuratorDarkModeScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen
+        <Stack.Screen 
+          name="CuratorDM"
+          component={CuratorDarkModeScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )
