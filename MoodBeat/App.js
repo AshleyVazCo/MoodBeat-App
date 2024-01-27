@@ -4,13 +4,14 @@ import CuratorDMScreen from "./src/screens/CuratorDMScreen";
 import CuratorSelectionDMScreen from "./src/screens/CuratorSelectionDMScreen";
 import CuratorLMScreen from "./src/screens/CuratorLMScreen";
 import CuratorSelectionLMScreen from "./src/screens/CuratorSelectionLMScreen";
+import ProfileScreenLM from "./src/screens/ProfileScreenLM";
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="CuratorLM">
+      <Stack.Navigator initialRouteName="ProfileScreenLM">
         <Stack.Screen
           name="CuratorDM"
           component={CuratorDMScreen}
@@ -30,6 +31,11 @@ const App = () => {
           name="CuratorSelectionLM"
           component={CuratorSelectionLMScreen}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+        name="ProfileScreenLM"
+        component={ProfileScreenLM}
+        options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
