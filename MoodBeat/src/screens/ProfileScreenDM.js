@@ -9,13 +9,14 @@ import {
 } from "react-native";
 import {
   useFonts,
-  BarlowCondensed_400Regular, BarlowCondensed_600SemiBold
+  BarlowCondensed_400Regular,
+  BarlowCondensed_600SemiBold,
 } from "@expo-google-fonts/barlow-condensed";
 import ShareSettingHeader from "../components/ShareSettingHeader";
 import MoodBoardCard from "../components/MoodBoardCard";
-import NavBar from "../components/NavBar";
+import NavBarDM from "../components/NavBarDM";
 
-const ProfileScreenLM = ({ navigation }) => {
+const ProfileScreenDM = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
     BarlowCondensed_400Regular,
     BarlowCondensed_600SemiBold,
@@ -143,7 +144,7 @@ const ProfileScreenLM = ({ navigation }) => {
       >
         {renderCardSet()}
       </ScrollView>
-      <NavBar />
+      <NavBarDM />
     </View>
   );
 };
@@ -151,7 +152,7 @@ const ProfileScreenLM = ({ navigation }) => {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: "#FFFFFC",
+    backgroundColor: "#26282C",
   },
   profile: {
     height: 300,
@@ -178,26 +179,26 @@ const styles = StyleSheet.create({
   tabButton: {
     padding: 10,
     borderRadius: 5,
-    backgroundColor: "#E5E5E5",
+    backgroundColor: "#161717",
   },
   selectedTab: {
     padding: 10,
     borderRadius: 5,
-    backgroundColor: "#43357A",
+    backgroundColor: "#4F4F4F",
   },
   buttonText: {
     fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
-    color: "#26282C",
+    color: "#909090",
   },
   selectedButtonText: {
     fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
-    color: "#FFFFFC",
+    color: "#CA9CE1",
   },
   cardContainer: {
     marginLeft: 8,
   },
 });
 
-export default ProfileScreenLM;
+export default ProfileScreenDM;
