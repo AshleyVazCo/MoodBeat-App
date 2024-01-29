@@ -198,6 +198,9 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     marginLeft: 8,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    gap: 8,
   },
 });
 
