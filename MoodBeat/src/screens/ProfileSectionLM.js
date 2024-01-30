@@ -165,7 +165,8 @@ const ProfileSectionLM = ({ navigation }) => {
         </TouchableHighlight>
       </View>
       <ScrollView
-        vertical // ScrollView isn't working properly. I'm not able to scroll to the bottom of the page.
+        // ScrollView isn't working properly. I'm not able to scroll to the bottom of the page.
+        // Note: you don't have to declare vertical becuase it does it automatically.
         showsVerticalScrollIndicator={true}
         contentContainerStyle={styles.cardContainer}
       >

@@ -36,24 +36,24 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-        name="ProfileScreenLM"
-        component={ProfileScreenLM}
-        options={{ headerShown: false }}
+          name="ProfileScreenLM"
+          component={ProfileScreenLM}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-        name="ProfileScreenDM"
-        component={ProfileScreenDM}
-        options={{ headerShown: false }}
+          name="ProfileScreenDM"
+          component={ProfileScreenDM}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-        name="ProfileSectionLM"
-        component={ProfileSectionLM}
-        options={{ headerShown: false }}
+          name="ProfileSectionLM"
+          component={ProfileSectionLM}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
-        name="ProfileSectionDM"
-        component={ProfileSectionDM}
-        options={{ headerShown: false }}
+          name="ProfileSectionDM"
+          component={ProfileSectionDM}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
