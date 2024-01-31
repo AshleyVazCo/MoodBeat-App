@@ -51,7 +51,9 @@ const EditProfileDescriptionDM = ({ isVisible, onClose }) => {
             <Text style={styles.closeButtonText}>X</Text>
           </TouchableOpacity>
           <Text style={styles.titleText}>Edit Profile Info</Text>
-          <Image source={require("../../assets/images/alanProfilePic.png")} />
+          <Image 
+          style={styles.uploadImage}
+          source={require("../../assets/images/alanProfilePic.png")} />
           <View>
             <TextInput
               style={styles.textInputBox}
@@ -60,12 +62,13 @@ const EditProfileDescriptionDM = ({ isVisible, onClose }) => {
             />
           </View>
           <View>
-            <Text>Privacy</Text>
+            <Text style={styles.privacyText}>Privacy</Text>
             <Switch
               trackColor={{ false: "#FFFFFC", true: "4F4F4F" }}
               thumbColor={privacy ? "#4F4F4F" : "#FFFFFC"}
               onValueChange={toggleSwitch}
               value={setPrivacy}
+              style={styles.privacyToggle}
             />
           </View>
           <View>
@@ -101,6 +104,10 @@ const styles = StyleSheet.create({
   titleText: {
     color: "#909090",
     fontSize: 28,
+    alignSelf: "center",
+  },
+  uploadImage: {
+    alignSelf: "center",
   },
   textInputBox: {
     backgroundColor: "#26282C",
@@ -113,6 +120,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 40,
     marginBottom: 40,
+    color: "#909090",
+    padding: 10,
+  },
+  privacyToggle: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignSelf: "flex-end",
+  },
+  privacyText: {
+    color: "#909090",
+    fontSize: 20,
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
 });
 
