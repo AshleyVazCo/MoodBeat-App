@@ -3,12 +3,16 @@ import { StyleSheet, View, Text } from "react-native"
 
 const SearchMusic = () => {
   return (
-    <View>
-      <Text>Searching for da musica</Text>
+    <View style={styles.container}>
     </View>
   )
 }
 
-const styles = StyleSheet.create ({});
+const styles = StyleSheet.create ({
+  container: {
+    flex: 1,
+    backgroundColor: "#fffffc",
+  }
+});
 
 export default SearchMusic;

@@ -1,10 +1,20 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableHighlight } from "react-native";
-import NavBar from "../components/NavBar";
-import ShareSettingHeader from "../components/ShareSettingHeader";
-import CreateSectionModalDM from "../components/CreateSectionModalDM"
+import React from "react";
+import { StyleSheet, View, Text, TouchableHighlight, Image } from "react-native";
+import NavBarDM from "../components/NavBarDM";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
 
 const Creation = ({ navigation }) => {
+
+  const [fontsLoaded] = useFonts({
+    BarlowCondensed_400Regular,
+  });
+
+  // Check if fonts are loaded before rendering the component
+  if (!fontsLoaded) {
+    return null;
+  }
+
   const handleCreateSectionPress = () => {
     // Implement logic for when "Join Board" is pressed
     navigation.navigate('SearchMusicModalDM');
@@ -17,34 +27,43 @@ const Creation = ({ navigation }) => {
     console.log("Create Board pressed");
   };
 
-    const [modalVisible, setModalVisible] = useState(false);
-
-    const renderItem = ({ item }) => (
-      <TouchableOpacity onPress={() => setModalVisible(true)}>
-        <SongSelectionCard
-          imageSource={item.imageSource}
-          title={item.title}
-          onPress={() => setModalVisible(true)}
-        />
-      </TouchableOpacity>
-    );
-  
-    const closeModal = () => {
-      setModalVisible(false);
-    };
+  const handleSettingsPress = () => {
+    navigation.navigate('NonExistingPage');
+    console.log("Settings icon pressed");
+  };
 
   return (
     <View style={styles.container}>
-    <ShareSettingHeader navigation={navigation} />
-      <Text>In the Mood to Create?</Text>
-      <Text>The Creation Page is here to serve your moody needs. Your thoughts and feelings are unique, so make them a reality right here.</Text>
+      <View style={styles.icons}>
+        <Image
+          style={styles.logo}
+          source={require('../../assets/icons/apple_Dark.png')}
+          />
+        <TouchableOpacity>
+          <Image source={require('../../assets/icons/settingsIcon_Dark.png')} onPress={handleSettingsPress} 
+            style={styles.settings}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.headerContainer}>
+        <Text style={styles.header}>In the Mood to Create?</Text>
+      </View>
+      <View>
+        <Text style={styles.regularText}>The Creation Page is here to serve your moody needs.
+        Your thoughts and feelings are unique, so make them a reality right here.</Text>
+      </View>
       <View style={styles.buttonContainer}>
         <TouchableHighlight
           style={styles.button}
           onPress={handleCreateSectionPress}
           underlayColor="#DDDDDD"
         >
-          <Text>Create Section</Text>
+          <View style={styles.section}>
+            <Image source={require('../../assets/icons/boardsIcon_Dark.png')} 
+              style={styles.sectionImage}
+            />
+            <Text style={styles.buttonText}>Create Section</Text>
+          </View>
         </TouchableHighlight>
 
         <TouchableHighlight
@@ -52,13 +71,17 @@ const Creation = ({ navigation }) => {
           onPress={handleCreateBoardPress}
           underlayColor="#DDDDDD"
         >
-          <Text>Create Board</Text>
+          <View style={styles.board}>
+            <Image source={require('../../assets/icons/boardsIcon_Dark.png')} 
+            style={styles.boardImage}
+            />
+            <Text style={styles.buttonText}>Create Board</Text>
+          </View>
         </TouchableHighlight>
       </View>
 
-      <CreateSectionModalDM isVisible={modalVisible} onClose={closeModal} />
-      <View style={styles.navBar }>
-        <NavBar />
+      <View style={styles.navBar}>
+        <NavBarDM />
       </View>
     </View>
   );
@@ -67,25 +90,77 @@ const Creation = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#ffffff",
-  },
-  background: {
-    flex: 1,
-    backgroundColor: "#26282C",
+    backgroundColor: "#4F4F4F",
   },
   buttonContainer: {
-    marginTop: 20,
+    marginTop: 50,
     flexDirection: "row",
   },
   button: {
     marginRight: 10,
     padding: 10,
     borderRadius: 5,
+    marginBottom: 50,
+    marginTop: 50,
+  },
+  buttonText: {
+    fontSize: 30,
+    color: "#ffffff",
+    fontFamily: 'BarlowCondensed_400Regular',
   },
   navBar: {
-    backgroundColor: "##26282C",
+    backgroundColor: "#4F4F4F",
+    marginTop: 40,
+  },
+  header: {
+    fontSize: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+    marginTop: 20,
+    color: "#ffffff",
+    fontFamily: 'BarlowCondensed_400Regular',
+  },
+  headerContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 125,
+  },
+  regularText: {
+    fontSize: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: 50,
+    marginRight: 50,
+    color: "#ffffff",
+    fontFamily: 'BarlowCondensed_400Regular',
+  },
+  icons: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 50,
+  },
+  settings: {
+    marginLeft: 175,
+  },
+  section: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: 25,
+  },
+  board: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  boardImage: {
+    marginBottom: 20,
+    width: 90,
+    height: 90,
+  },
+  sectionImage: {
+    marginBottom: 20,
+    width: 90,
+    height: 90,
   }
 });
 
