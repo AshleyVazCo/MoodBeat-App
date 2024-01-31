@@ -11,9 +11,9 @@ import {
   useFonts,
   BarlowCondensed_400Regular, BarlowCondensed_600SemiBold
 } from "@expo-google-fonts/barlow-condensed";
-import ShareSettingHeader from "../components/ShareSettingHeader";
+import ShareSettingHeaderLM from "../components/ShareSettingHeaderLM";
 import MoodBoardCard from "../components/MoodBoardCard";
-import NavBar from "../components/NavBar";
+import NavBarLM from "../components/NavBarDM";
 
 const ProfileScreenLM = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -92,12 +92,12 @@ const ProfileScreenLM = ({ navigation }) => {
 
   return (
     <View style={styles.background}>
-      <ShareSettingHeader navigation={navigation} />
+      <ShareSettingHeaderLM navigation={navigation} />
       <View style={styles.profile}>
         <Image
           source={
             require("../../assets/images/alanProfilePic.png")
-          } // Code for Profile image -- Replace with the actual URL of the profile image
+          }
           style={styles.profileImage}
         />
         <Text style={styles.profileTitle}>Alan.Jpg</Text>
@@ -143,7 +143,7 @@ const ProfileScreenLM = ({ navigation }) => {
       >
         {renderCardSet()}
       </ScrollView>
-      <NavBar />
+      <NavBarLM />
     </View>
   );
 };
