@@ -1,14 +1,14 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native"
 
-const BoardText = () => {
+const AddTo = () => {
   return (
     <View>
-      <Text>Let's Text Text Text</Text>
+      <Text>Add to Board</Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create ({});
 
-export default BoardText;
+export default AddTo;
