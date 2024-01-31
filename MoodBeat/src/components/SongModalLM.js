@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Modal, View, Text, StyleSheet, TouchableOpacity, Image, Linking } from 'react-native';
+import { Modal, View, Text, StyleSheet, TouchableOpacity, Image, Linking, Share, TouchableHighlight } from 'react-native';
 
 const SongModal = ({ isVisible, onClose }) => {
 
@@ -9,6 +9,21 @@ const SongModal = ({ isVisible, onClose }) => {
         
   }, []);
 
+    const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message: 'Share Screen?',
+      });
+      if (result.action === Share.sharedAction) {
+        console.log('Share was successful');
+      } else if (result.action === Share.dismissedAction) {
+        console.log('Share was dismissed');
+      }
+    } catch (error) {
+      console.error('Error sharing:', error.message);
+    }
+    };
+  
   return (
     <Modal
       transparent
@@ -32,9 +47,7 @@ const SongModal = ({ isVisible, onClose }) => {
             <Text style={styles.categoryTitle}>Classical</Text>
             <Image
               style={styles.coverImage}
-              source={{
-                uri: 'https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-              }}
+              source={require('../../assets/images/myloveMinePic.png')}
             />
           </View>
           <View style={styles.detailContainer}>
@@ -46,9 +59,9 @@ const SongModal = ({ isVisible, onClose }) => {
                 <TouchableOpacity style={styles.button} onPress={() => console.log("Save pressed")}>
                     <Text style={styles.buttonText}>Save</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => console.log("Share pressed")}>
+                <TouchableHighlight onPress={onShare} underlayColor="transparent">
                     <Text style={styles.buttonText}>Share</Text>
-                </TouchableOpacity>
+                </TouchableHighlight>
             </View>
             </View>
             <View style={styles.footerContainer}>
