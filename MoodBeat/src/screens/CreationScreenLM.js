@@ -35,7 +35,11 @@ const Creation = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-    <ShareSettingHeader navigation={navigation} />
+    <View>
+      <Image
+        style={styles.image}
+        source=""
+    </View>
       <Text>In the Mood to Create?</Text>
       <Text>The Creation Page is here to serve your moody needs. Your thoughts and feelings are unique, so make them a reality right here.</Text>
       <View style={styles.buttonContainer}>
