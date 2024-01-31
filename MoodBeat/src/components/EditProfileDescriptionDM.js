@@ -38,8 +38,8 @@ const EditProfileModalDM = ({ isVisible, onClose }) => {
   const renderProfileModals = () => {
     if (selectedTab === "Description") {
       return (
-        <View>
-          <Text>Edit Profile Info</Text>
+        <View style={styles.contentContainer}>
+          <Text style={styles.categoryTitle}>Edit Profile Info</Text>
           <Image
             source={{
               uri: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -72,8 +72,8 @@ const EditProfileModalDM = ({ isVisible, onClose }) => {
       );
     } else if (selectedTab === "Background") {
       return (
-        <View>
-          <Text>Background Color</Text>
+        <View style={styles.contentContainer}>
+          <Text style={styles.categoryTitle}>Background Color</Text>
           <Text>
             Select a background color for your profile by dragging the circle to
             the color you want, type in a HEX code, or type in the RGB code.
@@ -82,8 +82,8 @@ const EditProfileModalDM = ({ isVisible, onClose }) => {
             <Image
               source={{
                 uri: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              }} // Code for Profile image -- Replace with the actual URL of the profile image
-              style={styles.profileImage}
+              }} // Code for upload Profile image -- Replace with the actual URL of the profile image
+              style={styles.descriptionImage}
             />
             <Text>Alan.jpg</Text>
           </View>
@@ -161,8 +161,8 @@ const EditProfileModalDM = ({ isVisible, onClose }) => {
             Text
           </Text>
         </TouchableHighlight>
-        {renderProfileModals()}
       </View>
+      {renderProfileModals()}
     </Modal>
   );
 };
@@ -173,6 +173,8 @@ const styles = StyleSheet.create({
     height: 152,
     borderRadius: 100,
     marginBottom: 8,
+    flexDirection: "row",
+    alignSelf: "center",
   },
   textInputBox: {
     backgroundColor: "#26282C",
@@ -198,6 +200,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#26282C",
     padding: 20,
     borderRadius: 10,
+    justifyContent: "center",
   },
   headerContainer: {
     flexDirection: "row",
@@ -216,7 +219,7 @@ const styles = StyleSheet.create({
   },
   tabMenu: {
     flexDirection: "row",
-    justifyContent: "center",
+    alignItems: "flex-start",
     padding: 20,
   },
   tabButton: {
@@ -238,6 +241,27 @@ const styles = StyleSheet.create({
     fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
     color: "#CA9CE1",
+  },
+  image: {
+    width: 30,
+    height: 30,
+    resizeMode: "cover",
+    borderRadius: 15,
+  },
+  contentContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  categoryTitle: {
+    fontSize: 28,
+    color: "#909090",
+  },
+  footerContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 60,
+    marginBottom: 40,
   },
 });
 
