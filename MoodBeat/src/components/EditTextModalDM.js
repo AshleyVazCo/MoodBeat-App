@@ -16,7 +16,7 @@ import {
   BarlowCondensed_500Medium,
 } from "@expo-google-fonts/barlow-condensed";
 
-const EditProfileDescriptionDM = ({ isVisible, onClose }) => {
+const EditTextModalDM = ({ isVisible, onClose }) => {
 
   // tabs at the top of the modal
   const [selectedTab, setSelectedTab] = useState("Description");
@@ -48,7 +48,6 @@ return (
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
             <Text style={styles.closeButtonText}>X</Text>
           </TouchableOpacity>
-          <Text style={styles.titleText}>Edit Profile Info</Text>
           </View>
       </View>
   </Modal>
@@ -73,10 +72,6 @@ closeButtonText: {
   color: '#CA9CE1',
   fontSize: 24,
 },
-titleText: {
-  color: '#909090',
-  fontSize: 28,
-},
 });
 
-export default EditProfileDescriptionDM;
+export default EditTextModalDM;

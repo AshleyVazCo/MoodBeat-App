@@ -16,25 +16,7 @@ import {
   BarlowCondensed_500Medium,
 } from "@expo-google-fonts/barlow-condensed";
 
-const EditProfileDescriptionDM = ({ isVisible, onClose }) => {
-
-  // tabs at the top of the modal
-  const [selectedTab, setSelectedTab] = useState("Description");
-  // text input
-  const [text, setFocusedText] = useState("Edit Username");
-  // toggle/switch
-  const [privacy, setPrivacy] = useState(false);
-  const toggleSwitch = () => setPrivacy((previousState) => !previousState);
-
-  //Font
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-    BarlowCondensed_500Medium,
-  });
-
-  if (!fontsLoaded) {
-    return null;
-  }
+const BlankModelDM = ({ isVisible, onClose }) => {
 
 
 return (
@@ -48,7 +30,6 @@ return (
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
             <Text style={styles.closeButtonText}>X</Text>
           </TouchableOpacity>
-          <Text style={styles.titleText}>Edit Profile Info</Text>
           </View>
       </View>
   </Modal>
@@ -73,10 +54,6 @@ closeButtonText: {
   color: '#CA9CE1',
   fontSize: 24,
 },
-titleText: {
-  color: '#909090',
-  fontSize: 28,
-},
 });
 
-export default EditProfileDescriptionDM;
+export default BlankModelDM;
