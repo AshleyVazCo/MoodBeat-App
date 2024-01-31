@@ -47,13 +47,13 @@ const ProfileScreenDM = ({ navigation }) => {
       return (
         <>
           <MoodBoardCard
-            imageSource={require("../../assets/images/ambiencePic.png")}
+            imageSource={require('../../assets/images/ambiencePic.png')}
             title="Ambience"
             cardColor="#339392"
             onPress={() => navigation.navigate("ProfileScreenLM")}
           />
           <MoodBoardCard
-            imageSource={require("../../assets/images/traditional.png")}
+            imageSource={require('../../assets/images/traditional.png')}
             title="Traditional"
             cardColor="#ECE4D2"
             onPress={() => navigation.navigate("ProfileScreenLM")}
@@ -76,7 +76,7 @@ const ProfileScreenDM = ({ navigation }) => {
       return (
         <>
           <MoodBoardCard
-            imageSource={require("../../assets/images/WinterHaven.png")}
+            imageSource={require('../../assets/images/WinterHaven.png')}
             title="Winter Haven"
             cardColor="#AFC1D7"
           />
@@ -96,7 +96,7 @@ const ProfileScreenDM = ({ navigation }) => {
     return (
       <>
         <MoodBoardCard
-          imageSource={require("../../assets/images/traditional.png")}
+          imageSource={require('../../assets/images/traditional.png')}
           title="Traditional"
           cardColor="#ECE4D2"
         />
@@ -111,7 +111,7 @@ const ProfileScreenDM = ({ navigation }) => {
         <TouchableOpacity onPress={() => setModalVisible(true)}>
         <Image
           source={
-            require("../../assets/images/alanProfilePic.png")
+            require('../../assets/images/alanProfilePic.png')
             // uri: "MoodBeat/assets/images/alanProfilePic.png",
           } // Code for Profile image -- Replace with the actual URL of the profile image
           style={styles.profileImage}

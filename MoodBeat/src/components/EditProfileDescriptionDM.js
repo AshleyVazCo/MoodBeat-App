@@ -17,7 +17,6 @@ import {
 } from "@expo-google-fonts/barlow-condensed";
 
 const EditProfileDescriptionDM = ({ isVisible, onClose }) => {
-
   // tabs at the top of the modal
   const [selectedTab, setSelectedTab] = useState("Description");
   // text input
@@ -36,47 +35,85 @@ const EditProfileDescriptionDM = ({ isVisible, onClose }) => {
     return null;
   }
 
+  const renderProfileModals = () => {
+    if (selectedTab === "Description") {
+    } else if (selectedTab === "Background") {
+    } else if (selectedTab === "Text") {
+    } else {
+    }
+  };
 
-return (
-  <Modal
-    transparent
-    visible={isVisible}
-    onRequestClose={onClose}
-  >
-    <View style={styles.modalContainer}>
-      <View style={styles.modalContent}>
+  return (
+    <Modal transparent visible={isVisible} onRequestClose={onClose}>
+      <View style={styles.modalContainer}>
+        <View style={styles.modalContent}>
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
             <Text style={styles.closeButtonText}>X</Text>
           </TouchableOpacity>
           <Text style={styles.titleText}>Edit Profile Info</Text>
+          <Image source={require("../../assets/images/alanProfilePic.png")} />
+          <View>
+            <TextInput
+              style={styles.textInputBox}
+              setFocusedText={setFocusedText}
+              value={text}
+            />
           </View>
+          <View>
+            <Text>Privacy</Text>
+            <Switch
+              trackColor={{ false: "#FFFFFC", true: "4F4F4F" }}
+              thumbColor={privacy ? "#4F4F4F" : "#FFFFFC"}
+              onValueChange={toggleSwitch}
+              value={setPrivacy}
+            />
+          </View>
+          <View>
+            <Text>
+              Enabling privacy settings will allow your account to be hidden
+              from other users, and will not be searchable.
+            </Text>
+          </View>
+        </View>
       </View>
-  </Modal>
-);
+    </Modal>
+  );
 };
 
 const styles = StyleSheet.create({
-modalContainer: {
-  flex: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-},
-modalContent: {
-  height: 760,
-  width: 380,
-  backgroundColor: '#26282C',
-  padding: 20,
-  borderRadius: 10,
-},
-closeButtonText: {
-  color: '#CA9CE1',
-  fontSize: 24,
-},
-titleText: {
-  color: '#909090',
-  fontSize: 28,
-},
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    height: 760,
+    width: 380,
+    backgroundColor: "#26282C",
+    padding: 20,
+    borderRadius: 10,
+  },
+  closeButtonText: {
+    color: "#CA9CE1",
+    fontSize: 24,
+  },
+  titleText: {
+    color: "#909090",
+    fontSize: 28,
+  },
+  textInputBox: {
+    backgroundColor: "#26282C",
+    width: 327,
+    height: 44,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#909090",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 40,
+    marginBottom: 40,
+  },
 });
 
 export default EditProfileDescriptionDM;
