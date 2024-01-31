@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ProfileSectionDM">
+      <Stack.Navigator initialRouteName="ProfileScreenDM">
         <Stack.Screen
           name="CuratorDM"
           component={CuratorDMScreen}

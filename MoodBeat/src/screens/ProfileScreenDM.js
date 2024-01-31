@@ -15,15 +15,28 @@ import {
 import ShareSettingHeader from "../components/ShareSettingHeader";
 import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarDM from "../components/NavBarDM";
+import EditProfileModalDM from "../components/EditProfileDescriptionDM";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const ProfileScreenDM = ({ navigation }) => {
+
+  //Fonts
   const [fontsLoaded] = useFonts({
     BarlowCondensed_400Regular,
     BarlowCondensed_600SemiBold,
   });
 
+  // Tabs
   const [selectedTab, setSelectedTab] = useState("Created");
 
+  // Edit Profile Modal
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  //Fonts
   if (!fontsLoaded) {
     return null;
   }
@@ -95,12 +108,15 @@ const ProfileScreenDM = ({ navigation }) => {
     <View style={styles.background}>
       <ShareSettingHeader navigation={navigation} />
       <View style={styles.profile}>
+        <TouchableOpacity onPress={() => setModalVisible(true)}>
         <Image
           source={{
             uri: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           }} // Code for Profile image -- Replace with the actual URL of the profile image
           style={styles.profileImage}
+          onPress={() => setModalVisible(true)}
         />
+        </TouchableOpacity>
         <Text style={styles.profileTitle}>Alan.Jpg</Text>
       </View>
       <View style={styles.tabMenu}>
@@ -144,6 +160,7 @@ const ProfileScreenDM = ({ navigation }) => {
       >
         {renderCardSet()}
       </ScrollView>
+      <EditProfileModalDM isVisible={modalVisible} onClose={closeModal} />
       <NavBarDM />
     </View>
   );
