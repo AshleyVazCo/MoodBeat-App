@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="CuratorLM">
+      <Stack.Navigator initialRouteName="CuratorDM">
         <Stack.Screen
           name="CuratorDM"
           component={CuratorDMScreen}

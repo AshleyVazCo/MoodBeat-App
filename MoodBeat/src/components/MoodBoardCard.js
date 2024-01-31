@@ -3,8 +3,8 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 const MoodBoardCard = ({ imageSource, title, onPress, cardColor }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={[styles.cardContainer, { backgroundColor: cardColor }]}>
-      <Image source={{ uri: imageSource }} style={styles.cardImage} />
+    <TouchableOpacity onPress={onPress} style={[styles.cardContainer, { backgroundColor: cardColor, height: 211 }]}>
+      <Image source={imageSource} style={styles.cardImage} />
       <View style={styles.cardOverlay}>
         <Text style={styles.cardTitle}>{title}</Text>
       </View>

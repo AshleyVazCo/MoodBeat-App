@@ -1,20 +1,20 @@
 import React from "react";
-import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Image } from "react-native";
 
-const NavBar = () => {
+const NavBarLM = () => {
   return (
     <View style={styles.navBar}>
       <TouchableOpacity style={styles.navItem}>
-        <Text style={styles.navText}>Home</Text>
+        <Image source={require('../../assets/icons/home_Light.png')} style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem}>
-        <Text style={styles.navText}>Create</Text>
+        <Image source={require('../../assets/icons/boardsIcon_Light.png')} style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem}>
-        <Text style={styles.navText}>Search</Text>
+        <Image source={require('../../assets/icons/searchSymbol_Light.png')} style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem}>
-        <Text style={styles.navText}>Profile</Text>
+        <Image source={require('../../assets/icons/accountCircle_Light.png')} style={styles.icon} />
       </TouchableOpacity>
     </View>
   );
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NavBar;
+export default NavBarLM;
