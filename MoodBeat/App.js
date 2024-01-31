@@ -1,20 +1,16 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import CuratorDMScreen from "./src/screens/CuratorDMScreen";
-import CuratorSelectionDMScreen from "./src/screens/CuratorSelectionDMScreen";
-import CuratorLMScreen from "./src/screens/CuratorLMScreen";
-import CuratorSelectionLMScreen from "./src/screens/CuratorSelectionLMScreen";
-import ProfileScreenLM from "./src/screens/ProfileScreenLM";
-import ProfileScreenDM from "./src/screens/ProfileScreenDM";
-import ProfileSectionLM from "./src/screens/ProfileSectionLM";
-import ProfileSectionDM from "./src/screens/ProfileSectionDM";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import CuratorDMScreen from './src/screens/CuratorDMScreen';
+import CuratorSelectionDMScreen from './src/screens/CuratorSelectionDMScreen';
+import CuratorLMScreen from './src/screens/CuratorLMScreen';
+import CuratorSelectionLMScreen from './src/screens/CuratorSelectionLMScreen';
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ProfileScreenDM">
+      <Stack.Navigator initialRouteName="CuratorDM">
         <Stack.Screen
           name="CuratorDM"
           component={CuratorDMScreen}
@@ -25,34 +21,14 @@ const App = () => {
           component={CuratorSelectionDMScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen
+          <Stack.Screen
           name="CuratorLM"
           component={CuratorLMScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen
+          <Stack.Screen
           name="CuratorSelectionLM"
           component={CuratorSelectionLMScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="ProfileScreenLM"
-          component={ProfileScreenLM}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="ProfileScreenDM"
-          component={ProfileScreenDM}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="ProfileSectionLM"
-          component={ProfileSectionLM}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="ProfileSectionDM"
-          component={ProfileSectionDM}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
@@ -61,3 +37,4 @@ const App = () => {
 };
 
 export default App;
+

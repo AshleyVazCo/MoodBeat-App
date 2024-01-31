@@ -4,7 +4,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 const SongSelectionCard = ({ imageSource, title, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={[styles.cardContainer, { backgroundColor: 'rgba(0, 0, 0, 0)', height: 211 }]}>
-      <Image source={{ uri: imageSource }} style={styles.cardImage} />
+      <Image source={imageSource} style={styles.cardImage} />
       <View style={styles.cardOverlay}>
         <Text style={styles.cardTitle}>{title}</Text>
       </View>

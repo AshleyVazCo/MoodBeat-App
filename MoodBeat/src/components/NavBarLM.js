@@ -5,16 +5,16 @@ const NavBarLM = () => {
   return (
     <View style={styles.navBar}>
       <TouchableOpacity style={styles.navItem}>
-        <Image source={require('../../assets/icons/home_Dark.png')} style={styles.icon} />
+        <Image source={require('../../assets/icons/home_Light.png')} style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem}>
-        <Image source={require('../../assets/icons/boardsIcon_Dark.png')} style={styles.icon} />
+        <Image source={require('../../assets/icons/boardsIcon_Light.png')} style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem}>
-        <Image source={require('../../assets/icons/searchSymbol_Dark.png')} style={styles.icon} />
+        <Image source={require('../../assets/icons/searchSymbol_Light.png')} style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem}>
-        <Image source={require('../../assets/icons/accountCircle_Dark.png')} style={styles.icon} />
+        <Image source={require('../../assets/icons/accountCircle_Light.png')} style={styles.icon} />
       </TouchableOpacity>
     </View>
   );
