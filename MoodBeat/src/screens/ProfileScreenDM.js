@@ -12,7 +12,7 @@ import {
   BarlowCondensed_400Regular,
   BarlowCondensed_600SemiBold,
 } from "@expo-google-fonts/barlow-condensed";
-import ShareSettingHeader from "../components/ShareSettingHeader";
+import ShareSettingHeaderDM from "../components/ShareSettingHeaderDM";
 import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarDM from "../components/NavBarDM";
 import EditProfileModalDM from "../components/EditProfileDescriptionDM";
@@ -47,13 +47,13 @@ const ProfileScreenDM = ({ navigation }) => {
       return (
         <>
           <MoodBoardCard
-            imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            imageSource={require("../../assets/images/ambiencePic.png")}
             title="Ambience"
             cardColor="#339392"
             onPress={() => navigation.navigate("ProfileScreenLM")}
           />
           <MoodBoardCard
-            imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            imageSource={require("../../assets/images/traditional.png")}
             title="Traditional"
             cardColor="#ECE4D2"
             onPress={() => navigation.navigate("ProfileScreenLM")}
@@ -76,7 +76,7 @@ const ProfileScreenDM = ({ navigation }) => {
       return (
         <>
           <MoodBoardCard
-            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
+            imageSource={require("../../assets/images/WinterHaven.png")}
             title="Winter Haven"
             cardColor="#AFC1D7"
           />
@@ -96,7 +96,7 @@ const ProfileScreenDM = ({ navigation }) => {
     return (
       <>
         <MoodBoardCard
-          imageSource="https://example.com/image.jpg"
+          imageSource={require("../../assets/images/traditional.png")}
           title="Traditional"
           cardColor="#ECE4D2"
         />
@@ -106,13 +106,14 @@ const ProfileScreenDM = ({ navigation }) => {
 
   return (
     <View style={styles.background}>
-      <ShareSettingHeader navigation={navigation} />
+      <ShareSettingHeaderDM navigation={navigation} />
       <View style={styles.profile}>
         <TouchableOpacity onPress={() => setModalVisible(true)}>
         <Image
-          source={{
-            uri: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-          }} // Code for Profile image -- Replace with the actual URL of the profile image
+          source={
+            require("../../assets/images/alanProfilePic.png")
+            // uri: "MoodBeat/assets/images/alanProfilePic.png",
+          } // Code for Profile image -- Replace with the actual URL of the profile image
           style={styles.profileImage}
           onPress={() => setModalVisible(true)}
         />
