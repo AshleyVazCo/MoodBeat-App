@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     overflow: 'hidden',
     width: 168,
-    height: 211, // Adjusted height
+    height: 211,
   },
   cardImage: {
     width: '100%',
