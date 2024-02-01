@@ -1,71 +1,36 @@
-import React from "react";
-import { StyleSheet, View, Text } from "react-native"
+import React, { useState } from "react";
+import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
 
-const BoardText = () => {
-  const ColorSelector = () => {
-    const [red, setRed] = useState('0');
-    const [green, setGreen] = useState('0');
-    const [blue, setBlue] = useState('0');
+const BoardText = ({ onCloseModal }) => {
 
-    const handleColorChange = () => {
-      // Convert string values to integers
-      const r = parseInt(red, 10) || 0;
-      const g = parseInt(green, 10) || 0;
-      const b = parseInt(blue, 10) || 0;
+ /* const handleCloseSectionModal = () => {
+    setBoardInfoModalVisible(false);
+  }; */
 
-      // Validate RGB values (between 0 and 255)
-      const validR = Math.min(255, Math.max(0, r));
-      const validG = Math.min(255, Math.max(0, g));
-      const validB = Math.min(255, Math.max(0, b));
-
-      // Update state with validated values
-      setRed(validR.toString());
-      setGreen(validG.toString());
-      setBlue(validB.toString());
-    };
+  const handleBack = () => {
+    onCloseModal();
+  };
 
   return (
     <View style={styles.container}>
-      <Text>Edit Text</Text>
-        <Text>Select a background color for your moodboard by dragging the circle to the 
+      <View style={styles.icons}>
+        <TouchableOpacity onPress={handleBack}>
+          <Text style={styles.settings}>X</Text>
+        </TouchableOpacity>
+          <Image
+          style={styles.logo}
+          source={require('../../assets/icons/logoPurple.png')}
+        />
+      </View>
+      <View style={styles.headerContainer}>
+        <Text style={styles.header}>Edit Text</Text>
+      </View>
+      <View>
+        <Text style={styles.regularText}>Select a text color for your moodboard by dragging the circle to the 
         color you want, type in a HEX code, or type in the RGB code.</Text>
-        <Text style={styles.label}>Red:</Text>
-          <TextInput
-            style={styles.input}
-            value={red}
-            onChangeText={(text) => setRed(text)}
-            keyboardType="numeric"
-          />
-
-        <Text style={styles.label}>Green:</Text>
-          <TextInput
-            style={styles.input}
-            value={green}
-            onChangeText={(text) => setGreen(text)}
-            keyboardType="numeric"
-          />
-
-        <Text style={styles.label}>Blue:</Text>
-          <TextInput
-            style={styles.input}
-            value={blue}
-            onChangeText={(text) => setBlue(text)}
-            keyboardType="numeric"
-        />
-
-        <Button title="Apply Color" onPress={handleColorChange} />
-
-        <View
-          style={{
-            width: 200,
-            height: 100,
-            backgroundColor: `rgb(${red}, ${green}, ${blue})`,
-            marginTop: 20,
-          }}
-        />
+      </View>
     </View>
   )
-}
 }
 
 const styles = StyleSheet.create ({
@@ -74,6 +39,33 @@ const styles = StyleSheet.create ({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#ffffff",
+  },
+  icons: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 10,
+  },
+  settings: {
+    marginRight: 315,
+    marginLeft: 10,
+    fontSize: 25,
+    fontFamily: 'BarlowCondensed_400Regular',
+  },
+  logo: {
+    marginRight: 10,
+  },
+  headerContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 60,
+  },
+  header: {
+    fontFamily: 'BarlowCondensed_400Regular',
+    fontSize: 35,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+    marginTop: 20,
   },
 });
 

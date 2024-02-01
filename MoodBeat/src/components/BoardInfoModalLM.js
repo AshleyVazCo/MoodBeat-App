@@ -1,9 +1,26 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Image} from "react-native";
-import BoardTextModalLM from "../components/BoardTextModalLM";
 import { Switch } from "react-native-gesture-handler";
+import BoardInfoModalLM from "../components/BoardInfoModalLM";
+import BoardTextModalLM from "../components/BoardTextModalLM";
+import BoardBackgroundModalLM from "../components/BoardBackgroundModalLM";
 
 const BoardInfo = ({ onCloseModal }) => {
+    const [descriptionModalVisible, setDescriptionModalVisible] = useState(false);
+    const [textModalVisible, setTextModalVisible] = useState(false);
+    const [backgroundModalVisible, setBackgroundModalVisible] = useState(false);
+
+    const handleToggleDescriptionModal = () => {
+      setDescriptionModalVisible(!descriptionModalVisible);
+    };
+
+    const handleToggleTextModal = () => {
+      setTextModalVisible(!textModalVisible);
+    };
+
+    const handleToggleBackgroundModal = () => {
+      setBackgroundModalVisible(!backgroundModalVisible);
+    };
 
   const [urlInput, setUrlInput] = useState("");
 
@@ -28,6 +45,30 @@ const BoardInfo = ({ onCloseModal }) => {
           style={styles.logo}
           source={require('../../assets/icons/logoPurple.png')}
         />
+      </View>
+      <View style={styles.navigation}>
+        <TouchableOpacity onPress={handleToggleDescriptionModal}>
+          <Text style={styles.buttonText}>Description</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={handleToggleTextModal}>
+          <Text style={styles.buttonText}>Text</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={handleToggleBackgroundModal}>
+          <Text style={styles.buttonText}>Background</Text>
+        </TouchableOpacity>
+      </View>
+      <View>
+      {descriptionModalVisible && (
+        <BoardInfoModalLM onCloseModal={handleToggleDescriptionModal} />
+      )}
+      {textModalVisible && (
+        <BoardTextModalLM onCloseModal={handleToggleTextModal} />
+      )}
+      {backgroundModalVisible && (
+        <BoardBackgroundModalLM onCloseModal={handleToggleBackgroundModal} />
+      )}
       </View>
       <View style={styles.headerContainer}>
         <Text style={styles.header}>Board Description</Text>
@@ -213,6 +254,16 @@ const styles = StyleSheet.create ({
   },
   privacyToggle: {
     marginTop: 20,
+  },
+  navigation: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 10,
+    fontFamily: 'BarlowCondensed_400Regular',
+  },
+  buttonText: {
+    fontSize: 18,
+    fontFamily: 'BarlowCondensed_400Regular',
   },
 });
 

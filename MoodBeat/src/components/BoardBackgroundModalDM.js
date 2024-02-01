@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from "react-native"
 const AddTo = () => {
   return (
     <View>
-      <Text>Add to Board</Text>
+      <Text>background</Text>
     </View>
   )
 }
