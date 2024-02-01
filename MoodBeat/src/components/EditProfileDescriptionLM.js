@@ -35,14 +35,6 @@ const EditProfileDescriptionLM = ({ isVisible, onClose }) => {
     return null;
   }
 
-  const renderProfileModals = () => {
-    if (selectedTab === "Description") {
-    } else if (selectedTab === "Background") {
-    } else if (selectedTab === "Text") {
-    } else {
-    }
-  };
-
   return (
     <Modal transparent visible={isVisible} onRequestClose={onClose}>
       <View style={styles.modalContainer}>
