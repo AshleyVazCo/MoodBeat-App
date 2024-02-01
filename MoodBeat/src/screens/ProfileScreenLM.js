@@ -10,7 +10,8 @@ import {
 } from "react-native";
 import {
   useFonts,
-  BarlowCondensed_400Regular, BarlowCondensed_600SemiBold
+  BarlowCondensed_400Regular,
+  BarlowCondensed_600SemiBold,
 } from "@expo-google-fonts/barlow-condensed";
 import ShareSettingHeaderLM from "../components/ShareSettingHeaderLM";
 import MoodBoardCard from "../components/MoodBoardCard";
@@ -23,14 +24,15 @@ const ProfileScreenLM = ({ navigation }) => {
     BarlowCondensed_600SemiBold,
   });
 
+  // Tabs
   const [selectedTab, setSelectedTab] = useState("Created");
 
-   // Edit Profile Modal
-   const [modalVisible, setModalVisible] = useState(false);
+  // Edit Profile Modal
+  const [modalVisible, setModalVisible] = useState(false);
 
-   const closeModal = () => {
-     setModalVisible(false);
-   };
+  const closeModal = () => {
+    setModalVisible(false);
+  };
 
   if (!fontsLoaded) {
     return null;
@@ -42,13 +44,13 @@ const ProfileScreenLM = ({ navigation }) => {
       return (
         <>
           <MoodBoardCard
-            imageSource={require('../../assets/images/ambiencePic.png')}
+            imageSource={require("../../assets/images/ambiencePic.png")}
             title="Ambience"
             cardColor="#339392"
             onPress={() => navigation.navigate("ProfileScreenLM")}
           />
           <MoodBoardCard
-            imageSource={require('../../assets/images/traditional.png')}
+            imageSource={require("../../assets/images/traditional.png")}
             title="Traditional"
             cardColor="#ECE4D2"
             onPress={() => navigation.navigate("ProfileScreenLM")}
@@ -71,7 +73,7 @@ const ProfileScreenLM = ({ navigation }) => {
       return (
         <>
           <MoodBoardCard
-            imageSource={require('../../assets/images/WinterHaven.png')}
+            imageSource={require("../../assets/images/WinterHaven.png")}
             title="Winter Haven"
             cardColor="#AFC1D7"
           />
@@ -91,7 +93,7 @@ const ProfileScreenLM = ({ navigation }) => {
     return (
       <>
         <MoodBoardCard
-          imageSource={require('../../assets/images/traditional.png')}
+          imageSource={require("../../assets/images/traditional.png")}
           title="Traditional"
           cardColor="#ECE4D2"
         />
@@ -103,14 +105,12 @@ const ProfileScreenLM = ({ navigation }) => {
     <View style={styles.background}>
       <ShareSettingHeaderLM navigation={navigation} />
       <View style={styles.profile}>
-      <TouchableOpacity onPress={() => setModalVisible(true)}>
-        <Image
-          source={
-            require('../../assets/images/alanProfilePic.png')
-          }
-          style={styles.profileImage}
-          onPress={() => setModalVisible(true)}
-        />
+        <TouchableOpacity onPress={() => setModalVisible(true)}>
+          <Image
+            source={require("../../assets/images/alanProfilePic.png")}
+            style={styles.profileImage}
+            onPress={() => setModalVisible(true)}
+          />
         </TouchableOpacity>
         <Text style={styles.profileTitle}>Alan.Jpg</Text>
       </View>
