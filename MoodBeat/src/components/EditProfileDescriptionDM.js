@@ -15,6 +15,7 @@ import {
   BarlowCondensed_400Regular,
   BarlowCondensed_500Medium,
 } from "@expo-google-fonts/barlow-condensed";
+import ModalTabsDM from "./ModalTabsDM";
 
 const EditProfileDescriptionDM = ({ isVisible, onClose }) => {
   // tabs at the top of the modal
@@ -54,6 +55,7 @@ const EditProfileDescriptionDM = ({ isVisible, onClose }) => {
             style={styles.moodBeatimage}
             source={require("../../assets/icons/logoWhite.png")}
           />
+          <ModalTabsDM />
           <Text style={styles.titleText}>Edit Profile Info</Text>
           <Image
             style={styles.uploadImage}
