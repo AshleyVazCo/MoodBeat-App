@@ -38,9 +38,7 @@ const SongModal = ({ isVisible, onClose }) => {
             </TouchableOpacity>
             <Image
               style={styles.image}
-              source={{
-                uri: 'https://images.unsplash.com/photo-1572916289328-eca59d6903ae?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-              }}
+          source={require('../../assets/icons/logoWhite.png')}
             />
           </View>
           <View style={styles.contentContainer}>
@@ -57,10 +55,16 @@ const SongModal = ({ isVisible, onClose }) => {
             </View>
             <View style={styles.buttonRow}>
                 <TouchableOpacity style={styles.button} onPress={() => console.log("Save pressed")}>
-                    <Text style={styles.buttonText}>Save</Text>
+                  <Image
+                    style={styles.iconButton}
+                    source={require('../../assets/icons/addButton_Dark.png')}
+                  />
                 </TouchableOpacity>
                 <TouchableHighlight onPress={onShare} underlayColor="transparent">
-                    <Text style={styles.buttonText}>Share</Text>
+                  <Image
+                    style={styles.iconButton}
+                    source={require('../../assets/icons/shareIcon_Dark.png')}
+                  />
                 </TouchableHighlight>
             </View>
             </View>
@@ -108,7 +112,6 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     resizeMode: 'cover',
-    borderRadius: 15,
   },
   contentContainer: {
     flex: 1,
@@ -167,6 +170,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 60,
     marginBottom: 40
+  },
+  iconButton: {
+    width: 35,
+    height: 35,
   }
 });
 
