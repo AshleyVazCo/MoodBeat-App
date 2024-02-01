@@ -3,8 +3,13 @@ import { StyleSheet, View, Text, TouchableHighlight, Image } from "react-native"
 import NavBarDM from "../components/NavBarDM";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
+import BoardInfoModalDM from "../components/BoardInfoModalDM";
+import SearchMusicModalDM from "../components/SearchMusicModalDM";
 
 const Creation = ({ navigation }) => {
+
+  const [boardModalVisible, setBoardModalVisible] = useState(false);
+  const [sectionModalVisible, setSectionModalVisible] = useState(false);
 
   const [fontsLoaded] = useFonts({
     BarlowCondensed_400Regular,
@@ -15,16 +20,22 @@ const Creation = ({ navigation }) => {
     return null;
   }
 
-  const handleCreateSectionPress = () => {
-    // Implement logic for when "Join Board" is pressed
-    navigation.navigate('SearchMusicModalDM');
-    console.log("Join Board pressed");
+  const handleCreateBoardPress = () => {
+    setBoardModalVisible(true);
+    console.log("Create Board pressed");
   };
 
-  const handleCreateBoardPress = () => {
-    // Implement logic for when "Create Board" is pressed
-    navigation.navigate('BoardInfoModalDM');
-    console.log("Create Board pressed");
+  const handleCreateSectionPress = () => {
+    setSectionModalVisible(true);
+    console.log("Create Section pressed");
+  }
+
+  const handleCloseBoardModal = () => {
+    setBoardModalVisible(false);
+  };
+
+  const handleCloseSectionModal = () => {
+    setSectionModalVisible(false);
   };
 
   const handleSettingsPress = () => {
@@ -79,6 +90,42 @@ const Creation = ({ navigation }) => {
           </View>
         </TouchableHighlight>
       </View>
+
+      <Modal
+            animationType="none"
+            transparent={true}
+            visible={boardModalVisible}
+            onRequestClose={handleCloseBoardModal}
+        >
+          <View style={styles.modalContainer}>
+            <TouchableOpacity
+              style={styles.closeModalButton}
+              onPress={handleCloseBoardModal}
+            >
+              <Text style={styles.closeModalButtonText}>Close Modal</Text>
+            </TouchableOpacity>
+          {/* Your board modal content here */}
+          <BoardInfoModalDM />
+          </View>
+        </Modal>
+
+      <Modal
+        animationType="none"
+        transparent={true}
+        visible={sectionModalVisible}
+        onRequestClose={handleCloseSectionModal}
+      >
+        <View style={styles.modalContainer}>
+          <TouchableOpacity
+            style={styles.closeModalButton}
+            onPress={handleCloseSectionModal}
+          >
+            <Text style={styles.closeModalButtonText}>Close Modal</Text>
+          </TouchableOpacity>
+          {/* Your section modal content here */}
+          <SearchMusicModalDM />
+        </View>
+      </Modal>
 
       <View style={styles.navBar}>
         <NavBarDM />
@@ -161,7 +208,25 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     width: 90,
     height: 90,
-  }
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  closeModalButton: {
+    flexDirection: "row",
+    backgroundColor: "#fff",
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 55,
+    marginRight: 250,
+  },
+  closeModalButtonText: {
+    fontFamily: "BarlowCondensed_400Regular",
+    fontSize: 18,
+  },
 });
 
 export default Creation;

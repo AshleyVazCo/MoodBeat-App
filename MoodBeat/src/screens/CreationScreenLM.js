@@ -121,7 +121,7 @@ const Creation = ({ navigation }) => {
             <Text style={styles.closeModalButtonText}>Close Modal</Text>
           </TouchableOpacity>
           {/* Your section modal content here */}
-          <SearchMusicModalLM />
+          <SearchMusicModalLM onCloseModal={handleCloseSectionModal} />
         </View>
       </Modal>
 
