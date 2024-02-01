@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TouchableHighlight, Share, Image } from "react-native";
+import { View, TouchableOpacity, Share, Image } from "react-native";
 
 const ShareSettingHeaderDM = ({ onNavigateSetting }) => {
   const onShare = async () => {
@@ -19,12 +19,12 @@ const ShareSettingHeaderDM = ({ onNavigateSetting }) => {
 
   return (
     <View style={styles.header}>
-      <TouchableHighlight onPress={onShare} underlayColor="transparent">
+      <TouchableOpacity onPress={onShare} underlayColor="transparent">
         <Image source={require('../../assets/icons/shareIcon_Dark.png')} style={styles.icon} />
-      </TouchableHighlight>
-      <TouchableHighlight onPress={onNavigateSetting} underlayColor="transparent">
+      </TouchableOpacity>
+      <TouchableOpacity onPress={onNavigateSetting} underlayColor="transparent">
         <Image source={require('../../assets/icons/settingsIcon_Dark.png')} style={styles.icon} onPress={onNavigateSetting} />
-      </TouchableHighlight>
+      </TouchableOpacity>
     </View>
   );
 };
