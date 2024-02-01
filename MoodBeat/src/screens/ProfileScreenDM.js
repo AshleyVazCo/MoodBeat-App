@@ -163,9 +163,9 @@ const ProfileScreenDM = ({ navigation }) => {
       >
         {renderCardSet()}
       </ScrollView>
-      {/* <EditProfileModalDM isVisible={modalVisible} onClose={closeModal} /> */}
+      <EditProfileModalDM isVisible={modalVisible} onClose={closeModal} />
       {/* <BackgroundColorModalDM isVisible={modalVisible} onClose={closeModal} /> */}
-      <EditTextModalDM isVisible={modalVisible} onClose={closeModal} />
+      {/* <EditTextModalDM isVisible={modalVisible} onClose={closeModal} /> */}
       <NavBarDM />
     </View>
   );
