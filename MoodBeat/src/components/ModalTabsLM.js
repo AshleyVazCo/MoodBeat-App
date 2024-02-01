@@ -5,18 +5,25 @@ import {
   StyleSheet,
   TouchableHighlight,
 } from "react-native";
+import EditProfileDescriptionLM from "./EditProfileDescriptionLM";
+import BackgroundColorModalLM from "./BackgroundColorModalLM";
 
 const ModalTabsLM = () => {
-    // const renderProfileModals = () => {
-    //     if (selectedTab === "Description") {
-            
-    //     } else if (selectedTab === "Background") {
+    const renderProfileModals = () => {
+        if (selectedTab === "Description") {
+            return(
+            <EditProfileDescriptionLM/>
+            );
+        } else if (selectedTab === "Background") {
+            return(
+            <BackgroundColorModalLM/>
+            );
 
-    //     } else if (selectedTab === "Text") {
+        } else if (selectedTab === "Text") {
 
-    //     } else {
-    //     }
-    //   };
+        } else {
+        }
+      };
 
     const [selectedTab, setSelectedTab] = useState("Description");
 
