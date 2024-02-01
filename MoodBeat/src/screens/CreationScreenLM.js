@@ -48,7 +48,7 @@ const Creation = ({ navigation }) => {
       <View style={styles.icons}>
         <Image
           style={styles.logo}
-          source={require('../../assets/icons/apple_Light.png')}
+          source={require('../../assets/icons/logoPurple.png')}
           />
         <TouchableOpacity>
           <Image source={require('../../assets/icons/settingsIcon_Light.png')} onPress={handleSettingsPress} 

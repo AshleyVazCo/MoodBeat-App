@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity, TextInput, Modal } from "react-native";
 import CreateSectionModalLM from "../components/CreateSectionModalLM";
 
@@ -27,7 +27,7 @@ const SearchMusic = ({ onCloseModal }) => {
         </TouchableOpacity>
           <Image
           style={styles.logo}
-          source={require('../../assets/icons/apple_Light.png')}
+          source={require('../../assets/icons/logoPurple.png')}
         />
       </View>
       <View style={styles.headerContainer}>
@@ -53,7 +53,7 @@ const SearchMusic = ({ onCloseModal }) => {
           />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Image source={require('../../assets/icons/apple_Light.png')} 
+          <Image source={require('../../assets/icons/spotifyIcon.png')} 
             style={styles.spotify}
           />
         </TouchableOpacity>
@@ -81,7 +81,6 @@ const SearchMusic = ({ onCloseModal }) => {
             style={styles.closeModalButton}
             onPress={handleCloseSectionModal}
           >
-            <Text style={styles.closeModalButtonText}>Close Modal</Text>
           </TouchableOpacity>
           {/* Your section modal content here */}
           <CreateSectionModalLM onCloseModal={handleCloseSectionModal} />
@@ -140,6 +139,7 @@ const styles = StyleSheet.create ({
     padding: 10,
     borderRadius: 5,
     marginBottom: 20,
+    fontFamily: 'BarlowCondensed_400Regular',
   },
   iconsTwo: {
     flexDirection: "row",

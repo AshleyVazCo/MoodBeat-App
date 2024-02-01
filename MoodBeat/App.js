@@ -6,6 +6,7 @@ import CuratorLMScreen from './src/screens/CuratorLMScreen';
 import CuratorSelectionLMScreen from './src/screens/CuratorSelectionLMScreen';
 import CreationScreenLM from './src/screens/CreationScreenLM';
 import CreationScreenDM from './src/screens/CreationScreenDM';
+import LoginScreenLM from './src/screens/LoginScreenLM';
 
 const Stack = createStackNavigator();
 
@@ -41,6 +42,11 @@ const App = () => {
         <Stack.Screen
           name="CreationDM"
           component={CreationScreenDM}
+          options={{ headerShown: false }}
+          />
+          <Stack.Screen
+          name="LoginScreenLM"
+          component={LoginScreenLM}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
