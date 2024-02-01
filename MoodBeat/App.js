@@ -1,17 +1,22 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import CuratorDMScreen from './src/screens/CuratorDMScreen';
-import CuratorSelectionDMScreen from './src/screens/CuratorSelectionDMScreen';
-import CuratorLMScreen from './src/screens/CuratorLMScreen';
-import CuratorSelectionLMScreen from './src/screens/CuratorSelectionLMScreen';
-import LoginScreenLM from './src/screens/LoginScreenLM';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import CuratorDMScreen from "./src/screens/CuratorDMScreen";
+import CuratorSelectionDMScreen from "./src/screens/CuratorSelectionDMScreen";
+import CuratorLMScreen from "./src/screens/CuratorLMScreen";
+import CuratorSelectionLMScreen from "./src/screens/CuratorSelectionLMScreen";
+import LoginScreenLM from "./src/screens/LoginScreenLM";
+import ProfileScreenDM from "./src/screens/ProfileScreenDM";
+import ProfileScreenLM from "./src/screens/ProfileScreenLM";
+import ProfileSectionDM from "./src/screens/ProfileSectionLM";
+import ProfileScreenLM from "./src/screens/ProfileScreenLM";
+import ProfileSectionLM from "./src/screens/ProfileSectionLM";
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginScreenLM">
+      <Stack.Navigator initialRouteName="ProfileScreenDM">
         <Stack.Screen
           name="CuratorDM"
           component={CuratorDMScreen}
@@ -22,12 +27,12 @@ const App = () => {
           component={CuratorSelectionDMScreen}
           options={{ headerShown: false }}
         />
-          <Stack.Screen
+        <Stack.Screen
           name="CuratorLM"
           component={CuratorLMScreen}
           options={{ headerShown: false }}
         />
-          <Stack.Screen
+        <Stack.Screen
           name="CuratorSelectionLM"
           component={CuratorSelectionLMScreen}
           options={{ headerShown: false }}
@@ -47,10 +52,11 @@ const App = () => {
           component={ProfileSectionDM}
           options={{ headerShown: false }}
         />
+        <Stack.Screen name="ProfileSectionLM" 
+        component={ProfileSectionLM} 
+        options={{ headerShown: false }}
+        />
         <Stack.Screen
-          name="ProfileSectionLM"
-          component={ProfileSectionLM}
-          <Stack.Screen
           name="LoginScreenLM"
           component={LoginScreenLM}
           options={{ headerShown: false }}
@@ -61,4 +67,3 @@ const App = () => {
 };
 
 export default App;
-
