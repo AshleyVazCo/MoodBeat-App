@@ -5,6 +5,7 @@ import {
   View,
   Image,
   TouchableHighlight,
+  TouchableOpacity,
   ScrollView,
 } from "react-native";
 import {
@@ -14,6 +15,7 @@ import {
 import ShareSettingHeaderLM from "../components/ShareSettingHeaderLM";
 import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarLM from "../components/NavBarDM";
+import EditProfileDescriptionLM from "../components/EditProfileDescriptionLM";
 
 const ProfileScreenLM = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -22,6 +24,13 @@ const ProfileScreenLM = ({ navigation }) => {
   });
 
   const [selectedTab, setSelectedTab] = useState("Created");
+
+   // Edit Profile Modal
+   const [modalVisible, setModalVisible] = useState(false);
+
+   const closeModal = () => {
+     setModalVisible(false);
+   };
 
   if (!fontsLoaded) {
     return null;
@@ -94,12 +103,15 @@ const ProfileScreenLM = ({ navigation }) => {
     <View style={styles.background}>
       <ShareSettingHeaderLM navigation={navigation} />
       <View style={styles.profile}>
+      <TouchableOpacity onPress={() => setModalVisible(true)}>
         <Image
           source={
             require('../../assets/images/alanProfilePic.png')
           }
           style={styles.profileImage}
+          onPress={() => setModalVisible(true)}
         />
+        </TouchableOpacity>
         <Text style={styles.profileTitle}>Alan.Jpg</Text>
       </View>
       <View style={styles.tabMenu}>
@@ -143,6 +155,7 @@ const ProfileScreenLM = ({ navigation }) => {
       >
         {renderCardSet()}
       </ScrollView>
+      <EditProfileDescriptionLM isVisible={modalVisible} onClose={closeModal} />
       <NavBarLM />
     </View>
   );
