@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Modal,
   View,
@@ -6,24 +6,17 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  TextInput,
-  Switch,
-  TouchableHighlight,
 } from "react-native";
 import {
   useFonts,
   BarlowCondensed_400Regular,
   BarlowCondensed_500Medium,
 } from "@expo-google-fonts/barlow-condensed";
+import ModalTabsLM from "./ModalTabsLM";
 
 const BackgroundColorModalLM = ({ isVisible, onClose }) => {
   // tabs at the top of the modal
-  const [selectedTab, setSelectedTab] = useState("Description");
-  // text input
-  const [text, setFocusedText] = useState("Edit Username");
-  // toggle/switch
-  const [privacy, setPrivacy] = useState(false);
-  const toggleSwitch = () => setPrivacy((previousState) => !previousState);
+  // const [selectedTab, setSelectedTab] = useState("Description");
 
   //Font
   const [fontsLoaded] = useFonts({
@@ -44,8 +37,24 @@ const BackgroundColorModalLM = ({ isVisible, onClose }) => {
           </TouchableOpacity>
           <Image
             style={styles.moodBeatimage}
-            source={require("../../assets/icons/logoWhite.png")}
+            source={require("../../assets/icons/logoPurple.png")}
           />
+          <ModalTabsLM />
+          <Text style={styles.titleText}>Background Color</Text>
+        </View>
+        <View>
+          <Text style={styles.textDescription}>
+            Select a background color for your profile by dragging the circle to
+            the color you want, type in a HEX code, or type in the RGB code.
+          </Text>
+          <Image
+            style={styles.uploadImage}
+            source={require("../../assets/images/alanProfilePic.png")}
+          />
+          <Text style={styles.profileTitle}>Alan.Jpg</Text>
+          <Text style={styles.textStandard}>
+          Must meet WCAG standards
+            </Text>
         </View>
       </View>
     </Modal>
@@ -62,13 +71,50 @@ const styles = StyleSheet.create({
   modalContent: {
     height: 760,
     width: 380,
-    backgroundColor: "#26282C",
+    backgroundColor: "#9751F2",
     padding: 20,
     borderRadius: 10,
   },
   closeButtonText: {
-    color: "#CA9CE1",
+    color: "#FFFFFF",
     fontSize: 24,
+  },
+  moodBeatimage: {
+    width: 40,
+    height: 40,
+    resizeMode: "cover",
+    alignSelf: "flex-end",
+    marginTop: -30,
+  },
+  titleText: {
+    fontFamily: "BarlowCondensed_500Medium",
+    color: "#FFFFFF",
+    fontSize: 28,
+    alignSelf: "center",
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  textDescription: {
+    fontFamily: "BarlowCondensed_500Medium",
+    color: "#FFFFFF",
+    fontSize: 20,
+    alignSelf: "center",
+    marginTop: 30,
+  },
+  uploadImage: {
+    alignSelf: "center",
+  },
+  profileTitle: {
+    fontFamily: "BarlowCondensed_600SemiBold",
+    fontSize: 20,
+    color: "#0055FF",
+  },
+  textStandard: {
+    fontFamily: "BarlowCondensed_400Regular",
+    color: "#FFFFFF",
+    fontSize: 20,
+    alignSelf: "center",
+    marginTop: 30,
   },
 });
 

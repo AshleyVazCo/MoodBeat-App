@@ -19,7 +19,7 @@ import ModalTabsLM from "./ModalTabsLM";
 
 const EditProfileDescriptionLM = ({ isVisible, onClose }) => {
   // tabs at the top of the modal
-  const [selectedTab, setSelectedTab] = useState("Description");
+//   const [selectedTab, setSelectedTab] = useState("Description");
   // text input
   const [text, setFocusedText] = useState("Edit Username");
   // toggle/switch
@@ -34,7 +34,7 @@ const EditProfileDescriptionLM = ({ isVisible, onClose }) => {
 
   if (!fontsLoaded) {
     return null;
-  }
+  }   
 
   return (
     <Modal transparent visible={isVisible} onRequestClose={onClose}>
