@@ -46,22 +46,9 @@ const ProfileSectionLM = ({ navigation }) => {
             onPress={() => setModalVisible(true)}
           />
           <MoodBoardCardLM
-            imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
             title="DK Ost"
-            cardColor="#ECE4D2"
-            onPress={() => navigation.navigate("ProfileScreenLM")}
-          />
-          <MoodBoardCardLM
-            imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            title="Genesis X Not Allowed"
-            cardColor="#55A3C4"
-            onPress={() => navigation.navigate("ProfileScreenLM")}
-          />
-          <MoodBoardCardLM
-            imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            title="Aquatic Ambience"
-            cardColor="#060B07"
-            onPress={() => navigation.navigate("ProfileScreenLM")}
+            // cardColor="#161733"
           />
         </>
       );
@@ -77,16 +64,6 @@ const ProfileSectionLM = ({ navigation }) => {
             imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
             title="Come, Gentle Night"
             // cardColor="#161733"
-          />
-          <MoodBoardCardLM
-            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
-            title="Mamma Mia"
-            // cardColor="#337FE1"
-          />
-          <MoodBoardCardLM
-            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
-            title="Merry-Go-Round-Of-Life"
-            // cardColor="#337FE1"
           />
         </>
       );

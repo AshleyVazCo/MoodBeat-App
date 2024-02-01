@@ -59,7 +59,7 @@ const EditProfileDescriptionDM = ({ isVisible, onClose }) => {
           <Text style={styles.titleText}>Edit Profile Info</Text>
           <Image
             style={styles.uploadImage}
-            source={require("../../assets/images/alanProfilePic.png")}
+            source={require("../../assets/images/uploadImage.png")}
           />
           <View>
             <TextInput
