@@ -13,7 +13,11 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
+<<<<<<< HEAD
       <Stack.Navigator initialRouteName="CreationLM">
+=======
+      <Stack.Navigator initialRouteName="CuratorDM">
+>>>>>>> 9a6ee73428060dc61e041cdb88d6477066a0cfc1
         <Stack.Screen
           name="CuratorDM"
           component={CuratorDMScreen}
