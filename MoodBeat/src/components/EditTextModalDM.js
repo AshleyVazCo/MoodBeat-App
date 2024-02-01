@@ -15,6 +15,7 @@ import {
   BarlowCondensed_400Regular,
   BarlowCondensed_500Medium,
 } from "@expo-google-fonts/barlow-condensed";
+import ModalTabsDM from "./ModalTabsDM";
 
 const EditTextModalDM = ({ isVisible, onClose }) => {
 
@@ -48,6 +49,17 @@ return (
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
             <Text style={styles.closeButtonText}>X</Text>
           </TouchableOpacity>
+          <Image
+            style={styles.moodBeatimage}
+            source={require("../../assets/icons/logoWhite.png")}
+          />
+          <ModalTabsDM />
+          <Text style={styles.titleText}>Edit Text</Text>
+          <Text style={styles.textDescription}>Change the text by selecting a different text style and selecting a color with the selector, HEX code, or RGB code.</Text>
+          <TouchableOpacity style={styles.button}
+         onPress={() => nagivation.navigate("ProfileScreenLM")}>
+          <Text style={styles.buttonText}>Save Changes</Text>
+         </TouchableOpacity>
           </View>
       </View>
   </Modal>
@@ -71,6 +83,43 @@ modalContent: {
 closeButtonText: {
   color: '#CA9CE1',
   fontSize: 24,
+},
+moodBeatimage: {
+  width: 40,
+  height: 40,
+  resizeMode: "cover",
+  alignSelf: "flex-end",
+  marginTop: -30,
+},
+titleText: {
+  fontFamily: "BarlowCondensed_500Medium",
+  color: "#909090",
+  fontSize: 28,
+  alignSelf: "center",
+  marginTop: 20,
+  marginBottom: 20,
+},
+textDescription: {
+  fontFamily: "BarlowCondensed_500Medium",
+  color: "#909090",
+  fontSize: 20,
+  alignSelf: "center",
+  marginTop: 10,
+},
+button: {
+  padding: 10,
+  backgroundColor: "#4F4F4F",
+  borderRadius: 10,
+  height: 44,
+  width: 240,
+  alignSelf: "center",
+  marginTop: 40,
+},
+buttonText: {
+  color: "#CA9CE1",
+  fontSize: 20,
+  fontFamily: "BarlowCondensed_600SemiBold",
+  textAlign: "center",
 },
 });
 

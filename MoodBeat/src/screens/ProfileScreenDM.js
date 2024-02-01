@@ -18,6 +18,7 @@ import NavBarDM from "../components/NavBarDM";
 import EditProfileModalDM from "../components/EditProfileDescriptionDM";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import BackgroundColorModalDM from "../components/BackgroundColorModalDM";
+import EditTextModalDM from "../components/EditTextModalDM";
 
 const ProfileScreenDM = ({ navigation }) => {
 
@@ -163,7 +164,8 @@ const ProfileScreenDM = ({ navigation }) => {
         {renderCardSet()}
       </ScrollView>
       {/* <EditProfileModalDM isVisible={modalVisible} onClose={closeModal} /> */}
-      <BackgroundColorModalDM isVisible={modalVisible} onClose={closeModal} />
+      {/* <BackgroundColorModalDM isVisible={modalVisible} onClose={closeModal} /> */}
+      <EditTextModalDM isVisible={modalVisible} onClose={closeModal} />
       <NavBarDM />
     </View>
   );
