@@ -17,6 +17,8 @@ import ShareSettingHeaderLM from "../components/ShareSettingHeaderLM";
 import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarLM from "../components/NavBarDM";
 import EditProfileDescriptionLM from "../components/EditProfileDescriptionLM";
+import BackgroundColorModalLM from "../components/BackgroundColorModalLM";
+import EditTextModalLM from "../components/EditTextModalLM";
 
 const ProfileScreenLM = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -156,6 +158,8 @@ const ProfileScreenLM = ({ navigation }) => {
         {renderCardSet()}
       </ScrollView>
       <EditProfileDescriptionLM isVisible={modalVisible} onClose={closeModal} />
+      {/* <BackgroundColorModalLM isVisible={modalVisible} onClose={closeModal}/> */}
+      {/* <EditTextModalLM isVisible={modalVisible} onClose={closeModal}/> */}
       <NavBarLM />
     </View>
   );

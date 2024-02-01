@@ -51,18 +51,12 @@ return (
           />
           <ModalTabsLM />
           <Text style={styles.titleText}>Edit Text</Text>
-        </View>
-        <View>
-          <Text style={styles.textDescription}>
-          Change the text by selecting a different text style and selecting a color with the selector, HEX code, or RGB code. 
-          </Text>
-          </View>
-          <View>
-            <Button
-            onPress={() => navigation.navigate("ProfileScreenLM")}
-            title="Save Changes"
-            />
-          </View>
+          <Text style={styles.textDescription}>Change the text by selecting a different text style and selecting a color with the selector, HEX code, or RGB code.</Text>
+         <TouchableOpacity style={styles.button}
+         onPress={() => nagivation.navigate("ProfileScreenLM")}>
+          <Text style={styles.buttonText}>Save Changes</Text>
+         </TouchableOpacity>
+      </View>
       </View>
   </Modal>
 );
@@ -95,7 +89,7 @@ moodBeatimage: {
   },
   titleText: {
     fontFamily: "BarlowCondensed_500Medium",
-    color: "#FFFFFF",
+    color: "#26282C",
     fontSize: 28,
     alignSelf: "center",
     marginTop: 20,
@@ -103,17 +97,25 @@ moodBeatimage: {
   },
   textDescription: {
     fontFamily: "BarlowCondensed_500Medium",
-    color: "#FFFFFF",
+    color: "#26282C",
     fontSize: 20,
     alignSelf: "center",
-    marginTop: 30,
+    marginTop: 10,
   },
   button: {
+    padding: 10,
     backgroundColor: "#43357A",
+    borderRadius: 10,
     height: 44,
     width: 240,
-    fontFamily: "BarlowCondensed_600SemiBold",
+    alignSelf: "center",
+    marginTop: 40,
+  },
+  buttonText: {
+    color: "#FFFFFC",
     fontSize: 20,
+    fontFamily: "BarlowCondensed_600SemiBold",
+    textAlign: "center",
   },
 });
 

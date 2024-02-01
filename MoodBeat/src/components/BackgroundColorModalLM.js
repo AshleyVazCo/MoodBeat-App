@@ -29,9 +29,13 @@ const BackgroundColorModalLM = ({ isVisible, onClose }) => {
   }
 
   return (
-    <Modal transparent visible={isVisible} onRequestClose={onClose}>
-      <View style={styles.modalContainer}>
-        <View style={styles.modalContent}>
+    <Modal
+    transparent
+    visible={isVisible}
+    onRequestClose={onClose}
+  >
+    <View style={styles.modalContainer}>
+      <View style={styles.modalContent}>
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
             <Text style={styles.closeButtonText}>X</Text>
           </TouchableOpacity>
@@ -41,23 +45,17 @@ const BackgroundColorModalLM = ({ isVisible, onClose }) => {
           />
           <ModalTabsLM />
           <Text style={styles.titleText}>Background Color</Text>
-        </View>
-        <View>
-          <Text style={styles.textDescription}>
-            Select a background color for your profile by dragging the circle to
-            the color you want, type in a HEX code, or type in the RGB code.
-          </Text>
-          <Image
+          <Text style={styles.textDescription}>Select a background color for your profile by dragging the circle to
+            the color you want, type in a HEX code, or type in the RGB code.</Text>
+            <Image
             style={styles.uploadImage}
             source={require("../../assets/images/alanProfilePic.png")}
           />
-          <Text style={styles.profileTitle}>Alan.Jpg</Text>
-          <Text style={styles.textStandard}>
-          Must meet WCAG standards
-            </Text>
-        </View>
+          <Text style={styles.profileTitle}>Alan.jpg</Text>
+          <Text style={styles.textStandard}>Must meet WCAG standards</Text>
+          </View>
       </View>
-    </Modal>
+  </Modal>
   );
 };
 
@@ -99,22 +97,24 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 20,
     alignSelf: "center",
-    marginTop: 30,
   },
   uploadImage: {
     alignSelf: "center",
+    marginTop: 20,
   },
   profileTitle: {
     fontFamily: "BarlowCondensed_600SemiBold",
     fontSize: 20,
-    color: "#0055FF",
+    color: "#FFFFFF",
+    alignSelf: "center",
+    marginTop: 10,
   },
   textStandard: {
     fontFamily: "BarlowCondensed_400Regular",
     color: "#FFFFFF",
     fontSize: 20,
     alignSelf: "center",
-    marginTop: 30,
+    marginTop: 10,
   },
 });
 
