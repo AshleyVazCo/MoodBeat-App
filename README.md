@@ -19,7 +19,7 @@ MoodBeat is a music moodboard app where you can create, share, or browse a music
 ## Executive Summary
 For the front-end development of MoodBeat, we completed five sections: the creation section, the home section, the blank section, the blank section, and the blank section. We implemented the basic HTML and CSS components with React Native, along with some of our pre-made icons. Split among five members, we created a Github, adding design assets, creating the user interface, technical implementation, and more. We each created our branch and are using git gist to assist us with coding. We created a component folder for repeated code for quicker access and implementation. Alan Giraldo is responsible for the Figma redesign, Ashley Vazquez is the GitHub host, Jolina Jassal created the Readme.md file, and Wuilmar Matias-Morales is the asset manager. 
 
-## User Interface Design
+### User Interface Design
 
 **Introduction**
 MoodBeat consists of seven pages, each supporting a unique user flow and design. The main objective is to create a space for users to express and share their creativity, fostering a positive experience that distinguishes it from competitors. Let's explore the user flow of each page and its purpose.
@@ -55,11 +55,11 @@ You can navigate to these screens within the home screen or search screen. When 
 
 ## Design Assets Documentation
 
-**Fonts**
+### Fonts
 
 MoodBeat uses the Barlow Condensed font. This font can be found for free through Google Fonts and it is licensed under the Open Font License. There are 3 font weights that are used and they are regular, medium and semibold. For the body, the regular weight is used. For the headlines and titles either medium or semibold are used. More details about the use of this font can be found in our visual design guide and our style guide.
 
-**Icons**
+### Icons
 
 The icons used in our app are available in both light and dark mode. The standard size of the icons are 24px unless otherwise stated. On special circumstances, the icons can be sized up to 30px, 35px or 107px. The following icons are used:
 
@@ -77,7 +77,7 @@ Music App Icons
 
 The music app icons can be used in both light and dark mode without modifying the colors.
 
-**Colors**
+### Colors
 
 MoodBeat colors are separated by either dark or light mode. Each color used for either mode was chosen to be in compliance with the WCAG guidelines. A list of the accepted color combinations are listed in the visual design guide. The following color schemes are used:
 
@@ -108,21 +108,21 @@ Accent 2: #FDA1FF
 #EDEDED
 #F2F4F5
 
-**Logo**
+### Logo
 
 It is the primary graphic representative of the MoodBeat App and brand. The symbol in our logo represents different mood boards as well as the sound level meter. The logo was created so it can be something that is representative of both. The symbol in our logo can be used together or independently from the wordmark. The logo can’t be modified or altered in any way unless otherwise specified in the guidelines on our visual design guide.
 
-**Components**
+### Components
 
 There are different components that are used throughout the MoodBeat app. Each component has different requirements.
 
-**Buttons**
+### Buttons
 
 Standard buttons and music platform buttons are 240px by 44px. Small buttons are 110px by 44px. 
 
 Dark and light mode have different variations in regards to the colors. Here are the following options:
 
-*Light Mode*
+**Light Mode**
 
 *Option 1:*
 
@@ -145,7 +145,7 @@ Fill: #43357A
 Text Color: #FFFFFC
 Text Style: SemiBold
 
-*Dark Mode*
+**Dark Mode**
 
 *Option 1:*
 
@@ -168,7 +168,7 @@ Fill: #4F4F4F
 Text Color: #CA9CE1
 Text Style: SemiBold
 
-**Forms**
+### Forms
 
 Forms are used on certain parts of the app such as the sign up pages and the sign in page. The main input text boxes are 327px by 44px. The bigger text box is 327px by 88px. 
 
@@ -192,7 +192,7 @@ Text Style: Regular or Medium
 
 Dark mode focused states uses the secondary color found in the dark mode color palette. 
 
-**Navigation**
+### Navigation
 
 The navigation of the app will look different whether you’re viewing it in either dark or light mode. 
 
@@ -214,19 +214,19 @@ Icon Color: #969696
 Focused Icon Color: #CA9CE1
 Focused Color: #4F4F4F
 
-**Cards**
+### Cards
 
 The flip card component can be used in our app to insert an image and when clicked extra information will appear. This feature is found in the settings page on the Our Team tab. 
 
-**Carousel**
+### Carousel
 
 The carousels are used to showcase the different moodboards. The colors, fonts and images are based on the user’s preference at the time of creation. This component can be found in different screens of the application but are mainly used in the profile pages.
 
-**Accordions**
+### Accordions
 
 These expandable sections provide extra information to the user. This component is found specifically in the settings page. 
 
-**Segmented Buttons**
+### Segmented Buttons
 
 These buttons or tabs are used throughout the app specifically in the profiles screens, edit profile description, background and text screens. Also, this is used in the create a section, create a board screen and the curator screen.
 
