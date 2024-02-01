@@ -12,9 +12,10 @@ import {
   BarlowCondensed_400Regular,
   BarlowCondensed_600SemiBold,
 } from "@expo-google-fonts/barlow-condensed";
-import ShareSettingHeader from "../components/ShareSettingHeader";
+import ShareSettingHeaderDM from "../components/ShareSettingHeaderDM";
 import MoodBoardCard from "../components/MoodBoardCard";
-import NavBar from "../components/NavBar";
+import NavBarDM from "../components/NavBarDM";
+import MyMusicSectionDM from "../components/MyMusicSectionDM";
 
 const ProfileSectionDM = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -23,6 +24,12 @@ const ProfileSectionDM = ({ navigation }) => {
   });
 
   const [selectedTab, setSelectedTab] = useState("Created");
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
 
   if (!fontsLoaded) {
     return null;
@@ -34,10 +41,9 @@ const ProfileSectionDM = ({ navigation }) => {
       return (
         <>
           <MoodBoardCard
-            imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            imageSource={require("../../assets/images/YouNotTheSame.png")}
             title="You Not The Same"
-            // cardColor="#339392"
-            onPress={() => navigation.navigate("ProfileScreenLM")}
+            onPress={() => setModalVisible(true)}
           />
           <MoodBoardCard
             imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -60,12 +66,6 @@ const ProfileSectionDM = ({ navigation }) => {
           <MoodBoardCard
             imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             title="Retire (Final)"
-            // cardColor="#060B07"
-            onPress={() => navigation.navigate("ProfileScreenLM")}
-          />
-          <MoodBoardCard
-            imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            title="Nami Theme"
             // cardColor="#060B07"
             onPress={() => navigation.navigate("ProfileScreenLM")}
           />
@@ -94,19 +94,10 @@ const ProfileSectionDM = ({ navigation }) => {
             title="Merry-Go-Round-Of-Life"
             // cardColor="#337FE1"
           />
-          <MoodBoardCard
-            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
-            title="Empire State of Mind"
-            // cardColor="#337FE1"
-          />
-          <MoodBoardCard
-            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
-            title="Chamber of reflection"
-            // cardColor="#337FE1"
-          />
         </>
       );
     }
+
     return (
       <>
         <MoodBoardCard
@@ -120,12 +111,10 @@ const ProfileSectionDM = ({ navigation }) => {
 
   return (
     <View style={styles.background}>
-      <ShareSettingHeader navigation={navigation} />
+      <ShareSettingHeaderDM navigation={navigation} />
       <View style={styles.profile}>
         <Image
-          source={{
-            uri: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-          }} // Code for Profile image -- Replace with the actual URL of the profile image
+          source={require("../../assets/images/alanProfilePic.png")}
           style={styles.profileImage}
         />
         <Text style={styles.profileTitle}>Alan.Jpg</Text>
@@ -171,7 +160,8 @@ const ProfileSectionDM = ({ navigation }) => {
       >
         {renderCardSet()}
       </ScrollView>
-      <NavBar />
+      <MyMusicSectionDM isVisible={modalVisible} onClose={closeModal} />
+      <NavBarDM />
     </View>
   );
 };
@@ -184,14 +174,15 @@ const styles = StyleSheet.create({
   profile: {
     height: 200,
     backgroundColor: "#B7E3FF",
-    // justifyContent: "left",
-    // alignItems: "left",
+    flexWrap: "wrap",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    gap: 100,
   },
   profileImage: {
     width: 152,
     height: 152,
     borderRadius: 100,
-    marginLeft: 8,
     marginTop: 25,
     alignSelf: "flex-start",
   },
@@ -200,8 +191,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#0055FF",
     alignSelf: "flex-end",
-    marginRight: 8,
-    marginBottom: 20, // This isn't behaving like it's supposed to.
   },
   tabMenu: {
     flexDirection: "row",
@@ -234,7 +223,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     flexDirection: "row",
     justifyContent: "space-around",
-    gap: 8, // Need to be able to modify the color of the text within the card container. Will probably need to be modified within the MoodBoardCard doc. Maybe delete color in cardTitle?
+    gap: 8,
   },
 });
 

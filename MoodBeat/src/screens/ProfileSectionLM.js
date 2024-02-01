@@ -12,9 +12,10 @@ import {
   BarlowCondensed_400Regular,
   BarlowCondensed_600SemiBold,
 } from "@expo-google-fonts/barlow-condensed";
-import ShareSettingHeader from "../components/ShareSettingHeader";
-import MoodBoardCard from "../components/MoodBoardCard";
-import NavBar from "../components/NavBar";
+import ShareSettingHeaderLM from "../components/ShareSettingHeaderLM";
+import MoodBoardCardLM from "../components/MoodBoardCardLM";
+import NavBarLM from "../components/NavBarLM";
+import MyMusicSectionLM from "../components/MyMusicSectionLM";
 
 const ProfileSectionLM = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
@@ -23,6 +24,12 @@ const ProfileSectionLM = ({ navigation }) => {
   });
 
   const [selectedTab, setSelectedTab] = useState("Created");
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
 
   if (!fontsLoaded) {
     return null;
@@ -33,39 +40,26 @@ const ProfileSectionLM = ({ navigation }) => {
     if (selectedTab === "Created") {
       return (
         <>
-          <MoodBoardCard
-            imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          <MoodBoardCardLM
+            imageSource={require("../../assets/images/YouNotTheSame.png")}
             title="You Not The Same"
-            cardColor="#339392"
-            onPress={() => navigation.navigate("ProfileScreenLM")}
+            onPress={() => setModalVisible(true)}
           />
-          <MoodBoardCard
+          <MoodBoardCardLM
             imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             title="DK Ost"
             cardColor="#ECE4D2"
             onPress={() => navigation.navigate("ProfileScreenLM")}
           />
-          <MoodBoardCard
+          <MoodBoardCardLM
             imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             title="Genesis X Not Allowed"
             cardColor="#55A3C4"
             onPress={() => navigation.navigate("ProfileScreenLM")}
           />
-          <MoodBoardCard
+          <MoodBoardCardLM
             imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             title="Aquatic Ambience"
-            cardColor="#060B07"
-            onPress={() => navigation.navigate("ProfileScreenLM")}
-          />
-          <MoodBoardCard
-            imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            title="Retire (Final)"
-            cardColor="#060B07"
-            onPress={() => navigation.navigate("ProfileScreenLM")}
-          />
-          <MoodBoardCard
-            imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            title="Nami Theme"
             cardColor="#060B07"
             onPress={() => navigation.navigate("ProfileScreenLM")}
           />
@@ -74,34 +68,24 @@ const ProfileSectionLM = ({ navigation }) => {
     } else if (selectedTab === "Saved") {
       return (
         <>
-         <MoodBoardCard
+         <MoodBoardCardLM
             imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
             title="My Love Mine All Mine"
             // cardColor="#AFC1D7"
           />
-          <MoodBoardCard
+          <MoodBoardCardLM
             imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
             title="Come, Gentle Night"
             // cardColor="#161733"
           />
-          <MoodBoardCard
+          <MoodBoardCardLM
             imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
             title="Mamma Mia"
             // cardColor="#337FE1"
           />
-          <MoodBoardCard
+          <MoodBoardCardLM
             imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
             title="Merry-Go-Round-Of-Life"
-            // cardColor="#337FE1"
-          />
-          <MoodBoardCard
-            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
-            title="Empire State of Mind"
-            // cardColor="#337FE1"
-          />
-          <MoodBoardCard
-            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
-            title="Chamber of reflection"
             // cardColor="#337FE1"
           />
         </>
@@ -120,12 +104,10 @@ const ProfileSectionLM = ({ navigation }) => {
 
   return (
     <View style={styles.background}>
-      <ShareSettingHeader navigation={navigation} />
+      <ShareSettingHeaderLM navigation={navigation} />
       <View style={styles.profile}>
         <Image
-          source={{
-            uri: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-          }} // Code for Profile image -- Replace with the actual URL of the profile image
+            source={require("../../assets/images/alanProfilePic.png")}
           style={styles.profileImage}
         />
         <Text style={styles.profileTitle}>Alan.Jpg</Text>
@@ -172,7 +154,8 @@ const ProfileSectionLM = ({ navigation }) => {
       >
         {renderCardSet()}
       </ScrollView>
-      <NavBar />
+      <MyMusicSectionLM isVisible={modalVisible} onClose={closeModal} />
+      <NavBarLM />
     </View>
   );
 };
@@ -185,14 +168,15 @@ const styles = StyleSheet.create({
   profile: {
     height: 200,
     backgroundColor: "#B7E3FF",
-    // justifyContent: "left",
-    // alignItems: "left",
+    flexWrap: "wrap",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    gap: 100,
   },
   profileImage: {
     width: 152,
     height: 152,
     borderRadius: 100,
-    marginLeft: 8,
     marginTop: 25,
     alignSelf: "flex-start",
   },
