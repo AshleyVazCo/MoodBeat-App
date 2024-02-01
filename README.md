@@ -52,3 +52,238 @@ At the top of the page, you will find the share icon and settings icon. Below th
 **Curator Screen**
 The Curator screen, including both light and dark mode variations, consists of 4 pages, and 4 tabs.  The design is exactly the same as the profile screen with a few less elements.
 You can navigate to these screens within the home screen or search screen. When clicking on a profile, you will navigate to the curator screen. Here, the design is the same as the profile screen, with the only change being that the tab menu now has two options, removing the edit icon and you may not edit the profile. When selecting a song from "created," you will be presented with all the songs this user has made. The curator selection screen is designed the same way as the profile selection screen. When selecting a song, you will open a modal of the song with the same design as the profile song modal, with the only change being that you may now save the song. The icon is placed next to the share icon.
+
+## Design Assets Documentation
+
+**Fonts**
+
+MoodBeat uses the Barlow Condensed font. This font can be found for free through Google Fonts and it is licensed under the Open Font License. There are 3 font weights that are used and they are regular, medium and semibold. For the body, the regular weight is used. For the headlines and titles either medium or semibold are used. More details about the use of this font can be found in our visual design guide and our style guide.
+
+**Icons**
+
+The icons used in our app are available in both light and dark mode. The standard size of the icons are 24px unless otherwise stated. On special circumstances, the icons can be sized up to 30px, 35px or 107px. The following icons are used:
+
+Settings Page Icons
+
+
+Action Icons
+
+
+Social Icons
+
+
+Music App Icons
+
+
+The music app icons can be used in both light and dark mode without modifying the colors.
+
+**Colors**
+
+MoodBeat colors are separated by either dark or light mode. Each color used for either mode was chosen to be in compliance with the WCAG guidelines. A list of the accepted color combinations are listed in the visual design guide. The following color schemes are used:
+
+*Light Mode*
+
+Primary: #FFFFFC
+Secondary: #43357A
+Accent 1: #7700E6
+Accent 2: #CA9CE1
+
+*Dark Mode*
+
+Primary: #26282C
+Secondary: #CA9CE1
+Accent 1: #87B4FF
+Accent 2: #FDA1FF
+
+*Neutral Color Palette:*
+
+#FFFFFC
+#000000
+#161717
+#4F4F4F
+#636363
+#909090
+#969696
+#AEAEAE
+#EDEDED
+#F2F4F5
+
+**Logo**
+
+It is the primary graphic representative of the MoodBeat App and brand. The symbol in our logo represents different mood boards as well as the sound level meter. The logo was created so it can be something that is representative of both. The symbol in our logo can be used together or independently from the wordmark. The logo can’t be modified or altered in any way unless otherwise specified in the guidelines on our visual design guide.
+
+**Components**
+
+There are different components that are used throughout the MoodBeat app. Each component has different requirements.
+
+**Buttons**
+
+Standard buttons and music platform buttons are 240px by 44px. Small buttons are 110px by 44px. 
+
+Dark and light mode have different variations in regards to the colors. Here are the following options:
+
+*Light Mode*
+
+*Option 1:*
+
+Stroke: #4F4F4F
+Fill: #26282C
+Text Color: #FFFFFC
+Text Style: SemiBold 
+
+*Option 2:*
+
+Stroke: None
+Fill: #7700E6
+Text Color: #FFFFFC
+Text Style: SemiBold
+
+*Option 3 (small buttons):*
+
+Stroke: #4F4F4F
+Fill: #43357A
+Text Color: #FFFFFC
+Text Style: SemiBold
+
+*Dark Mode*
+
+*Option 1:*
+
+Stroke: None
+Fill: #FFFFFC
+Text Color: #7700E6
+Text Style: SemiBold
+
+*Option 2:*
+
+Stroke: None
+Fill: #CA9CE1
+Text Color: #26282C
+Text Style: SemiBold
+
+*Option 3 (small buttons):*
+
+Stroke: None
+Fill: #4F4F4F
+Text Color: #CA9CE1
+Text Style: SemiBold
+
+**Forms**
+
+Forms are used on certain parts of the app such as the sign up pages and the sign in page. The main input text boxes are 327px by 44px. The bigger text box is 327px by 88px. 
+
+The input fields have a different outline color when they are either in their default or focused states. The color will be different depending on the mode. 
+
+*Colors used for Light Mode:*
+
+Stroke: #26282C
+Fill: #FFFFFC
+Text Color: #636363
+Text Style: Regular or Medium
+
+Light mode focused state uses Accent Color 1 found in the light mode color palette. 
+
+*Colors used for Dark Mode:*
+
+Stroke: #909090
+Fill: #26282C
+Text Color: #909090
+Text Style: Regular or Medium
+
+Dark mode focused states uses the secondary color found in the dark mode color palette. 
+
+**Navigation**
+
+The navigation of the app will look different whether you’re viewing it in either dark or light mode. 
+
+The navigation looks the following way:
+
+*Light Mode Nav Bar*
+
+Top Stroke: #AEAEAE
+Fill: #FFFFFC
+Icon Color: #26282C
+Focused Icon Color: #FFFFFC
+Focused Color: #7700E6
+
+*Dark Mode Nav Bar*
+
+Top Stroke: #4F4F4F
+Fill: #26282C
+Icon Color: #969696
+Focused Icon Color: #CA9CE1
+Focused Color: #4F4F4F
+
+**Cards**
+
+The flip card component can be used in our app to insert an image and when clicked extra information will appear. This feature is found in the settings page on the Our Team tab. 
+
+**Carousel**
+
+The carousels are used to showcase the different moodboards. The colors, fonts and images are based on the user’s preference at the time of creation. This component can be found in different screens of the application but are mainly used in the profile pages.
+
+**Accordions**
+
+These expandable sections provide extra information to the user. This component is found specifically in the settings page. 
+
+**Segmented Buttons**
+
+These buttons or tabs are used throughout the app specifically in the profiles screens, edit profile description, background and text screens. Also, this is used in the create a section, create a board screen and the curator screen.
+
+*Light Mode:*
+
+Fill: #EDEDED
+Text Color: #26282C
+Focused Shape Color: #43357A
+Focused Text Color: #FFFFFC
+Text Style: Regular
+Dark Mode:
+
+Fill: #161717
+Text Color: #909090
+Focused Shape Color: #4F4F4F
+Focused Text Color: #CA9CE1
+Text Style: Regular
+Switches
+
+This component is only used on certain screens and it’s one of the less used components. It can be found specifically in the Board info screen and its purpose is to give the user the option of whether to private the board or not. 
+
+*Light Mode - off*
+
+Fill: #FFFFFC
+Outline: #26282C
+Circle: #26282C
+
+*Light Mode - on*
+
+Fill: #26282C
+Outline: None
+Circle: #FFFFFC
+
+*Dark Mode - off*
+
+Fill: #FFFFFC
+Outline: #4F4F4F
+Circle: #4F4F4F
+
+*Dark Mode - on*
+
+Fill: #4F4F4F
+Outline: None
+Circle: #FFFFFC
+
+*Link to images: https://docs.google.com/document/d/1irOLMz-X1BLF2Q-el6EnWlcYBqXhYprFh8t8r8UZvLE/edit?usp=sharing*
+
+## Technical Implementation
+
+We decided to use React Native, a javascript library for building user interfaces. The main reason we decided to go with React Native is because it allows for cross-platform mobile development. Also, our code is written in JSX, which is a syntax that lets us write elements inside of Javascript. 
+
+We used React Native’s stack navigator to manage the navigation of our screens as well as allow us to manage the presentation of these screens through our various user flows. 
+
+We used components to reuse elements that are often used in various screens. We used many of React's core components to make our screens but we also made a few of our own, which is something React Native allows us to do. An example of a component that we made is NavBarLM. This component can be used on multiple screens and it allows all the screens to have a consistent nav bar. 
+
+Our assets such as our images and icons were placed in a folder named assets where we can access them whenever we need them. We also made multiple Modals, which is a component that allows us to present content above the screen where it is invoked. An example of a Modal component is the Song Modal which presents song information to the user on top of the Curator Selection screen.
+
+Styling was done using CSS and by placing all the CSS for the screen onto a Stylesheet using StyleSheet.create() and placing all the CSS for the screen within. One of the benefits for doing this is that you are making the code easier to understand as the CSS is not inline and is outside the render function. 
+
+State management was done using the “useState”. This will become important once we have more data that is changing within the app itself. 
