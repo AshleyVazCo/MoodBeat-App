@@ -69,7 +69,7 @@ const EditProfileDescriptionDM = ({ isVisible, onClose }) => {
           <View style={styles.privacyDiv}>
             <Text style={styles.privacyText}>Privacy</Text>
             <Switch
-              trackColor={{ false: "#FFFFFC", true: "4F4F4F" }}
+              trackColor={{ false: "#FFFFFC", true: "#4F4F4F" }}
               thumbColor={privacy ? "#4F4F4F" : "#FFFFFC"}
               onValueChange={toggleSwitch}
               value={setPrivacy}

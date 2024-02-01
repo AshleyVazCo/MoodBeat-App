@@ -52,7 +52,7 @@ const EditProfileDescriptionLM = ({ isVisible, onClose }) => {
           </TouchableOpacity>
           <Image
             style={styles.moodBeatimage}
-            source={require("../../assets/icons/logoWhite.png")}
+            source={require("../../assets/icons/logoPurple.png")}
           />
           <Text style={styles.titleText}>Edit Profile Info</Text>
           <Image
@@ -69,8 +69,8 @@ const EditProfileDescriptionLM = ({ isVisible, onClose }) => {
           <View style={styles.privacyDiv}>
             <Text style={styles.privacyText}>Privacy</Text>
             <Switch
-              trackColor={{ false: "#FFFFFC", true: "4F4F4F" }}
-              thumbColor={privacy ? "#4F4F4F" : "#FFFFFC"}
+              trackColor={{ false: "#26282C", true: "#FFFFFC" }}
+              thumbColor={privacy ? "#FFFFFC" : "#26282C"}
               onValueChange={toggleSwitch}
               value={setPrivacy}
               style={styles.privacyToggle}
@@ -98,12 +98,12 @@ const styles = StyleSheet.create({
   modalContent: {
     height: 760,
     width: 380,
-    backgroundColor: "#26282C",
+    backgroundColor: "#FFFFFC",
     padding: 20,
     borderRadius: 10,
   },
   closeButtonText: {
-    color: "#CA9CE1",
+    color: "#43357A",
     fontSize: 24,
   },
   closeAndLogo: {
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontFamily: "BarlowCondensed_500Medium",
-    color: "#909090",
+    color: "#26282C",
     fontSize: 28,
     alignSelf: "center",
     marginTop: 20,
@@ -122,17 +122,17 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   textInputBox: {
-    backgroundColor: "#26282C",
+    backgroundColor: "#FFFFFC",
     width: 327,
     height: 44,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: "#909090",
+    borderColor: "#26282C",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 40,
     marginBottom: 40,
-    color: "#909090",
+    color: "#636363",
     padding: 10,
     fontFamily: "BarlowCondensed_400Regular",
     fontSize: 20,
@@ -147,12 +147,12 @@ const styles = StyleSheet.create({
   },
   privacyText: {
     fontFamily: "BarlowCondensed_400Regular",
-    color: "#909090",
+    color: "#26282C",
     fontSize: 20,
   },
   privacyTextDescription: {
     fontFamily: "BarlowCondensed_400Regular",
-    color: "#909090",
+    color: "#26282C",
     fontSize: 20,
     alignSelf: "center",
     marginTop: 30,
