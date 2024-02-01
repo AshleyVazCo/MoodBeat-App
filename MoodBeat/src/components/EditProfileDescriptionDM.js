@@ -50,6 +50,10 @@ const EditProfileDescriptionDM = ({ isVisible, onClose }) => {
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
             <Text style={styles.closeButtonText}>X</Text>
           </TouchableOpacity>
+          <Image
+            style={styles.moodBeatimage}
+            source={require("../../assets/icons/logoWhite.png")}
+          />
           <Text style={styles.titleText}>Edit Profile Info</Text>
           <Image
             style={styles.uploadImage}
@@ -62,7 +66,7 @@ const EditProfileDescriptionDM = ({ isVisible, onClose }) => {
               value={text}
             />
           </View>
-          <View>
+          <View style={styles.privacyDiv}>
             <Text style={styles.privacyText}>Privacy</Text>
             <Switch
               trackColor={{ false: "#FFFFFC", true: "4F4F4F" }}
@@ -73,7 +77,7 @@ const EditProfileDescriptionDM = ({ isVisible, onClose }) => {
             />
           </View>
           <View>
-            <Text>
+            <Text style={styles.privacyTextDescription}>
               Enabling privacy settings will allow your account to be hidden
               from other users, and will not be searchable.
             </Text>
@@ -102,10 +106,17 @@ const styles = StyleSheet.create({
     color: "#CA9CE1",
     fontSize: 24,
   },
+  closeAndLogo: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
   titleText: {
+    fontFamily: "BarlowCondensed_500Medium",
     color: "#909090",
     fontSize: 28,
     alignSelf: "center",
+    marginTop: 20,
+    marginBottom: 20,
   },
   uploadImage: {
     alignSelf: "center",
@@ -123,17 +134,35 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     color: "#909090",
     padding: 10,
+    fontFamily: "BarlowCondensed_400Regular",
+    fontSize: 20,
   },
-  privacyToggle: {
+  privacyDiv: {
     flexDirection: "row",
     justifyContent: "space-around",
+    gap: 150,
+  },
+  privacyToggle: {
     alignSelf: "flex-end",
   },
   privacyText: {
+    fontFamily: "BarlowCondensed_400Regular",
     color: "#909090",
     fontSize: 20,
-    flexDirection: "row",
-    justifyContent: "space-around",
+  },
+  privacyTextDescription: {
+    fontFamily: "BarlowCondensed_400Regular",
+    color: "#909090",
+    fontSize: 20,
+    alignSelf: "center",
+    marginTop: 30,
+  },
+  moodBeatimage: {
+    width: 40,
+    height: 40,
+    resizeMode: "cover",
+    alignSelf: "flex-end",
+    marginTop: -30,
   },
 });
 

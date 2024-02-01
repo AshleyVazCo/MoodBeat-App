@@ -8,7 +8,6 @@ import LoginScreenLM from "./src/screens/LoginScreenLM";
 import ProfileScreenDM from "./src/screens/ProfileScreenDM";
 import ProfileScreenLM from "./src/screens/ProfileScreenLM";
 import ProfileSectionDM from "./src/screens/ProfileSectionLM";
-import ProfileScreenLM from "./src/screens/ProfileScreenLM";
 import ProfileSectionLM from "./src/screens/ProfileSectionLM";
 
 const Stack = createStackNavigator();
