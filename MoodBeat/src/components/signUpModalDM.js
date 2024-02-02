@@ -15,7 +15,7 @@ const SignUpModalLM = ({ visible, onClose }) => {
         </TouchableOpacity>
 
         <View style = {styles.logo}>
-          <Image source = {require('../../assets/icons/logoPurple.png')} >
+          <Image source = {require('../../assets/icons/logoWhite.png')} >
           </Image>
         </View>
 
@@ -25,10 +25,10 @@ const SignUpModalLM = ({ visible, onClose }) => {
         </View>
         
         <View style = {styles.formContainer}>
-          <TextInput placeholder="Full Name" style={styles.input} placeholderTextColor={'black'} />
-          <TextInput placeholder="Username" style={styles.input} placeholderTextColor={'black'} />
-          <TextInput placeholder="Password" secureTextEntry style={styles.input} placeholderTextColor={'black'} />
-          <TextInput placeholder="Confirm Password" secureTextEntry style={styles.input} placeholderTextColor={'black'} />
+          <TextInput placeholder="Full Name" style={styles.input} placeholderTextColor={'#909090'} />
+          <TextInput placeholder="Username" style={styles.input} placeholderTextColor={'#909090'} />
+          <TextInput placeholder="Password" secureTextEntry style={styles.input} placeholderTextColor={'#909090'} />
+          <TextInput placeholder="Confirm Password" secureTextEntry style={styles.input} placeholderTextColor={'#909090'} />
         </View>
 
         <TouchableOpacity style={styles.signUpButton} >
@@ -41,7 +41,7 @@ const SignUpModalLM = ({ visible, onClose }) => {
 };
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: '#26282C',
     height: '95%',
     width:'100%',
     flex: 1,
@@ -61,7 +61,7 @@ closeButton: {
   top: 12,
   },
 closeIcon: {
-  color: '#43357A',
+  color: '#CA9CE1',
   fontSize: 30,
 },
 logo: {
@@ -86,7 +86,7 @@ TitleText: {
   textAlign: 'center',
   justifyContent: 'center',
   fontFamily: "BarlowCondensed_400Regular",
-  color: '#43357A',
+  color: '#909090',
   fontSize: 30,
 },
 formContainer: {
@@ -105,9 +105,10 @@ input: {
   margin: 12,
   borderWidth: 1,
   padding: 10,
+  borderColor: '#909090',
 },
 signUpButton: {
-  backgroundColor: '#43357A',
+  backgroundColor: '#4F4F4F',
   padding: 10,
   borderRadius: 10,
   width: '65%',
@@ -119,7 +120,7 @@ signUpButton: {
   bottom: '32%',
 },
 buttonText: {
-  color: '#FFFFFC',
+  color: '#CA9CE1',
   fontSize: 20,
   fontFamily: "BarlowCondensed_400Regular",
 }
