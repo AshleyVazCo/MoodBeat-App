@@ -4,6 +4,8 @@ import CuratorDMScreen from './src/screens/CuratorDMScreen';
 import CuratorSelectionDMScreen from './src/screens/CuratorSelectionDMScreen';
 import CuratorLMScreen from './src/screens/CuratorLMScreen';
 import CuratorSelectionLMScreen from './src/screens/CuratorSelectionLMScreen';
+import CreationScreenLM from './src/screens/CreationScreenLM';
+import CreationScreenDM from './src/screens/CreationScreenDM';
 import LoginScreenLM from './src/screens/LoginScreenLM';
 
 const Stack = createStackNavigator();
@@ -11,7 +13,11 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
+<<<<<<< HEAD
+      <Stack.Navigator initialRouteName="CreationLM">
+=======
       <Stack.Navigator initialRouteName="CuratorDM">
+>>>>>>> 9a6ee73428060dc61e041cdb88d6477066a0cfc1
         <Stack.Screen
           name="CuratorDM"
           component={CuratorDMScreen}
@@ -22,16 +28,26 @@ const App = () => {
           component={CuratorSelectionDMScreen}
           options={{ headerShown: false }}
         />
-          <Stack.Screen
+        <Stack.Screen
           name="CuratorLM"
           component={CuratorLMScreen}
           options={{ headerShown: false }}
         />
-          <Stack.Screen
+        <Stack.Screen
           name="CuratorSelectionLM"
           component={CuratorSelectionLMScreen}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="CreationLM"
+          component={CreationScreenLM}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CreationDM"
+          component={CreationScreenDM}
+          options={{ headerShown: false }}
+          />
           <Stack.Screen
           name="LoginScreenLM"
           component={LoginScreenLM}
@@ -43,4 +59,3 @@ const App = () => {
 };
 
 export default App;
-
