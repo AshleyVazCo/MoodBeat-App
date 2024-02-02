@@ -15,7 +15,7 @@ import {
 } from "@expo-google-fonts/barlow-condensed";
 import ShareSettingHeaderLM from "../components/ShareSettingHeaderLM";
 import MoodBoardCard from "../components/MoodBoardCard";
-import NavBarLM from "../components/NavBarDM";
+import NavBarLM from "../components/NavBarLM";
 import EditProfileDescriptionLM from "../components/EditProfileDescriptionLM";
 import BackgroundColorModalLM from "../components/BackgroundColorModalLM";
 import EditTextModalLM from "../components/EditTextModalLM";
