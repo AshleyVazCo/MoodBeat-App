@@ -1,19 +1,26 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-const NavBarLM = () => {
+const NavBarDM = () => {
+  const navigation = useNavigation();
+
+  const navigateToScreen = (screenName) => {
+    navigation.navigate(screenName);
+  };
+
   return (
     <View style={styles.navBar}>
-      <TouchableOpacity style={styles.navItem}>
+      <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("HomeScreen")}>
         <Image source={require('../../assets/icons/home_Dark.png')} style={styles.icon} />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.navItem}>
+      <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("CreationDM")}>
         <Image source={require('../../assets/icons/boardsIcon_Dark.png')} style={styles.icon} />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.navItem}>
+      <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("SearchScreen")}>
         <Image source={require('../../assets/icons/searchSymbol_Dark.png')} style={styles.icon} />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.navItem}>
+      <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("ProfileScreenDM")}>
         <Image source={require('../../assets/icons/accountCircle_Dark.png')} style={styles.icon} />
       </TouchableOpacity>
     </View>
@@ -40,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NavBarLM;
+export default NavBarDM;
