@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ImageBackground } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
-import LoginModalDM from "../components/loginModalDM";
+import LoginModalDM from "../components/LoginModalDM";
 import SignUpModalDM from "../components/signUpModalDM";
 
 
