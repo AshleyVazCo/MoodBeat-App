@@ -1,9 +1,7 @@
-
-
 import React from 'react';
 import { Image, StyleSheet, View, Text, Modal, TouchableOpacity, TextInput} from 'react-native';
 
-const LoginModalLM = ({ visible, onClose }) => {
+const LoginModalDM = ({ visible, onClose }) => {
   return (
       <Modal
           animationType="slide"
@@ -127,4 +125,4 @@ const styles = StyleSheet.create({
 }
 }
 )
-export default LoginModalLM;
+export default LoginModalDM;
