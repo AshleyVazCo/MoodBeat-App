@@ -30,7 +30,12 @@ const LoginModalLM = ({ visible, onClose }) => {
         <View style = {styles.formContainer}>
           <TextInput placeholder="Username" style={styles.input} placeholderTextColor={'black'} />
           <TextInput placeholder="Password" secureTextEntry style={styles.input} placeholderTextColor={'black'} />
+          <Text>Forgot Password?</Text>
         </View>
+
+        <TouchableOpacity style={styles.loginButton} >
+          <Text style = {styles.buttonText}>Login</Text>
+        </TouchableOpacity>
       </View>
     </Modal>
   );
@@ -70,7 +75,7 @@ const styles = StyleSheet.create({
     top: 12,
   },
   loginTitle: {
-    //backgroundColor: 'red',
+    backgroundColor: 'red',
     height: "20%",
     width: '100%',
     justifyContent: 'center',
@@ -86,7 +91,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   formContainer: {
-    //backgroundColor: 'purple',
+    backgroundColor: 'purple',
     height: "20%",
     width: '100%',
     justifyContent: 'center',
@@ -101,7 +106,22 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
-  }
+  },
+  loginButton: {
+    backgroundColor: '#26282C',
+    padding: 10,
+    borderRadius: 10,
+    width: '65%',
+    height: '7%',
+    alignItems: 'center',
+    margin: 12,
+    justifyContent: 'center'
+  },
+  buttonText: {
+    color: '#FFFFFC',
+    fontSize: 20,
+    fontFamily: "BarlowCondensed_400Regular",
+}
 }
 )
 export default LoginModalLM;
