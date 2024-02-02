@@ -11,7 +11,6 @@ import ProfileSectionDM from "./src/screens/ProfileSectionDM";
 import ProfileSectionLM from "./src/screens/ProfileSectionLM";
 import CreationScreenLM from './src/screens/CreationScreenLM';
 import CreationScreenDM from './src/screens/CreationScreenDM';
-import LoginScreenLM from './src/screens/LoginScreenLM';
 
 
 const Stack = createStackNavigator();

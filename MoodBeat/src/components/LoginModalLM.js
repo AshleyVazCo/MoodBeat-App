@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
       flex: 1,
       position: 'absolute',
       top: '15%',
-      borderRadius: 20,
+    borderRadius: 20,
+      alignItems: 'center',
     },
   closeButton: {
    // backgroundColor: 'red',
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     top: 12,
   },
   loginTitle: {
-    backgroundColor: 'red',
+    //backgroundColor: 'red',
     height: "20%",
     width: '100%',
     justifyContent: 'center',
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   formContainer: {
-    backgroundColor: 'purple',
+    //backgroundColor: 'purple',
     height: "20%",
     width: '100%',
     justifyContent: 'center',
@@ -115,7 +116,9 @@ const styles = StyleSheet.create({
     height: '7%',
     alignItems: 'center',
     margin: 12,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: '35%',
   },
   buttonText: {
     color: '#FFFFFC',
