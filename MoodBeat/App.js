@@ -5,7 +5,7 @@ import CuratorSelectionDMScreen from "./src/screens/CuratorSelectionDMScreen";
 import CuratorLMScreen from "./src/screens/CuratorLMScreen";
 import CuratorSelectionLMScreen from "./src/screens/CuratorSelectionLMScreen";
 import LoginScreenLM from "./src/screens/LoginScreenLM";
-import LoginScreenDM from "./src/screens/LoginScreenDM";
+import LoginScreenDM from "./src/screens/loginScreenDM";
 import ProfileScreenDM from "./src/screens/ProfileScreenDM";
 import ProfileScreenLM from "./src/screens/ProfileScreenLM";
 import ProfileSectionDM from "./src/screens/ProfileSectionDM";

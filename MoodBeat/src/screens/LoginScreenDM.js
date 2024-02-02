@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ImageBackground } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
-import LoginModalDM from "../components/LoginModalDM";
-import SignUpModalLM from "../components/signUpModalLM";
+import LoginModalDM from "../components/loginModalDM";
+import SignUpModalDM from "../components/signUpModalDM";
 
 
 
@@ -49,7 +49,7 @@ const LoginScreenDM = () => {
                 </View>
 
                 <LoginModalDM visible={loginModalVisible} onClose={() => setLoginModalVisible(false)} />
-                <SignUpModalLM visible={signUpModalVisible} onClose={() => setSignUpModalVisible(false)} />
+                <SignUpModalDM visible={signUpModalVisible} onClose={() => setSignUpModalVisible(false)} />
                 
                 <View style={styles.loginDisclaimer}>
                     <Text style={styles.disclaimerText}>By logging or signing up into MoodBeat, you authorize the app to use any data that you may provide</Text>

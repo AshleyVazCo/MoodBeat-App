@@ -16,7 +16,7 @@ const LoginModalDM = ({ visible, onClose }) => {
         </TouchableOpacity>
 
         <View style = {styles.logo}>
-          <Image source = {require('../../assets/icons/logoPurple.png')} >
+          <Image source = {require('../../assets/icons/logoWhite.png')} >
           </Image>
         </View>
 
@@ -26,8 +26,8 @@ const LoginModalDM = ({ visible, onClose }) => {
         </View>
         
         <View style = {styles.formContainer}>
-          <TextInput placeholder="Username" style={styles.input} placeholderTextColor={'black'} />
-          <TextInput placeholder="Password" secureTextEntry style={styles.input} placeholderTextColor={'black'} />
+          <TextInput placeholder="Username" style={styles.input} placeholderTextColor={'#909090'} />
+          <TextInput placeholder="Password" secureTextEntry style={styles.input} placeholderTextColor={'#909090'} />
           <Text>Forgot Password?</Text>
         </View>
 
@@ -41,7 +41,7 @@ const LoginModalDM = ({ visible, onClose }) => {
 
 const styles = StyleSheet.create({
   container: {
-      backgroundColor: 'white',
+      backgroundColor: '#26282C',
       height: '95%',
       width:'100%',
       flex: 1,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     top: 12,
     },
   closeIcon: {
-    color: '#43357A',
+    color: '#CA9CE1',
     fontSize: 30,
   },
   logo: {
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center',
     fontFamily: "BarlowCondensed_400Regular",
-    color: '#43357A',
+    color: '#909090',
     fontSize: 30,
   },
   formContainer: {
@@ -104,10 +104,11 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1,
+    borderColor: '#909090',
     padding: 10,
   },
   loginButton: {
-    backgroundColor: '#43357A',
+    backgroundColor: '#4F4F4F',
     padding: 10,
     borderRadius: 10,
     width: '65%',
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
     bottom: '35%',
   },
   buttonText: {
-    color: '#FFFFFC',
+    color: '#CA9CE1',
     fontSize: 20,
     fontFamily: "BarlowCondensed_400Regular",
 }
