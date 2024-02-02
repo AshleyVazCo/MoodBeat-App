@@ -11,10 +11,6 @@ import ProfileSectionDM from "./src/screens/ProfileSectionDM";
 import ProfileSectionLM from "./src/screens/ProfileSectionLM";
 import CreationScreenLM from './src/screens/CreationScreenLM';
 import CreationScreenDM from './src/screens/CreationScreenDM';
-import HomeLMScreen from './src/screens/HomeLMScreen';
-import HomeDMScreen from './src/screens/HomeDMScreen';
-import SearchDMScreen from './src/screens/SearchDMScreen';
-import SearchLMScreen from "./src/screens/SearchLMScreen";
 
 
 const Stack = createStackNavigator();
@@ -22,10 +18,10 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeLM">
+      <Stack.Navigator initialRouteName="CuratorLM">
         <Stack.Screen
-          name="HomeLM"
-          component={HomeLMScreen}
+          name="CuratorDM"
+          component={CuratorDMScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -68,23 +64,8 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="SearchLM"
-          component={SearchLMScreen}
-          options={{ headerShown: false }}
-          />
-          <Stack.Screen
-          name="HomeDM"
-          component={HomeDMScreen}
-          options={{ headerShown: false }}
-          />
-         <Stack.Screen
           name="CreationDM"
           component={CreationScreenDM}
-          options={{ headerShown: false }}
-          />
-         <Stack.Screen
-          name="SearchDM"
-          component={SearchDMScreen}
           options={{ headerShown: false }}
           />
           <Stack.Screen
