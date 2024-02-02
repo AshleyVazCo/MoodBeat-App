@@ -15,7 +15,7 @@ const NavBarDM = () => {
         <Image source={require('../../assets/icons/home_Dark.png')} style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("CreationDM")}>
-        <Image source={require('../../assets/icons/boardsIcon_Dark.png')} style={styles.icon} />
+        <Image source={require('../../assets/icons/navBoards_Dark.png')} style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("SearchScreen")}>
         <Image source={require('../../assets/icons/searchSymbol_Dark.png')} style={styles.icon} />
