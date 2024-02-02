@@ -35,6 +35,7 @@ const CuratorDMScreen = ({ navigation }) => {
             imageSource={require('../../assets/images/ambiencePic.png')}
             title="Ambiance"
             cardColor="#339392"
+            onPress={() => navigation.navigate('ProfileScreenDM', { curatorName: 'Ambiance' })}
           />
         </>
       );

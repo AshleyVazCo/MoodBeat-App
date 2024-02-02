@@ -35,6 +35,7 @@ const renderCardSet = () => {
           imageSource={require('../../assets/images/ambiencePic.png')}
           title="Ambiance"
           cardColor="#339392"
+          onPress={() => navigation.navigate('ProfileScreenLM', { curatorName: 'Ambiance' })}
         />
       </>
     );
