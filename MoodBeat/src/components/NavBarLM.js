@@ -11,13 +11,13 @@ const NavBarLM = () => {
 
   return (
     <View style={styles.navBar}>
-      <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("HomeScreen")}>
+      <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("HomeLM")}>
         <Image source={require('../../assets/icons/home_Light.png')} style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("CreationLM")}>
         <Image source={require('../../assets/icons/navBoards_Light.png')} style={styles.icon} />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("SearchScreen")}>
+      <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("SearchLM")}>
         <Image source={require('../../assets/icons/searchSymbol_Light.png')} style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("ProfileScreenLM")}>
