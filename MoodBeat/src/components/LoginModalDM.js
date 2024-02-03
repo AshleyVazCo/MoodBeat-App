@@ -1,7 +1,16 @@
 import React from 'react';
-import { Image, StyleSheet, View, Text, Modal, TouchableOpacity, TextInput} from 'react-native';
+import { Image, StyleSheet, View, Text, Modal, TouchableOpacity, TextInput } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
+
 
 const LoginModalDM = ({ visible, onClose }) => {
+
+  const navigation = useNavigation();
+
+  const navigateToScreen = (screenName) => {
+  navigation.navigate(screenName);
+    };
+
   return (
       <Modal
           animationType="slide"
@@ -31,7 +40,7 @@ const LoginModalDM = ({ visible, onClose }) => {
           <Text>Forgot Password?</Text>
         </View>
 
-        <TouchableOpacity style={styles.loginButton} >
+        <TouchableOpacity style={styles.loginButton} onPress={() => navigateToScreen("ProfileScreenDM")}>
           <Text style = {styles.buttonText}>Login</Text>
         </TouchableOpacity>
       </View>
