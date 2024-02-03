@@ -114,8 +114,7 @@ const ProfileScreenDM = ({ navigation }) => {
         <Image
           source={
             require('../../assets/images/alanProfilePic.png')
-            // uri: "MoodBeat/assets/images/alanProfilePic.png",
-          } // Code for Profile image -- Replace with the actual URL of the profile image
+          } 
           style={styles.profileImage}
           onPress={() => setModalVisible(true)}
         />
