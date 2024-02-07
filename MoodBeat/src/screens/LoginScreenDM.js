@@ -5,10 +5,17 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
 import LoginModalDM from "../components/LoginModalDM";
 import SignUpModalDM from "../components/signUpModalDM";
+import { useNavigation } from "@react-navigation/native";
 
 
 
 const LoginScreenDM = () => {
+
+    const navigation = useNavigation();
+
+    const navigateToScreen = (screenName) => {
+    navigation.navigate(screenName);
+    };
 
     const [fontsLoaded] = useFonts({
         BarlowCondensed_400Regular,
@@ -28,7 +35,7 @@ const LoginScreenDM = () => {
             <ImageBackground source={require('../../assets/images/loginBackground.png')} style={styles.background}>
                 
                 
-                <TouchableOpacity style= {styles.toggleButton}>
+                <TouchableOpacity style={styles.toggleButton} onPress={() => navigateToScreen("LoginScreenLM")}>
                     <Image source={require('../../assets/icons/lightModeIcon.png')} >
                     </Image>
                 </TouchableOpacity>
