@@ -29,7 +29,6 @@ const LoginModalDM = ({ visible, onClose }) => {
           </Image>
         </View>
 
-        {/* Your login modal content */}
         <View style={styles.loginTitle}>
         <Text style={styles.loginTitleText}>Log In</Text>
         </View>
@@ -60,7 +59,6 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
   closeButton: {
-   // backgroundColor: 'red',
     width: '12%',
     height: '8%',
     alignItems: 'center',
@@ -83,7 +81,6 @@ const styles = StyleSheet.create({
     top: 12,
   },
   loginTitle: {
-    //backgroundColor: 'red',
     height: "20%",
     width: '100%',
     justifyContent: 'center',
@@ -99,7 +96,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   formContainer: {
-    //backgroundColor: 'purple',
     height: "20%",
     width: '100%',
     justifyContent: 'center',

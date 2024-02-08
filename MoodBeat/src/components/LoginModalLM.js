@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Image, StyleSheet, View, Text, Modal, TouchableOpacity, TextInput } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
-import VerificationScreenLM from '../components/VerificationScreenLM';
+import VerificationModalLM from '../components/VerificationModalLM';
 
 const LoginModalLM = ({ visible, onClose }) => {
   const navigation = useNavigation();
@@ -29,7 +29,7 @@ const LoginModalLM = ({ visible, onClose }) => {
     >
       <View style={styles.container}>
         {isForgotPasswordModalVisible ? (
-          <VerificationScreenLM onClose={handleVerificationScreenClose} />
+          <VerificationModalLM onClose={handleVerificationScreenClose} />
         ) : (
           <>
             <TouchableOpacity onPress={onClose} style={styles.closeButton}>
@@ -65,13 +65,13 @@ const LoginModalLM = ({ visible, onClose }) => {
 const styles = StyleSheet.create({
   container: {
       backgroundColor: 'white',
-      height: '95%',
-      width:'100%',
+      height: 760,
+      width: 380,
       flex: 1,
-      position: 'absolute',
-      top: '15%',
     borderRadius: 20,
-      alignItems: 'center',
+    alignItems: 'center',
+        padding: 20,
+  borderRadius: 10,
     },
   closeButton: {
     width: '12%',

@@ -12,8 +12,7 @@ import {
   BarlowCondensed_500Medium,
 } from "@expo-google-fonts/barlow-condensed";
 
-const BlankModelDM = ({ isVisible, onClose }) => {
-
+const BlankModelLM = ({ isVisible, onClose }) => {
 
 return (
   <Modal
@@ -42,14 +41,14 @@ modalContainer: {
 modalContent: {
   height: 760,
   width: 380,
-  backgroundColor: '#26282C',
+  backgroundColor: '#fffffc',
   padding: 20,
   borderRadius: 10,
 },
 closeButtonText: {
-  color: '#CA9CE1',
+  color: '#43357A',
   fontSize: 24,
 },
 });
 
-export default BlankModelDM;
+export default BlankModelLM;
