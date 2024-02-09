@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Modal, View, Text, StyleSheet, TouchableOpacity } from "react-native";
-const BlankModelLM = ({ isVisible, onClose }) => {
+import { Modal, View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+
+const NewPasswordModalLM = ({ isVisible, onClose }) => {
 
 return (
   <Modal
@@ -56,4 +57,4 @@ modalContent: {
     },
 });
 
-export default BlankModelLM;
+export default NewPasswordModalLM;
