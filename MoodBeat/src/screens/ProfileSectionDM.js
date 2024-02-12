@@ -7,21 +7,12 @@ import {
   TouchableHighlight,
   ScrollView,
 } from "react-native";
-import {
-  useFonts,
-  BarlowCondensed_400Regular,
-  BarlowCondensed_600SemiBold,
-} from "@expo-google-fonts/barlow-condensed";
 import ShareSettingHeaderDM from "../components/ShareSettingHeaderDM";
 import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarDM from "../components/NavBarDM";
 import MyMusicSectionDM from "../components/MyMusicSectionDM";
 
 const ProfileSectionDM = ({ navigation }) => {
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-    BarlowCondensed_600SemiBold,
-  });
 
   const [selectedTab, setSelectedTab] = useState("Created");
 
@@ -158,7 +149,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
   },
   profileTitle: {
-    fontFamily: "BarlowCondensed_600SemiBold",
+    fontFamily: "BarlowCondensed-Regular",
     fontSize: 20,
     color: "#0055FF",
     alignSelf: "flex-end",
@@ -179,12 +170,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#4F4F4F",
   },
   buttonText: {
-    fontFamily: "BarlowCondensed_400Regular",
+    fontFamily: "BarlowCondensed-Regular",
     fontSize: 17,
     color: "#909090",
   },
   selectedButtonText: {
-    fontFamily: "BarlowCondensed_400Regular",
+    fontFamily: "BarlowCondensed-Regular",
     fontSize: 17,
     color: "#CA9CE1",
   },

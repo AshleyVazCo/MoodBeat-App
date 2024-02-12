@@ -2,22 +2,12 @@ import React, { useState } from "react";
 import { StyleSheet, View, Text, TouchableHighlight, Image, Modal } from "react-native";
 import NavBarDM from "../components/NavBarDM";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
 import BoardInfoModalDM from "../components/BoardInfoModalDM";
 import SearchMusicModalDM from "../components/SearchMusicModalDM";
 
 const Creation = ({ navigation }) => {
   const [boardModalVisible, setBoardModalVisible] = useState(false);
   const [sectionModalVisible, setSectionModalVisible] = useState(false);
-
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-  });
-
-  // Check if fonts are loaded before rendering the component
-  if (!fontsLoaded) {
-    return null;
-  }
 
   const handleSettingsPress = () => {
     navigation.navigate('NonExistingPage');
@@ -153,7 +143,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 30,
     color: "#909090",
-    fontFamily: 'BarlowCondensed_400Regular',
+    fontFamily: 'BarlowCondensed-Regular',
   },
   navBar: {
     backgroundColor: "#26282C",
@@ -166,7 +156,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 20,
     color: "#909090",
-    fontFamily: 'BarlowCondensed_400Regular',
+    fontFamily: 'BarlowCondensed-Regular',
   },
   headerContainer: {
     justifyContent: "center",
@@ -180,7 +170,7 @@ const styles = StyleSheet.create({
     marginLeft: 50,
     marginRight: 50,
     color: "#909090",
-    fontFamily: 'BarlowCondensed_400Regular',
+    fontFamily: 'BarlowCondensed-Regular',
   },
   icons: {
     flexDirection: "row",
@@ -224,7 +214,7 @@ const styles = StyleSheet.create({
     marginRight: 250,
   },
   closeModalButtonText: {
-    fontFamily: "BarlowCondensed_400Regular",
+    fontFamily: "BarlowCondensed-Regular",
     fontSize: 18,
   },
 });

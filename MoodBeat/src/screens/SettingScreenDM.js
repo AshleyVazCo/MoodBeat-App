@@ -1,13 +1,11 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
 import { useNavigation } from '@react-navigation/native';
 
 const SettingScreenDM = () => {
   const navigation = useNavigation();
 
   const onClose = () => {
-    // Navigate back to the previous screen
     navigation.goBack();
   };
 
@@ -37,6 +35,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
   closeButton: {
     borderRadius: 12,

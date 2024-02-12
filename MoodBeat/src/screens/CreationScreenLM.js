@@ -2,22 +2,12 @@ import React, { useState } from "react";
 import { StyleSheet, View, Text, TouchableHighlight, Image, Modal } from "react-native";
 import NavBarLM from "../components/NavBarLM";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
 import BoardInfoModalLM from "../components/BoardInfoModalLM";
 import SearchMusicModalLM from "../components/SearchMusicModalLM";
 
 const Creation = ({ navigation }) => {
   const [boardModalVisible, setBoardModalVisible] = useState(false);
   const [sectionModalVisible, setSectionModalVisible] = useState(false);
-
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-  });
-
-  // Check if fonts are loaded before rendering the component
-  if (!fontsLoaded) {
-    return null;
-  }
 
   const handleSettingsPress = () => {
     navigation.navigate('NonExistingPage');
@@ -159,7 +149,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   header: {
-    fontFamily: 'BarlowCondensed_400Regular',
+    fontFamily: 'BarlowCondensed-Regular',
     fontSize: 40,
     justifyContent: "center",
     alignItems: "center",
@@ -172,7 +162,7 @@ const styles = StyleSheet.create({
     marginTop: 125,
   },
   regularText: {
-    fontFamily: 'BarlowCondensed_400Regular',
+    fontFamily: 'BarlowCondensed-Regular',
     fontSize: 20,
     justifyContent: "center",
     alignItems: "center",
@@ -188,13 +178,13 @@ const styles = StyleSheet.create({
     marginLeft: 175,
   },
   section: {
-    fontFamily: 'BarlowCondensed_400Regular',
+    fontFamily: 'BarlowCondensed-Regular',
     justifyContent: "center",
     alignItems: "center",
     marginLeft: 25,
   },
   board: {
-    fontFamily: 'BarlowCondensed_400Regular',
+    fontFamily: 'BarlowCondensed-Regular',
     justifyContent: "center",
     alignItems: "center",
   },
@@ -223,7 +213,7 @@ const styles = StyleSheet.create({
     marginRight: 250,
   },
   closeModalButtonText: {
-    fontFamily: "BarlowCondensed_400Regular",
+    fontFamily: "BarlowCondensed-Regular",
     fontSize: 18,
   },
 });

@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ImageBackground } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
 import LoginModalDM from "../components/LoginModalDM";
 import SignUpModalDM from "../components/signUpModalDM";
 import { useNavigation } from "@react-navigation/native";
@@ -16,10 +15,6 @@ const LoginScreenDM = () => {
     const navigateToScreen = (screenName) => {
     navigation.navigate(screenName);
     };
-
-    const [fontsLoaded] = useFonts({
-        BarlowCondensed_400Regular,
-    });
 
     const [loginModalVisible, setLoginModalVisible] = useState(false);
     const [signUpModalVisible, setSignUpModalVisible] = useState(false);
@@ -97,7 +92,7 @@ const styles = StyleSheet.create({
     },
     disclaimerText: {
         textAlign: 'center',
-        fontFamily: "BarlowCondensed_400Regular",
+        fontFamily: "BarlowCondensed-Regular",
         color: '#CA9CE1',
         fontSize: 17,
     },
@@ -134,7 +129,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#7700E6',
         fontSize: 20,
-        fontFamily: "BarlowCondensed_400Regular",
+        fontFamily: "BarlowCondensed-Regular",
     }
 
 })

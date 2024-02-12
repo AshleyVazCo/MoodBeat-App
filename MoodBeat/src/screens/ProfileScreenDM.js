@@ -7,11 +7,6 @@ import {
   TouchableHighlight,
   ScrollView,
 } from "react-native";
-import {
-  useFonts,
-  BarlowCondensed_400Regular,
-  BarlowCondensed_600SemiBold,
-} from "@expo-google-fonts/barlow-condensed";
 import ShareSettingHeaderDM from "../components/ShareSettingHeaderDM";
 import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarDM from "../components/NavBarDM";
@@ -22,11 +17,6 @@ import EditTextModalDM from "../components/EditTextModalDM";
 
 const ProfileScreenDM = ({ navigation }) => {
 
-  //Fonts
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-    BarlowCondensed_600SemiBold,
-  });
 
   // Tabs
   const [selectedTab, setSelectedTab] = useState("Created");
@@ -38,10 +28,6 @@ const ProfileScreenDM = ({ navigation }) => {
     setModalVisible(false);
   };
 
-  //Fonts
-  if (!fontsLoaded) {
-    return null;
-  }
 
   // Code for the different boards. The first part will render the boards if the created tab is selected. The second part will render the boards in the saved tab.
   const renderCardSet = () => {
@@ -189,7 +175,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   profileTitle: {
-    fontFamily: "BarlowCondensed_600SemiBold",
+    fontFamily: "BarlowCondensed-Regular",
     fontSize: 20,
     color: "#0055FF",
   },
@@ -209,12 +195,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#4F4F4F",
   },
   buttonText: {
-    fontFamily: "BarlowCondensed_400Regular",
+    fontFamily: "BarlowCondensed-Regular",
     fontSize: 17,
     color: "#909090",
   },
   selectedButtonText: {
-    fontFamily: "BarlowCondensed_400Regular",
+    fontFamily: "BarlowCondensed-Regular",
     fontSize: 17,
     color: "#CA9CE1",
   },
