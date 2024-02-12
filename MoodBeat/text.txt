@@ -1,0 +1,6 @@
+  const aboutContent = [
+    { topic: "Topic 1", description: "Description for Topic 1", image: require('../../assets/icons/logoWhite.png') },
+    { topic: "Topic 2", description: "Description for Topic 2", image: require('../../assets/icons/appleTinyIcon.png') },
+    { topic: "Topic 3", description: "Description for Topic 3", image: require('../../assets/icons/spotifyTinyIcon.png') },
+    { topic: "Topic 4", description: "Description for Topic 4", image: require('../../assets/icons/soundcloudTinyIcon.png') },
+  ];
