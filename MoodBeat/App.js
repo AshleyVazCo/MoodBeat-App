@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+import * as Font from 'expo-font';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import CuratorDMScreen from "./src/screens/CuratorDMScreen";
@@ -12,14 +14,32 @@ import ProfileSectionDM from "./src/screens/ProfileSectionDM";
 import ProfileSectionLM from "./src/screens/ProfileSectionLM";
 import CreationScreenLM from './src/screens/CreationScreenLM';
 import CreationScreenDM from './src/screens/CreationScreenDM';
-
+import SettingScreenDM from "./src/screens/SettingScreenDM";
+import SettingScreenLM from './src/screens/SettingScreenLM';
 
 const Stack = createStackNavigator();
 
 const App = () => {
+  const [fontLoaded, setFontLoaded] = useState(false);
+
+  useEffect(() => {
+    const loadFonts = async () => {
+      await Font.loadAsync({
+        BarlowCondensed_400Regular: require('./assets/Fonts/BarlowCondensed_400Regular.ttf'),
+      });
+      setFontLoaded(true);
+    };
+
+    loadFonts();
+  }, []);
+
+  if (!fontLoaded) {
+    return null;
+  }
+
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginScreenLM">
+      <Stack.Navigator initialRouteName="SettingDM">
         <Stack.Screen
           name="CuratorDM"
           component={CuratorDMScreen}
@@ -77,6 +97,16 @@ const App = () => {
         <Stack.Screen
           name="LoginScreenDM"
           component={LoginScreenDM}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SettingDM"
+          component={SettingScreenDM}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SettingLM"
+          component={SettingScreenLM}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

@@ -4,16 +4,9 @@ import ShareSettingHeaderDM from "../components/ShareSettingHeaderDM";
 import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarDM from "../components/NavBarDM";
 
-const CuratorDMScreen = ({ navigation }) => {
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-  });
+const SettingScreenLM = ({ navigation }) => {
 
   const [selectedTab, setSelectedTab] = useState("Created");
-
-  if (!fontsLoaded) {
-    return null;
-  }
 
   const renderCardSet = () => {
     if (selectedTab === "Created") {
@@ -135,4 +128,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CuratorDMScreen;
+export default SettingScreenLM;

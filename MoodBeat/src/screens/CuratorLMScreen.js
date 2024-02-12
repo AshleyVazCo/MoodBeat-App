@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, TouchableHighlight, ScrollView, Image } from "react-native";
-import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
 import ShareSettingHeaderLM from "../components/ShareSettingHeaderLM";
 import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarLM from "../components/NavBarLM";
@@ -104,7 +103,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   profileTitle: {
-    fontFamily: "BarlowCondensed_400Regular",
+    fontFamily: "BBarlowCondensed-Regular",
     fontSize: 20,
     color: "#fff",
   },
@@ -124,12 +123,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#43357A",
   },
   buttonText: {
-    fontFamily: "BarlowCondensed_400Regular",
+    fontFamily: "BarlowCondensed-Regular",
     fontSize: 17,
     color: "#26282C",
   },
   selectedButtonText: {
-    fontFamily: "BarlowCondensed_400Regular",
+    fontFamily: "BarlowCondensed-Regular",
     fontSize: 17,
     color: "#FFFFFC",
   },

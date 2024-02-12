@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
   profileTitle: {
-    fontFamily: "BarlowCondensed_400Regular",
+    fontFamily: "BarlowCondensed-Regular",
     fontSize: 20,
     color: "#fff",
   },

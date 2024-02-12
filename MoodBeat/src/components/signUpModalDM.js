@@ -1,80 +1,167 @@
-import React from 'react';
-import {TextInput, StyleSheet, View, Text, Modal, TouchableOpacity, Image } from 'react-native';
+import React, { useState } from 'react';
+import { TextInput, StyleSheet, View, Text, Modal, TouchableOpacity, Image } from 'react-native';
+import SetupProfileModalDM from './SetupProfileModalDM';
 
 const SignUpModalLM = ({ visible, onClose }) => {
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [showSetupProfileModal, setShowSetupProfileModal] = useState(false);
+
+  const handleSignUpPress = () => {
+    if (!isFormValid) {
+      alert('Please fill out all fields correctly');
+      return;
+    }
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+    setShowSetupProfileModal(true);
+  };
+
+  const validateForm = () => {
+    setIsFormValid(
+      fullName.trim() !== '' &&
+      validateEmail(email) &&
+      password.trim() !== '' &&
+      confirmPassword.trim() !== ''
+    );
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleSetupProfileModalClose = () => {
+    setShowSetupProfileModal(false);
+    onClose(); // Close the SignUpModalLM as well, if needed
+  };
+
   return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={visible}
-      onRequestClose={onClose}>
-      <View style={styles.container}>
-
-        <TouchableOpacity onPress={onClose} style = {styles.closeButton}>
-          <Text style = {styles.closeIcon}>X</Text>
-        </TouchableOpacity>
-
-        <View style = {styles.logo}>
-          <Image source = {require('../../assets/icons/logoWhite.png')} >
-          </Image>
+    <>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={visible && !showSetupProfileModal}
+        onRequestClose={onClose}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <View style={styles.headerContainer}>
+              <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+                <Text style={styles.closeButtonText}>X</Text>
+              </TouchableOpacity>
+              <Image
+                style={styles.image}
+                source={require('../../assets/icons/logoWhite.png')}
+              />
+            </View>
+            <View style={styles.signupTitle}>
+              <Text style={styles.confirmsignupTitle}>Sign up</Text>
+            </View>
+            <View style={styles.formContainer}>
+              <TextInput
+                placeholder="Full Name"
+                style={styles.input}
+                placeholderTextColor={'#909090'}
+                value={fullName}
+                onChangeText={(text) => {
+                  setFullName(text);
+                  validateForm();
+                }}
+              />
+              <TextInput
+                placeholder="Email"
+                style={styles.input}
+                placeholderTextColor={'#909090'}
+                value={email}
+                onChangeText={(text) => {
+                  setEmail(text);
+                  validateForm();
+                }}
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
+              <TextInput
+                placeholder="Password"
+                secureTextEntry
+                style={styles.input}
+                placeholderTextColor={'#909090'}
+                value={password}
+                onChangeText={(text) => {
+                  setPassword(text);
+                  validateForm();
+                }}
+              />
+              <TextInput
+                placeholder="Confirm Password"
+                secureTextEntry
+                style={styles.input}
+                placeholderTextColor={'#909090'}
+                value={confirmPassword}
+                onChangeText={(text) => {
+                  setConfirmPassword(text);
+                  validateForm();
+                }}
+              />
+            </View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                style={[styles.signUpButton, !isFormValid && styles.disabledButton]}
+                onPress={handleSignUpPress}
+                disabled={!isFormValid}>
+                <Text style={styles.buttonText}>Next</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
+      </Modal>
 
-        {/* Your login modal content */}
-        <View style={styles.Title}>
-        <Text style={styles.TitleText}>Sign Up</Text>
-        </View>
-        
-        <View style = {styles.formContainer}>
-          <TextInput placeholder="Full Name" style={styles.input} placeholderTextColor={'#909090'} />
-          <TextInput placeholder="Username" style={styles.input} placeholderTextColor={'#909090'} />
-          <TextInput placeholder="Password" secureTextEntry style={styles.input} placeholderTextColor={'#909090'} />
-          <TextInput placeholder="Confirm Password" secureTextEntry style={styles.input} placeholderTextColor={'#909090'} />
-        </View>
-
-        <TouchableOpacity style={styles.signUpButton} >
-          <Text style = {styles.buttonText}>Next</Text>
-        </TouchableOpacity>
-      
-      </View>
-    </Modal>
+      {showSetupProfileModal && (
+        <SetupProfileModalDM
+          visible={showSetupProfileModal}
+          onClose={handleSetupProfileModalClose}
+        />
+      )}
+    </>
   );
 };
+
+
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#26282C',
-    height: '95%',
-    width:'100%',
+  modalContainer: {
     flex: 1,
-    position: 'absolute',
-    top: '15%',
-  borderRadius: 20,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    height: 760,
+    width: 380,
+    backgroundColor: '#26282C',
+    padding: 20,
+    borderRadius: 10,
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  closeButton: {
+    borderRadius: 12,
+    justifyContent: 'center',
     alignItems: 'center',
   },
-closeButton: {
- // backgroundColor: 'red',
-  width: '12%',
-  height: '8%',
-  alignItems: 'center',
-  justifyContent: 'center',
-  position: 'absolute',
-  left: '3%',
-  top: 12,
+  closeButtonText: {
+    color: '#CA9CE1',
+    fontSize: 24,
   },
-closeIcon: {
-  color: '#CA9CE1',
-  fontSize: 30,
-},
-logo: {
-  width: '12%',
-  height: '8%',
-  alignItems: 'center',
-  justifyContent: 'center',
-  position: 'absolute',
-  right: '3%',
-  top: 12,
-},
 Title: {
-  //backgroundColor: 'red',
   height: "10%",
   width: '100%',
   justifyContent: 'center',
@@ -90,13 +177,10 @@ TitleText: {
   fontSize: 30,
 },
 formContainer: {
-  //backgroundColor: 'purple',
   height: "40%",
   width: '100%',
   justifyContent: 'center',
   alignItems: 'center',
-  position: 'absolute',
-  top: '20%',
 },
 input: {
   borderRadius: 10,
@@ -106,24 +190,36 @@ input: {
   borderWidth: 1,
   padding: 10,
   borderColor: '#909090',
+  color: '#909090'
 },
-signUpButton: {
-  backgroundColor: '#4F4F4F',
-  padding: 10,
-  borderRadius: 10,
-  width: '65%',
-  height: '7%',
-  alignItems: 'center',
-  margin: 12,
-  justifyContent: 'center',
-  position: 'absolute',
-  bottom: '32%',
-},
-buttonText: {
-  color: '#CA9CE1',
-  fontSize: 20,
-  fontFamily: "BarlowCondensed_400Regular",
-}
+buttonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    },
+  signUpButton: {
+    backgroundColor: '#4F4F4F',
+    borderRadius: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    top: 60,
+    width: 200,
+  },
+  buttonText: {
+    color: '#CA9CE1',
+    fontSize: 16,
+  },
+    signupTitle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  confirmsignupTitle: {
+    textAlign: 'center',
+    fontFamily: "BarlowCondensed_400Regular",
+    color: '#CA9CE1',
+    fontSize: 30,
+  },
 })
 
 export default SignUpModalLM;

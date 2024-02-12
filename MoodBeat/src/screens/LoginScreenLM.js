@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ImageBackground } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
 import LoginModalLM from "../components/LoginModalLM";
 import SignUpModalLM from "../components/signUpModalLM";
 import { useNavigation } from "@react-navigation/native";
@@ -98,7 +97,7 @@ const styles = StyleSheet.create({
     },
     disclaimerText: {
         textAlign: 'center',
-        fontFamily: "BarlowCondensed_400Regular",
+        fontFamily: "BarlowCondensed-Regular",
         color: '#43357A',
         fontSize: 17,
     },
@@ -135,7 +134,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#FFFFFC',
         fontSize: 20,
-        fontFamily: "BarlowCondensed_400Regular",
+        fontFamily: "BarlowCondensed-Regular",
     }
 
 })

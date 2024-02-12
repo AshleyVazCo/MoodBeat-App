@@ -11,13 +11,13 @@ const NavBarDM = () => {
 
   return (
     <View style={styles.navBar}>
-      <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("HomeScreen")}>
+      <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("HomeDM")}>
         <Image source={require('../../assets/icons/home_Dark.png')} style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("CreationDM")}>
         <Image source={require('../../assets/icons/navBoards_Dark.png')} style={styles.icon} />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("SearchScreen")}>
+      <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("SearchDM")}>
         <Image source={require('../../assets/icons/searchSymbol_Dark.png')} style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.navItem} onPress={() => navigateToScreen("ProfileScreenDM")}>
