@@ -32,7 +32,7 @@ const SettingScreenDM = () => {
   ];
 const accountContent = [
   { title: "Delete Account", onPress: () => handleDeleteAccount(), color: "#FF3B30" },
-  { title: "Light Mode", onPress: () => navigation.navigate("LoginScreenLM"), color: "#FFFFFF" },
+  { title: "Dark Mode", onPress: () => navigation.navigate("LoginScreenDM"), color: "#FFFFFF" },
 ];
   const toggleAccordion = (index) => {
     setActiveOption(activeOption === index ? null : index);
@@ -131,21 +131,21 @@ const accountContent = [
                               {option.title === "Your Account" && (
                 <>
                   {accountContent.map((item, i) => (
-                      <TouchableOpacity
-                        key={i}
-                        style={[
-                          styles.button,
-                          { backgroundColor: item.title === "Dark Mode" ? "#26282C" : item.color },
-                        ]}
-                        onPress={item.onPress}
-                      >
-                      <Text style={[
-                        styles.buttonText,
-                        { color: item.title === "Light Mode" ? "#fffffc" : "#fffffc" },
-                      ]}>
-                        {item.title === "Light Mode" ? "Dark Mode" : item.title}
-                      </Text>
-                    </TouchableOpacity>
+                  <TouchableOpacity
+                    key={i}
+                    style={[
+                      styles.button,
+                      item.title === "Delete Account" ? styles.deleteButton : styles.darkModeButton,
+                    ]}
+                    onPress={item.onPress}
+                  >
+                    <Text style={[
+                      styles.buttonText,
+                      item.title === "Delete Account" ? styles.deleteButtonText : styles.darkModeButtonText,
+                    ]}>
+                      {item.title === "Light Mode" ? "Dark Mode" : item.title}
+                    </Text>
+                  </TouchableOpacity>
                   ))}
                 </>
               )}
@@ -320,6 +320,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 7,
     justifyContent: 'center',
+  },
+    deleteButton: {
+    backgroundColor: "#FF3B30",
+  },
+  deleteButtonText: {
+    color: "#FFFFFF",
+  },
+  darkModeButton: {
+    backgroundColor: "#26282C",
+  },
+  darkModeButtonText: {
+    color: "#FFFFFC",
   },
 });
 
