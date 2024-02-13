@@ -43,7 +43,7 @@ const [selectedTab, setSelectedTab] = useState("Created");
       </>
     );
   };
-  
+
   const onClose = () => {
     navigation.goBack();
   };
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   profileTitle: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 20,
     color: "#fff",
   },
@@ -118,12 +118,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#4F4F4F",
   },
   buttonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
     color: "#909090",
   },
   selectedButtonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
     color: "#CA9CE1",
   },

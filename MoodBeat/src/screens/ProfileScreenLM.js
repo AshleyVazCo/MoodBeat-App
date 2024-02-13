@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   profileTitle: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 20,
     color: "#0055FF",
   },
@@ -189,12 +189,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#43357A",
   },
   buttonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
     color: "#26282C",
   },
   selectedButtonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
     color: "#FFFFFC",
   },

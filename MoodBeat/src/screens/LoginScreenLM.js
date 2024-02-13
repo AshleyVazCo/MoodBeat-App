@@ -6,9 +6,6 @@ import LoginModalLM from "../components/LoginModalLM";
 import SignUpModalLM from "../components/signUpModalLM";
 import { useNavigation } from "@react-navigation/native";
 
-
-
-
 const LoginScreenLM = () => {
 
     const navigation = useNavigation();
@@ -16,18 +13,9 @@ const LoginScreenLM = () => {
     const navigateToScreen = (screenName) => {
     navigation.navigate(screenName);
     };
-    
-    const [fontsLoaded] = useFonts({
-        BarlowCondensed_400Regular,
-    });
 
     const [loginModalVisible, setLoginModalVisible] = useState(false);
     const [signUpModalVisible, setSignUpModalVisible] = useState(false);
-
-    if (!fontsLoaded) {
-        return null;
-    }
-
     
 
     return (
@@ -97,7 +85,7 @@ const styles = StyleSheet.create({
     },
     disclaimerText: {
         textAlign: 'center',
-        fontFamily: "BarlowCondensed-Regular",
+        fontFamily: "BarlowCondensed_400Regular",
         color: '#43357A',
         fontSize: 17,
     },
@@ -134,7 +122,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#FFFFFC',
         fontSize: 20,
-        fontFamily: "BarlowCondensed-Regular",
+        fontFamily: "BarlowCondensed_400Regular",
     }
 
 })

@@ -92,7 +92,6 @@ const Creation = ({ navigation }) => {
             >
               <Text style={styles.closeModalButtonText}>Close Modal</Text>
             </TouchableOpacity>
-          {/* Your board modal content here */}
           <BoardInfoModalLM />
           </View>
         </Modal>
@@ -110,7 +109,6 @@ const Creation = ({ navigation }) => {
           >
             <Text style={styles.closeModalButtonText}>Close Modal</Text>
           </TouchableOpacity>
-          {/* Your section modal content here */}
           <SearchMusicModalLM onCloseModal={handleCloseSectionModal} />
         </View>
       </Modal>
@@ -149,7 +147,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   header: {
-    fontFamily: 'BarlowCondensed-Regular',
+    fontFamily: 'BarlowCondensed_400Regular',
     fontSize: 40,
     justifyContent: "center",
     alignItems: "center",
@@ -162,7 +160,7 @@ const styles = StyleSheet.create({
     marginTop: 125,
   },
   regularText: {
-    fontFamily: 'BarlowCondensed-Regular',
+    fontFamily: 'BarlowCondensed_400Regular',
     fontSize: 20,
     justifyContent: "center",
     alignItems: "center",
@@ -178,13 +176,13 @@ const styles = StyleSheet.create({
     marginLeft: 175,
   },
   section: {
-    fontFamily: 'BarlowCondensed-Regular',
+    fontFamily: 'BarlowCondensed_400Regular',
     justifyContent: "center",
     alignItems: "center",
     marginLeft: 25,
   },
   board: {
-    fontFamily: 'BarlowCondensed-Regular',
+    fontFamily: 'BarlowCondensed_400Regular',
     justifyContent: "center",
     alignItems: "center",
   },
@@ -213,7 +211,7 @@ const styles = StyleSheet.create({
     marginRight: 250,
   },
   closeModalButtonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 18,
   },
 });

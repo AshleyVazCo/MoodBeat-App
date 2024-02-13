@@ -22,10 +22,6 @@ const ProfileSectionDM = ({ navigation }) => {
     setModalVisible(false);
   };
 
-  if (!fontsLoaded) {
-    return null;
-  }
-
   // Code for the different boards. The first part will render the boards if the created tab is selected. The second part will render the boards in the saved tab.
   const renderCardSet = () => {
     if (selectedTab === "Created") {
@@ -149,7 +145,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
   },
   profileTitle: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 20,
     color: "#0055FF",
     alignSelf: "flex-end",
@@ -170,12 +166,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#4F4F4F",
   },
   buttonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
     color: "#909090",
   },
   selectedButtonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
     color: "#CA9CE1",
   },
