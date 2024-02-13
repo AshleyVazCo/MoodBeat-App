@@ -10,7 +10,9 @@ const SettingScreenDM = () => {
   const onClose = () => {
     navigation.goBack();
   };
-
+  const onLogOutPress = () => {
+    navigation.navigate("LoginScreenDM");
+  };
   const options = [
     { title: "Personal Info", content: "", image: require('../../assets/icons/personalInfoIcon_Dark.png') },
     { title: "About", content: "Content for About", image: require('../../assets/icons/aboutIcon_Dark.png') },
@@ -134,13 +136,13 @@ const accountContent = [
                       style={[
                         styles.button,
                         { backgroundColor: item.color },
-                        item.title === "Delete Account" ? styles.logoutButton : styles.saveChangesButton,
+                        item.title === "Delete Account" ? styles.deleteButton : styles.deleteButtonText,
                       ]}
                       onPress={item.onPress}
                     >
                       <Text style={[
                         styles.buttonText,
-                        item.title === "Delete Account" ? styles.logoutButtonText : styles.saveChangesButtonText,
+                        item.title === "Delete Account" ? styles.lightButton : styles.lightButtonText,
                         { color: item.title === "Delete Account" ? "#FFFFFF" : "#26282C" },
                       ]}>
                         {item.title}
@@ -155,19 +157,19 @@ const accountContent = [
         ))}
       </ScrollView>
         <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.logOutButton}
-          onPress={() => console.log("Log Out pressed")}
-        >
-          <Text style={styles.buttonText}>Log Out</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.saveChangesButton}
-          onPress={() => console.log("Save Changes pressed")}
-        >
-          <Text style={styles.buttonText}>Save Changes</Text>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity
+            style={styles.logOutButton}
+            onPress={onLogOutPress}
+          >
+            <Text style={styles.buttonText}>Log Out</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.saveChangesButton}
+            onPress={() => console.log("Save Changes pressed")}
+          >
+            <Text style={styles.buttonText}>Save Changes</Text>
+          </TouchableOpacity>
+        </View>
     </KeyboardAwareScrollView>
   );
 }
@@ -292,22 +294,21 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: "BarlowCondensed_400Regular",
   },
-    buttonContainer: {
+      buttonContainer: {
     width: '100%',
     height: '50%',
-    position: 'absolute',
-    top: '40%',
+    marginBottom: 90,
+    marginLeft: 60,
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
+    justifyContent: 'center'
   },
   logOutButton: {
     backgroundColor: '#FFFFF5',
     padding: 10,
     borderRadius: 10,
     width: '65%',
-    height:'12%',
+    height:44,
     alignItems: 'center',
     margin: 12,
     justifyContent: 'center'
@@ -317,12 +318,11 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     width: '65%',
-    height: '12%',
+    height: 44,
     alignItems: 'center',
     margin: 7,
     justifyContent: 'center',
   },
-
 });
 
 export default SettingScreenDM;
