@@ -131,21 +131,19 @@ const accountContent = [
                               {option.title === "Your Account" && (
                 <>
                   {accountContent.map((item, i) => (
-                    <TouchableOpacity
-                      key={i}
-                      style={[
-                        styles.button,
-                        { backgroundColor: item.color },
-                        item.title === "Delete Account" ? styles.deleteButton : styles.deleteButtonText,
-                      ]}
-                      onPress={item.onPress}
-                    >
+                      <TouchableOpacity
+                        key={i}
+                        style={[
+                          styles.button,
+                          { backgroundColor: item.title === "Dark Mode" ? "#26282C" : item.color },
+                        ]}
+                        onPress={item.onPress}
+                      >
                       <Text style={[
                         styles.buttonText,
-                        item.title === "Delete Account" ? styles.lightButton : styles.lightButtonText,
-                        { color: item.title === "Delete Account" ? "#FFFFFF" : "#26282C" },
+                        { color: item.title === "Light Mode" ? "#fffffc" : "#fffffc" },
                       ]}>
-                        {item.title}
+                        {item.title === "Light Mode" ? "Dark Mode" : item.title}
                       </Text>
                     </TouchableOpacity>
                   ))}
@@ -176,7 +174,7 @@ const accountContent = [
 
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: "#26282C",
+    backgroundColor: "#FFFFFC",
   },
   scrollContainer: {
     flexGrow: 1,
@@ -191,7 +189,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   closeButtonText: {
-    color: "#CA9CE1",
+    color: "#43357A",
     fontSize: 24,
   },
   title: {
@@ -201,7 +199,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontFamily: "BarlowCondensed_400Regular",
-    color: "#909090",
+    color: "#26282C",
     fontSize: 30,
   },
   accordionContainer: {
@@ -225,7 +223,7 @@ const styles = StyleSheet.create({
   },
   optionTitle: {
     fontSize: 22,
-    color: "#909090",
+    color: "#26282C",
     fontFamily: "BarlowCondensed_400Regular",
     marginLeft: 20
   },
@@ -233,7 +231,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   optionContentText: {
-    color: "#909090",
+    color: "#26282C",
   },
   input: {
     borderRadius: 10,
@@ -242,8 +240,8 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
-    borderColor: '#909090',
-    color: '#909090',
+    borderColor: '#26282C',
+    color: '#26282C',
   },
   aboutContentItem: {
     marginBottom: 20,
@@ -255,13 +253,13 @@ const styles = StyleSheet.create({
   },
   aboutContentTopic: {
     fontSize: 18,
-    color: "#909090",
+    color: "#26282C",
     fontFamily: "BarlowCondensed_400Regular",
     marginBottom: 2,
     margin: 20
   },
   aboutContentDescription: {
-    color: "#909090",
+    color: "#26282C",
     margin: 20
   },
     contactContentItem: {
@@ -274,13 +272,13 @@ const styles = StyleSheet.create({
   },
   contactContentTopic: {
     fontSize: 18,
-    color: "#909090",
+    color: "#26282C",
     fontFamily: "BarlowCondensed_400Regular",
     marginBottom: 2,
     margin: 20
   },
   contactContentDescription: {
-    color: "#909090",
+    color: "#26282C",
     margin: 20
   },
     button: {
@@ -290,7 +288,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonText: {
-    color: "#26282C",
+    color: "#FFFFFC",
     fontSize: 18,
     fontFamily: "BarlowCondensed_400Regular",
   },
@@ -304,7 +302,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   logOutButton: {
-    backgroundColor: '#FFFFF5',
+    backgroundColor: '#26282C',
     padding: 10,
     borderRadius: 10,
     width: '65%',
@@ -314,7 +312,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   saveChangesButton: {
-    backgroundColor: '#CA9CE1',
+    backgroundColor: '#7700E6',
     padding: 10,
     borderRadius: 10,
     width: '65%',
