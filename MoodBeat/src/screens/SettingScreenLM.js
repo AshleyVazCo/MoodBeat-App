@@ -14,21 +14,21 @@ const SettingScreenDM = () => {
     navigation.navigate("LoginScreenDM");
   };
   const options = [
-    { title: "Personal Info", content: "", image: require('../../assets/icons/personalInfoIcon_Dark.png') },
-    { title: "About", content: "Content for About", image: require('../../assets/icons/aboutIcon_Dark.png') },
-    { title: "Contact", content: "Content for Contact", image: require('../../assets/icons/contactIcon_Dark.png') },
-    { title: "Your Account", content: "", image: require('../../assets/icons/accountIcon_Dark.png') },
+    { title: "Personal Info", content: "", image: require('../../assets/icons/personalInfoIcon.png') },
+    { title: "About", content: "Content for About", image: require('../../assets/icons/aboutIcon.png') },
+    { title: "Contact", content: "Content for Contact", image: require('../../assets/icons/contactIcon.png') },
+    { title: "Your Account", content: "", image: require('../../assets/icons/accountIcon.png') },
   ];
   const aboutContent = [
-    { topic: "MoodBeat", description: "MoodBeat is an app dedicated to creating music moodboards based on your mood. Using keywords, we help generate the best boards for you.", image: require('../../assets/icons/logoWhite.png') },
+    { topic: "MoodBeat", description: "MoodBeat is an app dedicated to creating music moodboards based on your mood. Using keywords, we help generate the best boards for you.", image: require('../../assets/icons/logoPurple.png') },
     { topic: "Apple Music", description: "Apple Music is an iOS music application that we pull songs from to add to your moodboards. If you have saved songs, feel free to import them here.", image: require('../../assets/icons/appleTinyIcon.png') },
     { topic: "Spotify", description: "Spotify is one of the most popular music applications that we pull songs from to add to your moodboards. If you have saved songs, feel free to import them here.", image: require('../../assets/icons/spotifyTinyIcon.png') },
     { topic: "Soundcloud", description: "Soundcloud is a music application that we pull songs from local artists to add to your moodboards. If you have saved songs, feel free to import them here.", image: require('../../assets/icons/soundcloudTinyIcon.png') },
   ];
   const contactContent = [
-    { topic: "Instagram", description: "To check out the latest updates, follow us on Instagram @mood.beat", image: require('../../assets/icons/instagramDM.png') },
-    { topic: "Email", description: "For any additional questions or issues with the app, email us at moodbeat@gmail.com.", image: require('../../assets/icons/emailDM.png') },
-    { topic: "TikTok", description: "To check out our fun content, follow us on TikTok @mood.beat", image: require('../../assets/icons/tiktokDM.png') },
+    { topic: "Instagram", description: "To check out the latest updates, follow us on Instagram @mood.beat", image: require('../../assets/icons/instagramLM.png') },
+    { topic: "Email", description: "For any additional questions or issues with the app, email us at moodbeat@gmail.com.", image: require('../../assets/icons/emailLM.png') },
+    { topic: "TikTok", description: "To check out our fun content, follow us on TikTok @mood.beat", image: require('../../assets/icons/tiktokLM.png') },
   ];
 const accountContent = [
   { title: "Delete Account", onPress: () => handleDeleteAccount(), color: "#FF3B30" },

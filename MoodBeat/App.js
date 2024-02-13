@@ -39,7 +39,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SettingLM">
+      <Stack.Navigator initialRouteName="ProfileSectionLM">
         <Stack.Screen
           name="CuratorDM"
           component={CuratorDMScreen}

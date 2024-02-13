@@ -32,11 +32,6 @@ const ProfileSectionDM = ({ navigation }) => {
             title="You Not The Same"
             onPress={() => setModalVisible(true)}
           />
-          <MoodBoardCardLM
-            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
-            title="DK Ost"
-            // cardColor="#161733"
-          />
         </>
       );
     } else if (selectedTab === "Saved") {
@@ -46,11 +41,6 @@ const ProfileSectionDM = ({ navigation }) => {
             imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
             title="My Love Mine All Mine"
             // cardColor="#AFC1D7"
-          />
-          <MoodBoardCardLM
-            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
-            title="Come, Gentle Night"
-            // cardColor="#161733"
           />
         </>
       );

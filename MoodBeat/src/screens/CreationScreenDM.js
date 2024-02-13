@@ -10,8 +10,8 @@ const Creation = ({ navigation }) => {
   const [sectionModalVisible, setSectionModalVisible] = useState(false);
 
   const handleSettingsPress = () => {
-    navigation.navigate('NonExistingPage');
     console.log("Settings icon pressed");
+    navigation.navigate('SettingDM');
   };
 
   const handleCreateBoardPress = () => {
@@ -39,9 +39,10 @@ const Creation = ({ navigation }) => {
         <Image
           style={styles.logo}
           source={require('../../assets/icons/logoWhite.png')}
-          />
-        <TouchableOpacity>
-          <Image source={require('../../assets/icons/settingsIcon_Dark.png')} onPress={handleSettingsPress} 
+        />
+        <TouchableOpacity onPress={handleSettingsPress} activeOpacity={1}>
+          <Image
+            source={require('../../assets/icons/settingsIcon_Dark.png')}
             style={styles.settings}
           />
         </TouchableOpacity>
@@ -60,7 +61,7 @@ const Creation = ({ navigation }) => {
           underlayColor="#DDDDDD"
         >
           <View style={styles.section}>
-            <Image source={require('../../assets/icons/boardsIcon_Dark.png')} 
+            <Image source={require('../../assets/icons/createSectionIcon_Dark.png')} 
               style={styles.sectionImage}
             />
             <Text style={styles.buttonText}>Create Section</Text>
