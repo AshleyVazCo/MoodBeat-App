@@ -5,15 +5,8 @@ import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarDM from "../components/NavBarDM";
 
 const CuratorDMScreen = ({ navigation }) => {
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-  });
 
-  const [selectedTab, setSelectedTab] = useState("Created");
-
-  if (!fontsLoaded) {
-    return null;
-  }
+const [selectedTab, setSelectedTab] = useState("Created");
 
   const renderCardSet = () => {
     if (selectedTab === "Created") {
@@ -49,6 +42,10 @@ const CuratorDMScreen = ({ navigation }) => {
         />
       </>
     );
+  };
+
+  const onClose = () => {
+    navigation.goBack();
   };
 
   return (
@@ -101,7 +98,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   profileTitle: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 20,
     color: "#fff",
   },
@@ -121,12 +118,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#4F4F4F",
   },
   buttonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
     color: "#909090",
   },
   selectedButtonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
     color: "#CA9CE1",
   },

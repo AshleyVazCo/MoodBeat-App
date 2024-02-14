@@ -19,12 +19,6 @@ const LoginScreenDM = () => {
     const [loginModalVisible, setLoginModalVisible] = useState(false);
     const [signUpModalVisible, setSignUpModalVisible] = useState(false);
 
-    if (!fontsLoaded) {
-        return null;
-    }
-
-    
-
     return (
         <SafeAreaView style = {styles.container}>
             <ImageBackground source={require('../../assets/images/loginBackground.png')} style={styles.background}>
@@ -65,6 +59,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
+        backgroundColor: '#26282C'
     },
     background: {
         flex: 1,
@@ -92,7 +87,7 @@ const styles = StyleSheet.create({
     },
     disclaimerText: {
         textAlign: 'center',
-        fontFamily: "BarlowCondensed-Regular",
+        fontFamily: "BarlowCondensed_400Regular",
         color: '#CA9CE1',
         fontSize: 17,
     },
@@ -129,7 +124,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#7700E6',
         fontSize: 20,
-        fontFamily: "BarlowCondensed-Regular",
+        fontFamily: "BarlowCondensed_400Regular",
     }
 
 })

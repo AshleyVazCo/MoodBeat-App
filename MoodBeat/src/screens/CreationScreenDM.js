@@ -10,8 +10,8 @@ const Creation = ({ navigation }) => {
   const [sectionModalVisible, setSectionModalVisible] = useState(false);
 
   const handleSettingsPress = () => {
-    navigation.navigate('NonExistingPage');
     console.log("Settings icon pressed");
+    navigation.navigate('SettingDM');
   };
 
   const handleCreateBoardPress = () => {
@@ -39,9 +39,10 @@ const Creation = ({ navigation }) => {
         <Image
           style={styles.logo}
           source={require('../../assets/icons/logoWhite.png')}
-          />
-        <TouchableOpacity>
-          <Image source={require('../../assets/icons/settingsIcon_Dark.png')} onPress={handleSettingsPress} 
+        />
+        <TouchableOpacity onPress={handleSettingsPress} activeOpacity={1}>
+          <Image
+            source={require('../../assets/icons/settingsIcon_Dark.png')}
             style={styles.settings}
           />
         </TouchableOpacity>
@@ -60,7 +61,7 @@ const Creation = ({ navigation }) => {
           underlayColor="#DDDDDD"
         >
           <View style={styles.section}>
-            <Image source={require('../../assets/icons/boardsIcon_Dark.png')} 
+            <Image source={require('../../assets/icons/createSectionIcon_Dark.png')} 
               style={styles.sectionImage}
             />
             <Text style={styles.buttonText}>Create Section</Text>
@@ -112,7 +113,6 @@ const Creation = ({ navigation }) => {
           >
             <Text style={styles.closeModalButtonText}>Close Modal</Text>
           </TouchableOpacity>
-          {/* Your section modal content here */}
           <SearchMusicModalDM onCloseModal={handleCloseSectionModal} />
         </View>
       </Modal>
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 30,
     color: "#909090",
-    fontFamily: 'BarlowCondensed-Regular',
+    fontFamily: 'BarlowCondensed_400Regular',
   },
   navBar: {
     backgroundColor: "#26282C",
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 20,
     color: "#909090",
-    fontFamily: 'BarlowCondensed-Regular',
+    fontFamily: 'BarlowCondensed_400Regular',
   },
   headerContainer: {
     justifyContent: "center",
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     marginLeft: 50,
     marginRight: 50,
     color: "#909090",
-    fontFamily: 'BarlowCondensed-Regular',
+    fontFamily: 'BarlowCondensed_400Regular',
   },
   icons: {
     flexDirection: "row",
@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
     marginRight: 250,
   },
   closeModalButtonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 18,
   },
 });

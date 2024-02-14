@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableHighlight, Image, Modal } from "react-native";
+import { StyleSheet, View, Text, TouchableHighlight, Image, Modal, TouchableWithoutFeedback } from "react-native";
 import NavBarLM from "../components/NavBarLM";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import BoardInfoModalLM from "../components/BoardInfoModalLM";
 import SearchMusicModalLM from "../components/SearchMusicModalLM";
 
-const Creation = ({ navigation }) => {
+const CreationScreenLM = ({ navigation }) => {
   const [boardModalVisible, setBoardModalVisible] = useState(false);
   const [sectionModalVisible, setSectionModalVisible] = useState(false);
 
   const handleSettingsPress = () => {
-    navigation.navigate('NonExistingPage');
+    navigation.navigate('SettingLM');
     console.log("Settings icon pressed");
   };
 
@@ -39,12 +39,13 @@ const Creation = ({ navigation }) => {
         <Image
           style={styles.logo}
           source={require('../../assets/icons/logoPurple.png')}
-          />
-        <TouchableOpacity>
-          <Image source={require('../../assets/icons/settingsIcon_Light.png')} onPress={handleSettingsPress} 
+        />
+        <TouchableWithoutFeedback onPress={handleSettingsPress}>
+          <Image
+            source={require('../../assets/icons/settingsIcon_Light.png')}
             style={styles.settings}
           />
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
       </View>
       <View style={styles.headerContainer}>
         <Text style={styles.header}>In the Mood to Create?</Text>
@@ -60,7 +61,7 @@ const Creation = ({ navigation }) => {
           underlayColor="#DDDDDD"
         >
           <View style={styles.section}>
-            <Image source={require('../../assets/icons/boardsIcon_Light.png')} 
+            <Image source={require('../../assets/icons/createSectionIcon_Light.png')} 
               style={styles.sectionImage}
             />
             <Text style={styles.buttonText}>Create Section</Text>
@@ -92,7 +93,6 @@ const Creation = ({ navigation }) => {
             >
               <Text style={styles.closeModalButtonText}>Close Modal</Text>
             </TouchableOpacity>
-          {/* Your board modal content here */}
           <BoardInfoModalLM />
           </View>
         </Modal>
@@ -110,7 +110,6 @@ const Creation = ({ navigation }) => {
           >
             <Text style={styles.closeModalButtonText}>Close Modal</Text>
           </TouchableOpacity>
-          {/* Your section modal content here */}
           <SearchMusicModalLM onCloseModal={handleCloseSectionModal} />
         </View>
       </Modal>
@@ -149,7 +148,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   header: {
-    fontFamily: 'BarlowCondensed-Regular',
+    fontFamily: 'BarlowCondensed_400Regular',
     fontSize: 40,
     justifyContent: "center",
     alignItems: "center",
@@ -162,7 +161,7 @@ const styles = StyleSheet.create({
     marginTop: 125,
   },
   regularText: {
-    fontFamily: 'BarlowCondensed-Regular',
+    fontFamily: 'BarlowCondensed_400Regular',
     fontSize: 20,
     justifyContent: "center",
     alignItems: "center",
@@ -178,13 +177,13 @@ const styles = StyleSheet.create({
     marginLeft: 175,
   },
   section: {
-    fontFamily: 'BarlowCondensed-Regular',
+    fontFamily: 'BarlowCondensed_400Regular',
     justifyContent: "center",
     alignItems: "center",
     marginLeft: 25,
   },
   board: {
-    fontFamily: 'BarlowCondensed-Regular',
+    fontFamily: 'BarlowCondensed_400Regular',
     justifyContent: "center",
     alignItems: "center",
   },
@@ -213,9 +212,9 @@ const styles = StyleSheet.create({
     marginRight: 250,
   },
   closeModalButtonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 18,
   },
 });
 
-export default Creation;
+export default CreationScreenLM;

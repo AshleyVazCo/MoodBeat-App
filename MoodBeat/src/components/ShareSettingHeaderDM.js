@@ -1,7 +1,10 @@
 import React from "react";
 import { View, TouchableOpacity, Share, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-const ShareSettingHeaderDM = ({ onNavigateSetting }) => {
+const ShareSettingHeaderDM = () => {
+  const navigation = useNavigation();
+
   const onShare = async () => {
     try {
       const result = await Share.share({
@@ -17,13 +20,17 @@ const ShareSettingHeaderDM = ({ onNavigateSetting }) => {
     }
   };
 
+  const onNavigateSetting = () => {
+    navigation.navigate('SettingDM');
+  };
+
   return (
     <View style={styles.header}>
       <TouchableOpacity onPress={onShare} underlayColor="transparent">
         <Image source={require('../../assets/icons/shareIcon_Dark.png')} style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity onPress={onNavigateSetting} underlayColor="transparent">
-        <Image source={require('../../assets/icons/settingsIcon_Dark.png')} style={styles.icon} onPress={onNavigateSetting} />
+        <Image source={require('../../assets/icons/settingsIcon_Dark.png')} style={styles.icon} />
       </TouchableOpacity>
     </View>
   );
@@ -46,4 +53,3 @@ const styles = {
 };
 
 export default ShareSettingHeaderDM;
-

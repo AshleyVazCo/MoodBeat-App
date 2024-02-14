@@ -5,15 +5,8 @@ import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarLM from "../components/NavBarLM";
 
 const CuratorLMScreen = ({ navigation }) => {
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-  });
 
   const [selectedTab, setSelectedTab] = useState("Created");
-
-  if (!fontsLoaded) {
-    return null;
-  }
 
 const renderCardSet = () => {
   if (selectedTab === "Created") {
@@ -103,7 +96,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   profileTitle: {
-    fontFamily: "BBarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 20,
     color: "#fff",
   },
@@ -123,12 +116,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#43357A",
   },
   buttonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
     color: "#26282C",
   },
   selectedButtonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
     color: "#FFFFFC",
   },

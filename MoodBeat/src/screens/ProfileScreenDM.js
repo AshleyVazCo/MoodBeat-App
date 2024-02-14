@@ -16,20 +16,13 @@ import BackgroundColorModalDM from "../components/BackgroundColorModalDM";
 import EditTextModalDM from "../components/EditTextModalDM";
 
 const ProfileScreenDM = ({ navigation }) => {
-
-
-  // Tabs
   const [selectedTab, setSelectedTab] = useState("Created");
-
-  // Edit Profile Modal
   const [modalVisible, setModalVisible] = useState(false);
 
   const closeModal = () => {
     setModalVisible(false);
   };
 
-
-  // Code for the different boards. The first part will render the boards if the created tab is selected. The second part will render the boards in the saved tab.
   const renderCardSet = () => {
     if (selectedTab === "Created") {
       return (
@@ -100,8 +93,7 @@ const ProfileScreenDM = ({ navigation }) => {
         <Image
           source={
             require('../../assets/images/alanProfilePic.png')
-            // uri: "MoodBeat/assets/images/alanProfilePic.png",
-          } // Code for Profile image -- Replace with the actual URL of the profile image
+          }
           style={styles.profileImage}
           onPress={() => setModalVisible(true)}
         />
@@ -150,8 +142,6 @@ const ProfileScreenDM = ({ navigation }) => {
         {renderCardSet()}
       </ScrollView>
       <EditProfileModalDM isVisible={modalVisible} onClose={closeModal} />
-      {/* <BackgroundColorModalDM isVisible={modalVisible} onClose={closeModal} /> */}
-      {/* <EditTextModalDM isVisible={modalVisible} onClose={closeModal} /> */}
       <NavBarDM />
     </View>
   );
@@ -175,7 +165,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   profileTitle: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 20,
     color: "#0055FF",
   },
@@ -195,12 +185,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#4F4F4F",
   },
   buttonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
     color: "#909090",
   },
   selectedButtonText: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 17,
     color: "#CA9CE1",
   },

@@ -14,7 +14,6 @@ const CuratorSelectionDMScreen = ({ navigation }) => {
       imageSource: require('../../assets/images/myloveMinePic.png'),
       title: "My Love Mine All mine",
     },
-    // Add more songs as needed
   ];
 
   const renderItem = ({ item }) => (
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
   profileTitle: {
-    fontFamily: "BarlowCondensed-Regular",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 20,
     color: "#fff",
   },

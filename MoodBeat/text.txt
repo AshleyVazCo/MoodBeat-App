@@ -6,13 +6,13 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 const SettingScreenDM = () => {
   const navigation = useNavigation();
   const [activeOption, setActiveOption] = useState(null);
-
-  const onClose = () => {
-    navigation.goBack();
-  };
   const onLogOutPress = () => {
     navigation.navigate("LoginScreenDM");
   };
+  const onClose = () => {
+    navigation.goBack();
+  };
+
   const options = [
     { title: "Personal Info", content: "", image: require('../../assets/icons/personalInfoIcon_Dark.png') },
     { title: "About", content: "Content for About", image: require('../../assets/icons/aboutIcon_Dark.png') },
@@ -136,13 +136,13 @@ const accountContent = [
                       style={[
                         styles.button,
                         { backgroundColor: item.color },
-                        item.title === "Delete Account" ? styles.deleteButton : styles.deleteButtonText,
+                        item.title === "Delete Account" ? styles.logoutButton : styles.saveChangesButton,
                       ]}
                       onPress={item.onPress}
                     >
                       <Text style={[
                         styles.buttonText,
-                        item.title === "Delete Account" ? styles.lightButton : styles.lightButtonText,
+                        item.title === "Delete Account" ? styles.logoutButtonText : styles.saveChangesButtonText,
                         { color: item.title === "Delete Account" ? "#FFFFFF" : "#26282C" },
                       ]}>
                         {item.title}
@@ -294,21 +294,22 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: "BarlowCondensed_400Regular",
   },
-      buttonContainer: {
+    buttonContainer: {
     width: '100%',
     height: '50%',
-    marginBottom: 90,
-    marginLeft: 60,
+    position: 'absolute',
+    top: '40%',
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
   logOutButton: {
     backgroundColor: '#FFFFF5',
     padding: 10,
     borderRadius: 10,
     width: '65%',
-    height:44,
+    height:'12%',
     alignItems: 'center',
     margin: 12,
     justifyContent: 'center'
@@ -318,11 +319,12 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     width: '65%',
-    height: 44,
+    height: '12%',
     alignItems: 'center',
     margin: 7,
     justifyContent: 'center',
   },
+
 });
 
 export default SettingScreenDM;

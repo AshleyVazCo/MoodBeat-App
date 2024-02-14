@@ -1,7 +1,10 @@
 import React from "react";
-import { View, TouchableHighlight, Share, Image } from "react-native";
+import { View, TouchableOpacity, Share, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-const ShareSettingHeaderLM = ({ onNavigateSetting }) => {
+const ShareSettingHeaderLM = () => {
+  const navigation = useNavigation();
+
   const onShare = async () => {
     try {
       const result = await Share.share({
@@ -17,14 +20,18 @@ const ShareSettingHeaderLM = ({ onNavigateSetting }) => {
     }
   };
 
+  const onNavigateSetting = () => {
+    navigation.navigate('SettingLM');
+  };
+
   return (
     <View style={styles.header}>
-      <TouchableHighlight onPress={onShare} underlayColor="transparent">
+      <TouchableOpacity onPress={onShare} underlayColor="transparent">
         <Image source={require('../../assets/icons/shareIcon_Light.png')} style={styles.icon} />
-      </TouchableHighlight>
-      <TouchableHighlight onPress={onNavigateSetting} underlayColor="transparent">
+      </TouchableOpacity>
+      <TouchableOpacity onPress={onNavigateSetting} underlayColor="transparent">
         <Image source={require('../../assets/icons/settingsIcon_Light.png')} style={styles.icon} onPress={onNavigateSetting} />
-      </TouchableHighlight>
+      </TouchableOpacity>
     </View>
   );
 };
