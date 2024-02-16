@@ -44,7 +44,7 @@ useEffect(() => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeDM">
+      <Stack.Navigator initialRouteName="HomeLM">
         <Stack.Screen
           name="CuratorDM"
           component={CuratorDMScreen}
