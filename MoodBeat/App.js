@@ -24,16 +24,19 @@ const Stack = createStackNavigator();
 const App = () => {
   const [fontLoaded, setFontLoaded] = useState(false);
 
-  useEffect(() => {
-    const loadFonts = async () => {
-      await Font.loadAsync({
-        BarlowCondensed_400Regular: require('./assets/Fonts/BarlowCondensed_400Regular.ttf'),
-      });
-      setFontLoaded(true);
-    };
+useEffect(() => {
+  const loadFonts = async () => {
+    await Font.loadAsync({
+      BarlowCondensed_400Regular: require('./assets/Fonts/BarlowCondensed_400Regular.ttf'),
+      BarlowCondensed_ExtraBold: require('./assets/Fonts/BarlowCondensed-ExtraBold.ttf'),
+      BarlowCondensed_Black: require('./assets/Fonts/BarlowCondensed-Black.ttf'),
+    });
+    setFontLoaded(true);
+  };
 
-    loadFonts();
-  }, []);
+  loadFonts();
+}, []);
+
 
   if (!fontLoaded) {
     return null;
