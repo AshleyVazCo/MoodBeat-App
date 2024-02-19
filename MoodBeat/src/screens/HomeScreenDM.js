@@ -46,12 +46,14 @@ const HomeScreenDM = () => {
             <MoodBoardCard
               imageSource={require('../../assets/images/classicalPic.png')}
               title="Classical"
+              id="Expressive"
               cardColor="#A7A69E"
               onPress={() => navigation.navigate('CuratorSelectionDM')}
             />
             <MoodBoardCard
               imageSource={require('../../assets/images/ambiencePic.png')}
               title="Ambiance"
+              id="Relaxation"
               cardColor="#339392"
               onPress={() => navigation.navigate('ProfileScreenDM', { curatorName: 'Ambiance' })}
             />

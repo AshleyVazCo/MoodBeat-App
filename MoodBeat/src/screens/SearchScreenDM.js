@@ -1,82 +1,110 @@
-import React from "react";
-import { StyleSheet, View, Image, ScrollView, TouchableOpacity, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import React, { useState } from "react";
+import { StyleSheet, View, Image, TextInput, TouchableWithoutFeedback, Keyboard, TouchableOpacity, Text } from "react-native";
 import NavBarDM from "../components/NavBarDM";
-import MoodBoardCard from "../components/MoodBoardCard";
 
-const HomeScreenDM = () => {
-  const navigation = useNavigation();
+const SearchScreenDM = () => {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [selectedFilters, setSelectedFilters] = useState([]);
 
-  const handleSettingsPress = () => {
-    navigation.navigate('SettingDM');
+  const handleFilterPress = () => {
+    setIsFilterOpen(!isFilterOpen);
+  };
+
+  const toggleFilter = (filter) => {
+    if (selectedFilters.includes(filter)) {
+      setSelectedFilters(selectedFilters.filter((item) => item !== filter));
+    } else {
+      setSelectedFilters([...selectedFilters, filter]);
+    }
+  };
+
+  const applyFilters = () => {
+    console.log("Selected filters:", selectedFilters);
+    setIsFilterOpen(false);
   };
 
   return (
-    <View style={styles.background}>
-      <ScrollView>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={styles.background}>
         <View style={styles.container}>
           <View style={styles.imgContainer}>
             <Image
-              source={require('../../assets/images/homeBackground_Dark.png')}
+              source={require('../../assets/images/rollerCoasterBackground.png')}
               style={styles.backgroundImg}
             />
-            <View style={styles.logoContainer}>
-              <Image
-                source={require('../../assets/icons/logoBlack.png')}
-                style={styles.logo}
+            <View style={styles.headerContainer}>
+              <TextInput
+                placeholder="Search..."
+                style={styles.input}
+                placeholderTextColor={'#909090'}
               />
-              <TouchableOpacity onPress={handleSettingsPress}>
+              <TouchableOpacity onPress={handleFilterPress} style={styles.filterButton}>
                 <Image
-                  source={require('../../assets/icons/settingsIcon_Dark.png')}
-                  style={styles.settingLogo}
+                  source={require('../../assets/icons/filterIcon_Dark.png')}
                 />
               </TouchableOpacity>
             </View>
-                <Text style={styles.landingText}>What Mood Are You In?</Text>
-                <Text style={styles.descriptionText}>MoodBeat is here to help you listen to tunes that match your mood. Generate a new moodboard, discover other boards, or look at your favorite creators.</Text>
-                  </View>
-            <Text style={styles.browseText}>Browse Your Mood</Text>
-            <View style={styles.browseContainer}>
-            <Image
-              source={require('../../assets/images/browseBackground.png')}
-              style={styles.backgroundImg}
-                      />
-            <Text style={styles.titleText}>Boards</Text>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.cardContainer}>
-            <MoodBoardCard
-              imageSource={require('../../assets/images/classicalPic.png')}
-              title="Classical"
-              cardColor="#A7A69E"
-              onPress={() => navigation.navigate('CuratorSelectionDM')}
-            />
-            <MoodBoardCard
-              imageSource={require('../../assets/images/ambiencePic.png')}
-              title="Ambiance"
-              cardColor="#339392"
-              onPress={() => navigation.navigate('ProfileScreenDM', { curatorName: 'Ambiance' })}
-            />
-            </ScrollView>
-            <Text style={styles.titleText}>Profiles</Text>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.cardContainer}>
-            <MoodBoardCard
-              imageSource={require('../../assets/images/jolinaProfilePic.png')}
-              title="Jolijass"
-              cardColor="#8E8E8E"
-              onPress={() => navigation.navigate('CuratorSelectionDM')}
-            />
-            <MoodBoardCard
-              imageSource={require('../../assets/images/alanProfilePic.png')}
-              title="alan.jpg"
-              cardColor="#B7E3FF"
-              color="#0055FF"
-              onPress={() => navigation.navigate('ProfileScreenDM', { curatorName: 'Ambiance' })}
-            />
-          </ScrollView>
+            {isFilterOpen && (
+              <View style={styles.filterContainer}>
+                <View style={styles.filterColumn}>
+                  <Text
+                    style={[
+                      styles.filterOption,
+                      selectedFilters.includes("Motivation") && { color: "#CA9CE1" },
+                    ]}
+                    onPress={() => toggleFilter("Motivation")}
+                  >
+                    Motivation
+                  </Text>
+                  <Text
+                    style={[
+                      styles.filterOption,
+                      selectedFilters.includes("Concentration") && { color: "#CA9CE1" },
+                    ]}
+                    onPress={() => toggleFilter("Concentration")}
+                  >
+                    Concentration
+                  </Text>
+                  <Text
+                    style={[
+                      styles.filterOption,
+                      selectedFilters.includes("Relaxation") && { color: "#CA9CE1" },
+                    ]}
+                    onPress={() => toggleFilter("Relaxation")}
+                  >
+                    Relaxation
+                  </Text>
+                </View>
+                <View style={styles.filterColumn}>
+                  <Text
+                    style={[
+                      styles.filterOption,
+                      selectedFilters.includes("Energetic") && { color: "#CA9CE1" },
+                    ]}
+                    onPress={() => toggleFilter("Energetic")}
+                  >
+                    Energetic
+                  </Text>
+                  <Text
+                    style={[
+                      styles.filterOption,
+                      selectedFilters.includes("Expressive") && { color: "#CA9CE1" },
+                    ]}
+                    onPress={() => toggleFilter("Expressive")}
+                  >
+                    Expressive
+                  </Text>
+                </View>
+                <TouchableOpacity style={styles.applyButton} onPress={applyFilters}>
+                  <Text style={styles.applyButtonText}>Apply</Text>
+                </TouchableOpacity>
+              </View>
+            )}
           </View>
         </View>
-          </ScrollView>
         <NavBarDM />
-    </View>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -86,67 +114,71 @@ const styles = StyleSheet.create({
     backgroundColor: "#26282C",
   },
   container: {
-      flex: 1,
-      height: 1704
+    flex: 1,
+    height: 1704,
   },
   imgContainer: {
-      height: 740,
-      alignItems: 'center'
+    height: 740,
+    position: 'relative',
   },
   backgroundImg: {
     height: 765,
     position: "absolute",
-    },
-  logoContainer: {
+  },
+  headerContainer: {
+    width: '100%',
+    height: 135,
+    backgroundColor: '#161717',
+    justifyContent: 'center',
+    alignItems: 'center',
     flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: 150,
+    paddingHorizontal: 10,
   },
-  logo: {
-    marginTop: 50,
-    width: 70,
-    height: 75,
-  },
-  settingLogo: {
-    marginLeft: 120,
-    width: 28,
-    height: 28,
-  },
-  landingText: {
-    fontSize: 45,
-    width: 200,
-    color: '#26282C',
-    fontFamily: 'BarlowCondensed_Black',
-      marginTop: 80,
-  },
-  descriptionText: {
-    fontSize: 17,
-    width: 298,
-    color: '#26282C',
-    fontFamily: 'BarlowCondensed_400Regular',
-    marginTop: 320,
-  },
-  browseContainer: {
+  input: {
+    borderRadius: 10,
     flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    },
-  browseText: {
-    fontSize: 34,
-    color: '#CA9CE1',
-    fontFamily: 'BarlowCondensed_ExtraBold',
-    marginTop: 80,
-    marginLeft: 80,
-    },
-  cardContainer: {
-    marginTop: 150,
-    },
-  titleText: {
-      top: 120,
-      fontFamily: 'BarlowCondensed_400Regular',
-      color: '#FFFFFC',
-      fontSize: 28,
-    }
+    height: 40,
+    borderWidth: 1,
+    padding: 10,
+    borderColor: '#909090',
+    color: '#909090',
+    marginRight: 10,
+  },
+  filterContainer: {
+    position: 'absolute',
+    top: 135,
+    right: 0,
+    width: '100%',
+    height: 151,
+    backgroundColor: '#161717',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  filterColumn: {
+    flex: 1,
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+  },
+  filterOption: {
+    fontSize: 18,
+    color: '#FFFFFC',
+    marginLeft: 25,
+  },
+  applyButton: {
+    backgroundColor: "#CA9CE1",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 5,
+    marginRight: 10,
+    alignSelf: 'center',
+  },
+  applyButtonText: {
+    color: "#26282C",
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
 });
 
-export default HomeScreenDM;
+export default SearchScreenDM;
+
+
