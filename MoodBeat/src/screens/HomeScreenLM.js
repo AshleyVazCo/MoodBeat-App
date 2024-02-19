@@ -8,7 +8,7 @@ const HomeScreenDM = () => {
   const navigation = useNavigation();
 
   const handleSettingsPress = () => {
-    navigation.navigate('SettingDM');
+    navigation.navigate('SettingLM');
   };
 
   return (
@@ -47,13 +47,13 @@ const HomeScreenDM = () => {
               imageSource={require('../../assets/images/classicalPic.png')}
               title="Classical"
               cardColor="#A7A69E"
-              onPress={() => navigation.navigate('CuratorSelectionDM')}
+              onPress={() => navigation.navigate('CuratorSelectionLM')}
             />
             <MoodBoardCard
               imageSource={require('../../assets/images/ambiencePic.png')}
               title="Ambiance"
               cardColor="#339392"
-              onPress={() => navigation.navigate('ProfileScreenDM', { curatorName: 'Ambiance' })}
+              onPress={() => navigation.navigate('ProfileSectionLM', { curatorName: 'Ambiance' })}
             />
             </ScrollView>
             <Text style={styles.titleText}>Profiles</Text>
@@ -62,14 +62,14 @@ const HomeScreenDM = () => {
               imageSource={require('../../assets/images/jolinaProfilePic.png')}
               title="Jolijass"
               cardColor="#8E8E8E"
-              onPress={() => navigation.navigate('CuratorSelectionDM')}
+              onPress={() => navigation.navigate('CuratorSelectionLM')}
             />
             <MoodBoardCard
               imageSource={require('../../assets/images/alanProfilePic.png')}
               title="alan.jpg"
               cardColor="#B7E3FF"
               color="#0055FF"
-              onPress={() => navigation.navigate('ProfileScreenDM', { curatorName: 'Ambiance' })}
+              onPress={() => navigation.navigate('ProfileScreenLM', { curatorName: 'Ambiance' })}
             />
           </ScrollView>
           </View>

@@ -26,19 +26,18 @@ const Stack = createStackNavigator();
 const App = () => {
   const [fontLoaded, setFontLoaded] = useState(false);
 
-useEffect(() => {
-  const loadFonts = async () => {
-    await Font.loadAsync({
-      BarlowCondensed_400Regular: require('./assets/Fonts/BarlowCondensed_400Regular.ttf'),
-      BarlowCondensed_ExtraBold: require('./assets/Fonts/BarlowCondensed-ExtraBold.ttf'),
-      BarlowCondensed_Black: require('./assets/Fonts/BarlowCondensed-Black.ttf'),
-    });
-    setFontLoaded(true);
-  };
+  useEffect(() => {
+    const loadFonts = async () => {
+      await Font.loadAsync({
+        BarlowCondensed_400Regular: require('./assets/Fonts/BarlowCondensed_400Regular.ttf'),
+        BarlowCondensed_ExtraBold: require('./assets/Fonts/BarlowCondensed-ExtraBold.ttf'),
+        BarlowCondensed_Black: require('./assets/Fonts/BarlowCondensed-Black.ttf'),
+      });
+      setFontLoaded(true);
+    };
 
-  loadFonts();
-}, []);
-
+    loadFonts();
+  }, []);
 
   if (!fontLoaded) {
     return null;
@@ -82,9 +81,10 @@ useEffect(() => {
           component={ProfileSectionDM}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="ProfileSectionLM" 
-        component={ProfileSectionLM} 
-        options={{ headerShown: false }}
+        <Stack.Screen
+          name="ProfileSectionLM"
+          component={ProfileSectionLM}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="CreationLM"
@@ -95,7 +95,7 @@ useEffect(() => {
           name="CreationDM"
           component={CreationScreenDM}
           options={{ headerShown: false }}
-          />
+        />
         <Stack.Screen
           name="LoginScreenLM"
           component={LoginScreenLM}
@@ -131,7 +131,7 @@ useEffect(() => {
           component={SearchScreenLM}
           options={{ headerShown: false }}
         />
-                <Stack.Screen
+        <Stack.Screen
           name="SearchDM"
           component={SearchScreenDM}
           options={{ headerShown: false }}
