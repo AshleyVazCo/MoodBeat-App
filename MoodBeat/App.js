@@ -18,6 +18,8 @@ import SettingScreenDM from "./src/screens/SettingScreenDM";
 import SettingScreenLM from './src/screens/SettingScreenLM';
 import HomeScreenDM from './src/screens/HomeScreenDM';
 import HomeScreenLM from './src/screens/HomeScreenLM';
+import SearchScreenDM from './src/screens/SearchScreenDM';
+import SearchScreenLM from './src/screens/SearchScreenLM';
 
 const Stack = createStackNavigator();
 
@@ -122,6 +124,16 @@ useEffect(() => {
         <Stack.Screen
           name="HomeLM"
           component={HomeScreenLM}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SearchLM"
+          component={SearchScreenLM}
+          options={{ headerShown: false }}
+        />
+                <Stack.Screen
+          name="SearchDM"
+          component={SearchScreenDM}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
