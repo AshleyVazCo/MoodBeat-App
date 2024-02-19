@@ -16,22 +16,29 @@ import CreationScreenLM from './src/screens/CreationScreenLM';
 import CreationScreenDM from './src/screens/CreationScreenDM';
 import SettingScreenDM from "./src/screens/SettingScreenDM";
 import SettingScreenLM from './src/screens/SettingScreenLM';
+import HomeScreenDM from './src/screens/HomeScreenDM';
+import HomeScreenLM from './src/screens/HomeScreenLM';
+import SearchScreenDM from './src/screens/SearchScreenDM';
+import SearchScreenLM from './src/screens/SearchScreenLM';
 
 const Stack = createStackNavigator();
 
 const App = () => {
   const [fontLoaded, setFontLoaded] = useState(false);
 
-  useEffect(() => {
-    const loadFonts = async () => {
-      await Font.loadAsync({
-        BarlowCondensed_400Regular: require('./assets/Fonts/BarlowCondensed_400Regular.ttf'),
-      });
-      setFontLoaded(true);
-    };
+useEffect(() => {
+  const loadFonts = async () => {
+    await Font.loadAsync({
+      BarlowCondensed_400Regular: require('./assets/Fonts/BarlowCondensed_400Regular.ttf'),
+      BarlowCondensed_ExtraBold: require('./assets/Fonts/BarlowCondensed-ExtraBold.ttf'),
+      BarlowCondensed_Black: require('./assets/Fonts/BarlowCondensed-Black.ttf'),
+    });
+    setFontLoaded(true);
+  };
 
-    loadFonts();
-  }, []);
+  loadFonts();
+}, []);
+
 
   if (!fontLoaded) {
     return null;
@@ -39,7 +46,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ProfileSectionLM">
+      <Stack.Navigator initialRouteName="SearchLM">
         <Stack.Screen
           name="CuratorDM"
           component={CuratorDMScreen}
@@ -107,6 +114,26 @@ const App = () => {
         <Stack.Screen
           name="SettingLM"
           component={SettingScreenLM}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="HomeDM"
+          component={HomeScreenDM}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="HomeLM"
+          component={HomeScreenLM}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SearchLM"
+          component={SearchScreenLM}
+          options={{ headerShown: false }}
+        />
+                <Stack.Screen
+          name="SearchDM"
+          component={SearchScreenDM}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
