@@ -45,7 +45,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SearchLM">
+      <Stack.Navigator initialRouteName="LoginScreenDM">
         <Stack.Screen
           name="CuratorDM"
           component={CuratorDMScreen}

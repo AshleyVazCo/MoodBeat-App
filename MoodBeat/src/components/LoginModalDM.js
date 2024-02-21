@@ -6,6 +6,8 @@ import VerificationModalDM from '../components/VerificationModalDM';
 const LoginModalLM = ({ visible, onClose }) => {
   const navigation = useNavigation();
   const [isForgotPasswordModalVisible, setForgotPasswordModalVisible] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const navigateToScreen = (screenName) => {
     navigation.navigate(screenName);
@@ -18,6 +20,17 @@ const LoginModalLM = ({ visible, onClose }) => {
   const handleVerificationScreenClose = () => {
     setForgotPasswordModalVisible(false);
     onClose();
+  };
+
+  const handleLogin = () => {
+    if (username.trim() !== '' && password.trim() !== '') {
+      // Perform login actions here
+      navigateToScreen("HomeDM");
+      onClose();
+    } else {
+      // Display an error message or perform other actions for empty fields
+      alert("Please fill in both username and password.");
+    }
   };
 
   return (
@@ -45,34 +58,46 @@ const LoginModalLM = ({ visible, onClose }) => {
             </View>
 
             <View style={styles.formContainer}>
-              <TextInput placeholder="Username" style={styles.input} placeholderTextColor={'#909090'} />
-              <TextInput placeholder="Password" secureTextEntry style={styles.input} placeholderTextColor={'#909090'} />
+              <TextInput
+                placeholder="Username"
+                style={styles.input}
+                placeholderTextColor={'#909090'}
+                value={username}
+                onChangeText={setUsername}
+              />
+              <TextInput
+                placeholder="Password"
+                secureTextEntry
+                style={styles.input}
+                placeholderTextColor={'#909090'}
+                value={password}
+                onChangeText={setPassword}
+              />
               <TouchableOpacity onPress={handleForgotPasswordPress}>
                 <Text style={styles.forgotPasswordLink}>Forgot Password?</Text>
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.loginButton} onPress={() => navigateToScreen("ProfileScreenDM")}>
+            <TouchableOpacity style={styles.loginButton} onPress={handleLogin} disabled={!username || !password}>
               <Text style={styles.buttonText}>Login</Text>
-              </TouchableOpacity>
+            </TouchableOpacity>
           </>
         )}
       </View>
     </Modal>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
-      backgroundColor: '#26282C',
-      height: 760,
-      width: 380,
-      flex: 1,
+    backgroundColor: '#26282C',
+    height: 760,
+    width: 380,
+    flex: 1,
     borderRadius: 20,
     alignItems: 'center',
-        padding: 20,
-  borderRadius: 10,
-    },
+    padding: 20,
+    borderRadius: 10,
+  },
   closeButton: {
     width: '12%',
     height: '8%',
@@ -81,7 +106,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: '3%',
     top: 12,
-    },
+  },
   closeIcon: {
     color: '#CA9CE1',
     fontSize: 30,
@@ -148,6 +173,6 @@ const styles = StyleSheet.create({
   forgotPasswordLink: {
     color: '#909090'
   }
-}
-)
+});
+
 export default LoginModalLM;
