@@ -7,21 +7,12 @@ import {
   TouchableHighlight,
   ScrollView,
 } from "react-native";
-import {
-  useFonts,
-  BarlowCondensed_400Regular,
-  BarlowCondensed_600SemiBold,
-} from "@expo-google-fonts/barlow-condensed";
 import ShareSettingHeaderLM from "../components/ShareSettingHeaderLM";
 import MoodBoardCardLM from "../components/MoodBoardCardLM";
 import NavBarLM from "../components/NavBarLM";
 import MyMusicSectionLM from "../components/MyMusicSectionLM";
 
 const ProfileSectionLM = ({ navigation }) => {
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-    BarlowCondensed_600SemiBold,
-  });
 
   const [selectedTab, setSelectedTab] = useState("Created");
 
@@ -30,10 +21,6 @@ const ProfileSectionLM = ({ navigation }) => {
   const closeModal = () => {
     setModalVisible(false);
   };
-
-  if (!fontsLoaded) {
-    return null;
-  }
 
   // Code for the different boards. The first part will render the boards if the created tab is selected. The second part will render the boards in the saved tab.
   const renderCardSet = () => {
@@ -158,7 +145,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
   },
   profileTitle: {
-    fontFamily: "BarlowCondensed_600SemiBold",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 20,
     color: "#0055FF",
     alignSelf: "flex-end",

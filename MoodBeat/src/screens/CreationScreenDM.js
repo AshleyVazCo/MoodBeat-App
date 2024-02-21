@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { StyleSheet, View, Text, TouchableHighlight, Image, Modal } from "react-native";
 import NavBarDM from "../components/NavBarDM";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
 import BoardInfoModalDM from "../components/BoardInfoModalDM";
 import SearchMusicModalDM from "../components/SearchMusicModalDM";
 
@@ -10,18 +9,9 @@ const Creation = ({ navigation }) => {
   const [boardModalVisible, setBoardModalVisible] = useState(false);
   const [sectionModalVisible, setSectionModalVisible] = useState(false);
 
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-  });
-
-  // Check if fonts are loaded before rendering the component
-  if (!fontsLoaded) {
-    return null;
-  }
-
   const handleSettingsPress = () => {
-    navigation.navigate('NonExistingPage');
     console.log("Settings icon pressed");
+    navigation.navigate('SettingDM');
   };
 
   const handleCreateBoardPress = () => {
@@ -49,9 +39,10 @@ const Creation = ({ navigation }) => {
         <Image
           style={styles.logo}
           source={require('../../assets/icons/logoWhite.png')}
-          />
-        <TouchableOpacity>
-          <Image source={require('../../assets/icons/settingsIcon_Dark.png')} onPress={handleSettingsPress} 
+        />
+        <TouchableOpacity onPress={handleSettingsPress} activeOpacity={1}>
+          <Image
+            source={require('../../assets/icons/settingsIcon_Dark.png')}
             style={styles.settings}
           />
         </TouchableOpacity>
@@ -70,7 +61,7 @@ const Creation = ({ navigation }) => {
           underlayColor="#DDDDDD"
         >
           <View style={styles.section}>
-            <Image source={require('../../assets/icons/boardsIcon_Dark.png')} 
+            <Image source={require('../../assets/icons/createSectionIcon_Dark.png')} 
               style={styles.sectionImage}
             />
             <Text style={styles.buttonText}>Create Section</Text>
@@ -122,7 +113,6 @@ const Creation = ({ navigation }) => {
           >
             <Text style={styles.closeModalButtonText}>Close Modal</Text>
           </TouchableOpacity>
-          {/* Your section modal content here */}
           <SearchMusicModalDM onCloseModal={handleCloseSectionModal} />
         </View>
       </Modal>

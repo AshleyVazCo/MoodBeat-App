@@ -2,13 +2,9 @@ import React from "react";
 import { useState } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ImageBackground } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
 import LoginModalLM from "../components/LoginModalLM";
 import SignUpModalLM from "../components/signUpModalLM";
 import { useNavigation } from "@react-navigation/native";
-
-
-
 
 const LoginScreenLM = () => {
 
@@ -17,18 +13,9 @@ const LoginScreenLM = () => {
     const navigateToScreen = (screenName) => {
     navigation.navigate(screenName);
     };
-    
-    const [fontsLoaded] = useFonts({
-        BarlowCondensed_400Regular,
-    });
 
     const [loginModalVisible, setLoginModalVisible] = useState(false);
     const [signUpModalVisible, setSignUpModalVisible] = useState(false);
-
-    if (!fontsLoaded) {
-        return null;
-    }
-
     
 
     return (

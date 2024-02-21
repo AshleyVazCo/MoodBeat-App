@@ -7,11 +7,6 @@ import {
   TouchableHighlight,
   ScrollView,
 } from "react-native";
-import {
-  useFonts,
-  BarlowCondensed_400Regular,
-  BarlowCondensed_600SemiBold,
-} from "@expo-google-fonts/barlow-condensed";
 import ShareSettingHeaderDM from "../components/ShareSettingHeaderDM";
 import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarDM from "../components/NavBarDM";
@@ -22,29 +17,13 @@ import EditTextModalDM from "../components/EditTextModalDM";
 import CuratorSelectionDMScreen from "./CuratorSelectionDMScreen";
 
 const ProfileScreenDM = ({ navigation }) => {
-
-  //Fonts
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-    BarlowCondensed_600SemiBold,
-  });
-
-  // Tabs
   const [selectedTab, setSelectedTab] = useState("Created");
-
-  // Edit Profile Modal
   const [modalVisible, setModalVisible] = useState(false);
 
   const closeModal = () => {
     setModalVisible(false);
   };
 
-  //Fonts
-  if (!fontsLoaded) {
-    return null;
-  }
-
-  // Code for the different boards. The first part will render the boards if the created tab is selected. The second part will render the boards in the saved tab.
   const renderCardSet = () => {
     if (selectedTab === "Created") {
       return (
@@ -115,7 +94,7 @@ const ProfileScreenDM = ({ navigation }) => {
         <Image
           source={
             require('../../assets/images/alanProfilePic.png')
-          } 
+          }
           style={styles.profileImage}
           onPress={() => setModalVisible(true)}
         />
@@ -164,8 +143,6 @@ const ProfileScreenDM = ({ navigation }) => {
         {renderCardSet()}
       </ScrollView>
       <EditProfileModalDM isVisible={modalVisible} onClose={closeModal} />
-      {/* <BackgroundColorModalDM isVisible={modalVisible} onClose={closeModal} /> */}
-      {/* <EditTextModalDM isVisible={modalVisible} onClose={closeModal} /> */}
       <NavBarDM />
     </View>
   );
@@ -189,7 +166,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   profileTitle: {
-    fontFamily: "BarlowCondensed_600SemiBold",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 20,
     color: "#0055FF",
   },

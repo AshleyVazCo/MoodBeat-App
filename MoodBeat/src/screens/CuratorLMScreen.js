@@ -1,20 +1,12 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, TouchableHighlight, ScrollView, Image } from "react-native";
-import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
 import ShareSettingHeaderLM from "../components/ShareSettingHeaderLM";
 import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarLM from "../components/NavBarLM";
 
 const CuratorLMScreen = ({ navigation }) => {
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-  });
 
   const [selectedTab, setSelectedTab] = useState("Created");
-
-  if (!fontsLoaded) {
-    return null;
-  }
 
 const renderCardSet = () => {
   if (selectedTab === "Created") {

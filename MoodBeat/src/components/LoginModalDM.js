@@ -1,48 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, StyleSheet, View, Text, Modal, TouchableOpacity, TextInput } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
+import VerificationModalDM from '../components/VerificationModalDM';
 
-
-const LoginModalDM = ({ visible, onClose }) => {
-
+const LoginModalLM = ({ visible, onClose }) => {
   const navigation = useNavigation();
+  const [isForgotPasswordModalVisible, setForgotPasswordModalVisible] = useState(false);
 
   const navigateToScreen = (screenName) => {
-  navigation.navigate(screenName);
-    };
+    navigation.navigate(screenName);
+  };
+
+  const handleForgotPasswordPress = () => {
+    setForgotPasswordModalVisible(true);
+  };
+
+  const handleVerificationScreenClose = () => {
+    setForgotPasswordModalVisible(false);
+    onClose();
+  };
 
   return (
-      <Modal
-          animationType="slide"
-          transparent={true}
-          visible={visible}
-          onRequestClose={onClose}
-      >
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={visible || isForgotPasswordModalVisible}
+      onRequestClose={onClose}
+    >
       <View style={styles.container}>
-        
-        <TouchableOpacity onPress={onClose} style = {styles.closeButton}>
-          <Text style = {styles.closeIcon}>X</Text>
-        </TouchableOpacity>
+        {isForgotPasswordModalVisible ? (
+          <VerificationModalDM onClose={handleVerificationScreenClose} />
+        ) : (
+          <>
+            <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+              <Text style={styles.closeIcon}>X</Text>
+            </TouchableOpacity>
 
-        <View style = {styles.logo}>
-          <Image source = {require('../../assets/icons/logoWhite.png')} >
-          </Image>
-        </View>
+            <View style={styles.logo}>
+              <Image source={require('../../assets/icons/logoWhite.png')} />
+            </View>
 
-        {/* Your login modal content */}
-        <View style={styles.loginTitle}>
-        <Text style={styles.loginTitleText}>Log In</Text>
-        </View>
-        
-        <View style = {styles.formContainer}>
-          <TextInput placeholder="Username" style={styles.input} placeholderTextColor={'#909090'} />
-          <TextInput placeholder="Password" secureTextEntry style={styles.input} placeholderTextColor={'#909090'} />
-          <Text>Forgot Password?</Text>
-        </View>
+            <View style={styles.loginTitle}>
+              <Text style={styles.loginTitleText}>Log In</Text>
+            </View>
 
-        <TouchableOpacity style={styles.loginButton} onPress={() => navigateToScreen("ProfileScreenDM")}>
-          <Text style = {styles.buttonText}>Login</Text>
-        </TouchableOpacity>
+            <View style={styles.formContainer}>
+              <TextInput placeholder="Username" style={styles.input} placeholderTextColor={'#909090'} />
+              <TextInput placeholder="Password" secureTextEntry style={styles.input} placeholderTextColor={'#909090'} />
+              <TouchableOpacity onPress={handleForgotPasswordPress}>
+                <Text style={styles.forgotPasswordLink}>Forgot Password?</Text>
+              </TouchableOpacity>
+            </View>
+
+            <TouchableOpacity style={styles.loginButton} onPress={() => navigateToScreen("ProfileScreenDM")}>
+              <Text style={styles.buttonText}>Login</Text>
+              </TouchableOpacity>
+          </>
+        )}
       </View>
     </Modal>
   );
@@ -51,16 +65,15 @@ const LoginModalDM = ({ visible, onClose }) => {
 const styles = StyleSheet.create({
   container: {
       backgroundColor: '#26282C',
-      height: '95%',
-      width:'100%',
+      height: 760,
+      width: 380,
       flex: 1,
-      position: 'absolute',
-      top: '15%',
     borderRadius: 20,
-      alignItems: 'center',
+    alignItems: 'center',
+        padding: 20,
+  borderRadius: 10,
     },
   closeButton: {
-   // backgroundColor: 'red',
     width: '12%',
     height: '8%',
     alignItems: 'center',
@@ -83,7 +96,6 @@ const styles = StyleSheet.create({
     top: 12,
   },
   loginTitle: {
-    //backgroundColor: 'red',
     height: "20%",
     width: '100%',
     justifyContent: 'center',
@@ -95,11 +107,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center',
     fontFamily: "BarlowCondensed_400Regular",
-    color: '#909090',
+    color: '#CA9CE1',
     fontSize: 30,
   },
   formContainer: {
-    //backgroundColor: 'purple',
     height: "20%",
     width: '100%',
     justifyContent: 'center',
@@ -113,8 +124,9 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1,
-    borderColor: '#909090',
     padding: 10,
+    borderColor: '#909090',
+    color: '#909090',
   },
   loginButton: {
     backgroundColor: '#4F4F4F',
@@ -132,7 +144,10 @@ const styles = StyleSheet.create({
     color: '#CA9CE1',
     fontSize: 20,
     fontFamily: "BarlowCondensed_400Regular",
-}
+  },
+  forgotPasswordLink: {
+    color: '#909090'
+  }
 }
 )
-export default LoginModalDM;
+export default LoginModalLM;

@@ -7,21 +7,12 @@ import {
   TouchableHighlight,
   ScrollView,
 } from "react-native";
-import {
-  useFonts,
-  BarlowCondensed_400Regular,
-  BarlowCondensed_600SemiBold,
-} from "@expo-google-fonts/barlow-condensed";
 import ShareSettingHeaderDM from "../components/ShareSettingHeaderDM";
 import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarDM from "../components/NavBarDM";
 import MyMusicSectionDM from "../components/MyMusicSectionDM";
 
 const ProfileSectionDM = ({ navigation }) => {
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-    BarlowCondensed_600SemiBold,
-  });
 
   const [selectedTab, setSelectedTab] = useState("Created");
 
@@ -30,10 +21,6 @@ const ProfileSectionDM = ({ navigation }) => {
   const closeModal = () => {
     setModalVisible(false);
   };
-
-  if (!fontsLoaded) {
-    return null;
-  }
 
   // Code for the different boards. The first part will render the boards if the created tab is selected. The second part will render the boards in the saved tab.
   const renderCardSet = () => {
@@ -45,11 +32,6 @@ const ProfileSectionDM = ({ navigation }) => {
             title="You Not The Same"
             onPress={() => setModalVisible(true)}
           />
-          <MoodBoardCardLM
-            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
-            title="DK Ost"
-            // cardColor="#161733"
-          />
         </>
       );
     } else if (selectedTab === "Saved") {
@@ -59,11 +41,6 @@ const ProfileSectionDM = ({ navigation }) => {
             imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
             title="My Love Mine All Mine"
             // cardColor="#AFC1D7"
-          />
-          <MoodBoardCardLM
-            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
-            title="Come, Gentle Night"
-            // cardColor="#161733"
           />
         </>
       );
@@ -158,7 +135,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
   },
   profileTitle: {
-    fontFamily: "BarlowCondensed_600SemiBold",
+    fontFamily: "BarlowCondensed_400Regular",
     fontSize: 20,
     color: "#0055FF",
     alignSelf: "flex-end",

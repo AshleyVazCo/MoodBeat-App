@@ -1,26 +1,16 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableHighlight, Image, Modal } from "react-native";
+import { StyleSheet, View, Text, TouchableHighlight, Image, Modal, TouchableWithoutFeedback } from "react-native";
 import NavBarLM from "../components/NavBarLM";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
 import BoardInfoModalLM from "../components/BoardInfoModalLM";
 import SearchMusicModalLM from "../components/SearchMusicModalLM";
 
-const Creation = ({ navigation }) => {
+const CreationScreenLM = ({ navigation }) => {
   const [boardModalVisible, setBoardModalVisible] = useState(false);
   const [sectionModalVisible, setSectionModalVisible] = useState(false);
 
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-  });
-
-  // Check if fonts are loaded before rendering the component
-  if (!fontsLoaded) {
-    return null;
-  }
-
   const handleSettingsPress = () => {
-    navigation.navigate('NonExistingPage');
+    navigation.navigate('SettingLM');
     console.log("Settings icon pressed");
   };
 
@@ -49,12 +39,13 @@ const Creation = ({ navigation }) => {
         <Image
           style={styles.logo}
           source={require('../../assets/icons/logoPurple.png')}
-          />
-        <TouchableOpacity>
-          <Image source={require('../../assets/icons/settingsIcon_Light.png')} onPress={handleSettingsPress} 
+        />
+        <TouchableWithoutFeedback onPress={handleSettingsPress}>
+          <Image
+            source={require('../../assets/icons/settingsIcon_Light.png')}
             style={styles.settings}
           />
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
       </View>
       <View style={styles.headerContainer}>
         <Text style={styles.header}>In the Mood to Create?</Text>
@@ -70,7 +61,7 @@ const Creation = ({ navigation }) => {
           underlayColor="#DDDDDD"
         >
           <View style={styles.section}>
-            <Image source={require('../../assets/icons/boardsIcon_Light.png')} 
+            <Image source={require('../../assets/icons/createSectionIcon_Light.png')} 
               style={styles.sectionImage}
             />
             <Text style={styles.buttonText}>Create Section</Text>
@@ -102,7 +93,6 @@ const Creation = ({ navigation }) => {
             >
               <Text style={styles.closeModalButtonText}>Close Modal</Text>
             </TouchableOpacity>
-          {/* Your board modal content here */}
           <BoardInfoModalLM />
           </View>
         </Modal>
@@ -120,7 +110,6 @@ const Creation = ({ navigation }) => {
           >
             <Text style={styles.closeModalButtonText}>Close Modal</Text>
           </TouchableOpacity>
-          {/* Your section modal content here */}
           <SearchMusicModalLM onCloseModal={handleCloseSectionModal} />
         </View>
       </Modal>
@@ -228,4 +217,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Creation;
+export default CreationScreenLM;

@@ -1,49 +1,62 @@
-
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, StyleSheet, View, Text, Modal, TouchableOpacity, TextInput } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
+import VerificationModalLM from '../components/VerificationModalLM';
 
 const LoginModalLM = ({ visible, onClose }) => {
-
   const navigation = useNavigation();
+  const [isForgotPasswordModalVisible, setForgotPasswordModalVisible] = useState(false);
 
   const navigateToScreen = (screenName) => {
-  navigation.navigate(screenName);
+    navigation.navigate(screenName);
   };
-  
+
+  const handleForgotPasswordPress = () => {
+    setForgotPasswordModalVisible(true);
+  };
+
+  const handleVerificationScreenClose = () => {
+    setForgotPasswordModalVisible(false);
+    onClose();
+  };
+
   return (
-      <Modal
-          animationType="slide"
-          transparent={true}
-          visible={visible}
-          onRequestClose={onClose}
-      >
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={visible || isForgotPasswordModalVisible}
+      onRequestClose={onClose}
+    >
       <View style={styles.container}>
-        
-        <TouchableOpacity onPress={onClose} style = {styles.closeButton}>
-          <Text style = {styles.closeIcon}>X</Text>
-        </TouchableOpacity>
+        {isForgotPasswordModalVisible ? (
+          <VerificationModalLM onClose={handleVerificationScreenClose} />
+        ) : (
+          <>
+            <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+              <Text style={styles.closeIcon}>X</Text>
+            </TouchableOpacity>
 
-        <View style = {styles.logo}>
-          <Image source = {require('../../assets/icons/logoPurple.png')} >
-          </Image>
-        </View>
+            <View style={styles.logo}>
+              <Image source={require('../../assets/icons/logoPurple.png')} />
+            </View>
 
-        {/* Your login modal content */}
-        <View style={styles.loginTitle}>
-        <Text style={styles.loginTitleText}>Log In</Text>
-        </View>
-        
-        <View style = {styles.formContainer}>
-          <TextInput placeholder="Username" style={styles.input} placeholderTextColor={'black'} />
-          <TextInput placeholder="Password" secureTextEntry style={styles.input} placeholderTextColor={'black'} />
-          <Text>Forgot Password?</Text>
-        </View>
+            <View style={styles.loginTitle}>
+              <Text style={styles.loginTitleText}>Log In</Text>
+            </View>
 
-        <TouchableOpacity style={styles.loginButton} onPress={() => navigateToScreen("ProfileScreenLM")}>
-          <Text style = {styles.buttonText}>Login</Text>
-        </TouchableOpacity>
+            <View style={styles.formContainer}>
+              <TextInput placeholder="Username" style={styles.input} placeholderTextColor={'black'} />
+              <TextInput placeholder="Password" secureTextEntry style={styles.input} placeholderTextColor={'black'} />
+              <TouchableOpacity onPress={handleForgotPasswordPress}>
+                <Text style={styles.forgotPasswordLink}>Forgot Password?</Text>
+              </TouchableOpacity>
+            </View>
+
+            <TouchableOpacity style={styles.loginButton} onPress={() => navigateToScreen("ProfileScreenDM")}>
+              <Text style={styles.buttonText}>Login</Text>
+              </TouchableOpacity>
+          </>
+        )}
       </View>
     </Modal>
   );
@@ -52,16 +65,15 @@ const LoginModalLM = ({ visible, onClose }) => {
 const styles = StyleSheet.create({
   container: {
       backgroundColor: 'white',
-      height: '95%',
-      width:'100%',
+      height: 760,
+      width: 380,
       flex: 1,
-      position: 'absolute',
-      top: '15%',
     borderRadius: 20,
-      alignItems: 'center',
+    alignItems: 'center',
+        padding: 20,
+  borderRadius: 10,
     },
   closeButton: {
-   // backgroundColor: 'red',
     width: '12%',
     height: '8%',
     alignItems: 'center',
@@ -84,7 +96,6 @@ const styles = StyleSheet.create({
     top: 12,
   },
   loginTitle: {
-    //backgroundColor: 'red',
     height: "20%",
     width: '100%',
     justifyContent: 'center',
@@ -100,7 +111,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   formContainer: {
-    //backgroundColor: 'purple',
     height: "20%",
     width: '100%',
     justifyContent: 'center',

@@ -1,20 +1,12 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, TouchableHighlight, ScrollView, Image } from "react-native";
-import { useFonts, BarlowCondensed_400Regular } from '@expo-google-fonts/barlow-condensed';
 import ShareSettingHeaderDM from "../components/ShareSettingHeaderDM";
 import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarDM from "../components/NavBarDM";
 
 const CuratorDMScreen = ({ navigation }) => {
-  const [fontsLoaded] = useFonts({
-    BarlowCondensed_400Regular,
-  });
 
-  const [selectedTab, setSelectedTab] = useState("Created");
-
-  if (!fontsLoaded) {
-    return null;
-  }
+const [selectedTab, setSelectedTab] = useState("Created");
 
   const renderCardSet = () => {
     if (selectedTab === "Created") {
@@ -50,6 +42,10 @@ const CuratorDMScreen = ({ navigation }) => {
         />
       </>
     );
+  };
+
+  const onClose = () => {
+    navigation.goBack();
   };
 
   return (
