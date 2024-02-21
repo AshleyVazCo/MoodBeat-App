@@ -41,7 +41,7 @@ const LoginModalLM = ({ visible, onClose }) => {
           <Text>Forgot Password?</Text>
         </View>
 
-        <TouchableOpacity style={styles.loginButton} onPress={() => navigateToScreen("ProfileScreenDM")}>
+        <TouchableOpacity style={styles.loginButton} onPress={() => navigateToScreen("ProfileScreenLM")}>
           <Text style = {styles.buttonText}>Login</Text>
         </TouchableOpacity>
       </View>

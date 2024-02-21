@@ -19,6 +19,7 @@ import EditProfileModalDM from "../components/EditProfileDescriptionDM";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import BackgroundColorModalDM from "../components/BackgroundColorModalDM";
 import EditTextModalDM from "../components/EditTextModalDM";
+import CuratorSelectionDMScreen from "./CuratorSelectionDMScreen";
 
 const ProfileScreenDM = ({ navigation }) => {
 
