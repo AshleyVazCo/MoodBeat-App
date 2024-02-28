@@ -5,6 +5,7 @@ import CreateSectionModalDM from "../components/CreateSectionModalDM";
 const SearchMusic = ({ onCloseModal }) => {
   const [urlInput, setUrlInput] = useState("");
   const [createSectionVisible, setCreateSectionModalVisible] = useState(false);
+  const [selectedIcon, setSelectedIcon] = useState(null);
 
   const ImportingSongs = () => {
     setCreateSectionModalVisible(true);
@@ -17,6 +18,10 @@ const SearchMusic = ({ onCloseModal }) => {
 
   const handleBack = () => {
     onCloseModal();
+  };
+
+  const handleIconPress = (iconName) => {
+    setSelectedIcon(iconName === selectedIcon ? null : iconName);
   };
 
   return (
@@ -44,48 +49,49 @@ const SearchMusic = ({ onCloseModal }) => {
           placeholderTextColor="#888"
           value={urlInput}
           onChangeText={text => setUrlInput(text)}
+          keyboardType="url"
         />
       </View>
       <View style={styles.iconsTwo}>
-        <TouchableOpacity>
-          <Image source={require('../../assets/icons/apple_Dark.png')} 
-            style={styles.apple}
+        <TouchableOpacity onPress={() => handleIconPress('apple')}>
+          <Image source={require('../../assets/icons/appleTinyIcon.png')} 
+            style={[styles.apple, selectedIcon === 'apple' ? styles.selectedIcon : null]}
           />
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={require('../../assets/icons/spotifyIcon.png')} 
-            style={styles.spotify}
+        <TouchableOpacity onPress={() => handleIconPress('spotify')}>
+          <Image source={require('../../assets/icons/spotifyTinyIcon.png')} 
+            style={[styles.spotify, selectedIcon === 'spotify' ? styles.selectedIcon : null]}
           />
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={require('../../assets/icons/apple_Dark.png')} 
-            style={styles.soundcloud}
+        <TouchableOpacity onPress={() => handleIconPress('soundcloud')}>
+          <Image source={require('../../assets/icons/soundcloudTinyIcon.png')} 
+            style={[styles.soundcloud, selectedIcon === 'soundcloud' ? styles.selectedIcon : null]}
           />
         </TouchableOpacity>
       </View>
       <View style={styles.buttonContainer}>
-      <TouchableOpacity 
-      style={styles.button}
-      onPress={ImportingSongs}>
-        <Text style={styles.buttonText}>Import Songs</Text>
+        <TouchableOpacity 
+          style={styles.button}
+          onPress={ImportingSongs}>
+          <Text style={styles.buttonText}>Import Songs</Text>
         </TouchableOpacity>
 
         <Modal
-        animationType="none"
-        transparent={true}
-        visible={createSectionVisible}
-        onRequestClose={handleCloseSectionModal}
-      >
-        <View style={styles.modalContainer}>
-          <TouchableOpacity
-            style={styles.closeModalButton}
-            onPress={handleCloseSectionModal}
-          >
-          </TouchableOpacity>
-          {/* Your section modal content here */}
-          <CreateSectionModalDM onCloseModal={handleCloseSectionModal} />
-        </View>
-      </Modal>
+          animationType="none"
+          transparent={true}
+          visible={createSectionVisible}
+          onRequestClose={handleCloseSectionModal}
+        >
+          <View style={styles.modalContainer}>
+            <TouchableOpacity
+              onPress={handleCloseSectionModal}
+            >
+              <Text style={styles.closeModalButtonText}>X</Text>
+            </TouchableOpacity>
+            {/* Your section modal content here */}
+            <CreateSectionModalDM onCloseModal={handleCloseSectionModal} />
+          </View>
+        </Modal>
       </View>
     </View>
   )
@@ -176,18 +182,11 @@ const styles = StyleSheet.create ({
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
-  closeModalButton: {
-    flexDirection: "row",
-    backgroundColor: "#fff",
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 55,
-    marginRight: 250,
-  },
-  closeModalButtonText: {
-    fontFamily: "BarlowCondensed_400Regular",
-    fontSize: 18,
-  },
+  selectedIcon: {
+    width: 40, // slightly bigger
+    height: 40, // slightly bigger
+  }
 });
 
 export default SearchMusic;
+
