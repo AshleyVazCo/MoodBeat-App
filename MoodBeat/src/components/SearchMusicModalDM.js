@@ -125,8 +125,13 @@ const SearchMusic = ({ onCloseModal }) => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#26282C',
+    height: 760,
+    width: 380,
     flex: 1,
-    backgroundColor: "#26282C",
+    borderRadius: 20,
+    padding: 20,
+    borderRadius: 10,
   },
   icons: {
     flexDirection: "row",

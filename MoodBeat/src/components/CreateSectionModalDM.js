@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableOpacity, Image, TextInput } from "react-native"
+import { StyleSheet, View, Text, TouchableOpacity, Image, TextInput } from "react-native";
 
 const CreateSection = ({ onCloseModal }) => {
 
@@ -8,14 +8,30 @@ const CreateSection = ({ onCloseModal }) => {
   };
 
   const [urlInput, setUrlInput] = useState("");
+  const [artistName, setArtistName] = useState("");
+  const [hashtag, setHashtag] = useState("");
+
+  const handleArtistChange = (text) => {
+    // Limit the artist name to 30 characters
+    if (text.length <= 30) {
+      setArtistName(text);
+    }
+  };
+
+  const handleHashtagChange = (text) => {
+    // Ensure hashtag starts with '#' and has no spaces
+    if (text.length === 0 || (text.charAt(0) === '#' && !text.includes(' '))) {
+      setHashtag(text);
+    }
+  };
 
   return (
     <View style={styles.container}>
-    <View style={styles.icons}>
+      <View style={styles.icons}>
         <TouchableOpacity onPress={handleBack}>
           <Text style={styles.settings}>X</Text>
         </TouchableOpacity>
-          <Image
+        <Image
           style={styles.logo}
           source={require('../../assets/icons/logoWhite.png')}
         />
@@ -26,7 +42,7 @@ const CreateSection = ({ onCloseModal }) => {
       <View style={styles.uploadContainer}>
         <TouchableOpacity>
           <Image style={styles.upload}
-          source={require('../../assets/images/myloveMinePic.png')} 
+            source={require('../../assets/images/myloveMinePic.png')}
           />
         </TouchableOpacity>
         <Text style={styles.upText}>Upload cover image</Text>
@@ -41,20 +57,20 @@ const CreateSection = ({ onCloseModal }) => {
         />
         <TextInput
           style={styles.artist}
-          placeholder="Artist Name"
+          placeholder="Artist Name (Max 30 characters)"
           placeholderTextColor="#888"
-          value={urlInput}
-          onChangeText={text => setUrlInput(text)}
+          value={artistName}
+          onChangeText={handleArtistChange}
         />
-        <Text style={styles.characters}>Character limit: 30</Text>
+        <Text style={styles.hashtagLimit}>Character limit: 30</Text>
         <TextInput
           style={styles.hashtag}
           placeholder="#Enter a hashtag"
           placeholderTextColor="#888"
-          value={urlInput}
-          onChangeText={text => setUrlInput(text)}
+          value={hashtag}
+          onChangeText={handleHashtagChange}
         />
-        <Text style={styles.hashInfo}>Hashtags must have a # symbol and no spaces.</Text>
+        <Text style={styles.hashtagInfo}>Hashtags must start with '#' and contain no spaces</Text>
         <Text style={styles.maxHash}>Maximum of 10 hashtags.</Text>
       </View>
       <View style={styles.buttonContainer}>
@@ -64,7 +80,7 @@ const CreateSection = ({ onCloseModal }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.new}>
-        <TouchableOpacity style={styles.buttonNew}>
+          <TouchableOpacity style={styles.buttonNew}>
             <Text style={styles.buttonText}>New Board</Text>
           </TouchableOpacity>
         </View>
@@ -73,10 +89,16 @@ const CreateSection = ({ onCloseModal }) => {
   )
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#26282C',
+    height: 760,
+    width: 380,
     flex: 1,
-    backgroundColor: "#26282C",
+    borderRadius: 20,
+    alignItems: 'center',
+    padding: 20,
+    borderRadius: 10,
   },
   icons: {
     flexDirection: "row",
@@ -134,6 +156,7 @@ const styles = StyleSheet.create ({
     marginBottom: 20,
     fontFamily: 'BarlowCondensed_400Regular',
     fontSize: 20,
+    color: '#909090'
   },
   artist: {
     height: 40,
@@ -156,13 +179,13 @@ const styles = StyleSheet.create ({
     marginTop: 10,
     fontSize: 20,
   },
-  characters: {
+  hashtagLimit: {
     fontFamily: 'BarlowCondensed_400Regular',
     fontSize: 15,
     marginTop: -10,
     color: "#909090"
   },
-  hashInfo: {
+  hashtagInfo: {
     fontFamily: 'BarlowCondensed_400Regular',
     fontSize: 15,
     marginTop: -10,
