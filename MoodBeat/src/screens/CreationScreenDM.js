@@ -93,7 +93,6 @@ const Creation = ({ navigation }) => {
               style={styles.closeModalButton}
               onPress={handleCloseBoardModal}
             >
-              <Text style={styles.closeModalButtonText}>Close Modal</Text>
             </TouchableOpacity>
           {/* Your board modal content here */}
           <BoardInfoModalDM />
@@ -111,7 +110,6 @@ const Creation = ({ navigation }) => {
             style={styles.closeModalButton}
             onPress={handleCloseSectionModal}
           >
-            <Text style={styles.closeModalButtonText}>Close Modal</Text>
           </TouchableOpacity>
           <SearchMusicModalDM onCloseModal={handleCloseSectionModal} />
         </View>
@@ -204,18 +202,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-  closeModalButton: {
-    flexDirection: "row",
-    backgroundColor: "#fff",
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 55,
-    marginRight: 250,
-  },
-  closeModalButtonText: {
-    fontFamily: "BarlowCondensed_400Regular",
-    fontSize: 18,
   },
 });
 

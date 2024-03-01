@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableOpacity, Image, TextInput } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, View, Text, TouchableOpacity, Image, TextInput, Platform } from "react-native";
+import * as ImagePicker from 'expo-image-picker';
 
 const CreateSection = ({ onCloseModal }) => {
-
   const handleBack = () => {
     onCloseModal();
   };
@@ -10,16 +10,41 @@ const CreateSection = ({ onCloseModal }) => {
   const [urlInput, setUrlInput] = useState("");
   const [artistName, setArtistName] = useState("");
   const [hashtag, setHashtag] = useState("");
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== 'web') {
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+          alert('Sorry, we need camera roll permissions to make this work!');
+        }
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
 
   const handleArtistChange = (text) => {
-    // Limit the artist name to 30 characters
     if (text.length <= 30) {
       setArtistName(text);
     }
   };
 
   const handleHashtagChange = (text) => {
-    // Ensure hashtag starts with '#' and has no spaces
     if (text.length === 0 || (text.charAt(0) === '#' && !text.includes(' '))) {
       setHashtag(text);
     }
@@ -39,14 +64,21 @@ const CreateSection = ({ onCloseModal }) => {
       <View style={styles.headerContainer}>
         <Text style={styles.header}>Song Details</Text>
       </View>
-      <View style={styles.uploadContainer}>
-        <TouchableOpacity>
-          <Image style={styles.upload}
-            source={require('../../assets/images/myloveMinePic.png')}
-          />
-        </TouchableOpacity>
+<View style={styles.uploadContainer}>
+  <TouchableOpacity onPress={pickImage}>
+    {image ? (
+      <Image source={{ uri: image }} style={styles.upload} />
+    ) : (
+      <View style={styles.upload}>
+        <Image
+          style={styles.upload}
+          source={require('../../assets/images/upload.png')}
+        />
         <Text style={styles.upText}>Upload cover image</Text>
       </View>
+    )}
+  </TouchableOpacity>
+</View>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
