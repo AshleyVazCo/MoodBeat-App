@@ -1,224 +1,176 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Image} from "react-native";
-import BoardTextModalLM from "../components/BoardTextModalLM";
-import { Switch } from "react-native-gesture-handler";
+import { StyleSheet, View, TouchableOpacity, Text, Image, TextInput, Switch } from "react-native";
+import * as ImagePicker from 'expo-image-picker';
 
-const BoardInfo = ({ onCloseModal }) => {
+const DescriptionContent = () => {
+  const [image, setImage] = useState(null);
+  const [boardDescription, setBoardDescription] = useState('');
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [isPrivate, setIsPrivate] = useState(false);
 
-  const [urlInput, setUrlInput] = useState("");
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
 
-  const [privacy, setPrivacy] = useState(false);
-  const toggleSwitch = () => setPrivacy((previousState) => !previousState);
-
-  const handleCloseSectionModal = () => {
-    setBoardInfoModalVisible(false);
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
   };
 
-  const handleBack = () => {
-    onCloseModal();
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+  };
+
+  const togglePrivacy = () => {
+    setIsPrivate((prev) => !prev);
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.icons}>
-        <TouchableOpacity onPress={handleBack}>
-          <Text style={styles.settings}>X</Text>
-        </TouchableOpacity>
-          <Image
-          style={styles.logo}
-          source={require('../../assets/icons/logoWhite.png')}
-        />
-      </View>
-      <View style={styles.headerContainer}>
-        <Text style={styles.header}>Board Description</Text>
-      </View>
+      <Text style={styles.text}>Screen</Text>
+    
       <View style={styles.uploadContainer}>
-        <TouchableOpacity>
-          <Image style={styles.upload}
-          source={require('../../assets/images/myloveMinePic.png')} 
-          />
+        <TouchableOpacity style={styles.imageContainer} onPress={pickImage}>
+          {image ? (
+            <Image source={{ uri: image }} style={styles.image} />
+          ) : (
+            <>
+              <Image
+                style={styles.uploadIcon}
+                source={require('../../assets/images/upload.png')}
+              />
+              <Text style={styles.upText}>Upload cover image</Text>
+            </>
+          )}
         </TouchableOpacity>
-        <Text style={styles.upText}>Upload cover image</Text>
       </View>
+      
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           placeholder="Board Title"
-          placeholderTextColor="#888"
-          value={urlInput}
-          onChangeText={text => setUrlInput(text)}
+          placeholderTextColor="#909090"
+          value={boardDescription}
+          onChangeText={(text) => setBoardDescription(text)}
         />
       </View>
-      <Text style={styles.categoryText}>Select a category below</Text>
-      <View style={styles.cateGories}>
-        <View style={styles.categoriesOne}>
-          <TouchableOpacity>
-            <Text style={styles.motivation}>Motivation</Text>
+      
+      <View style={styles.optionsContainer}>
+        <Text style={styles.text}>Select a category below</Text>
+        {[
+          "Motivation",
+          "Energetic",
+          "Concentration",
+          "Expressive",
+          "Relaxation",
+        ].map((option) => (
+          <TouchableOpacity
+            key={option}
+            style={[
+              styles.option,
+              selectedOption === option && styles.selectedOption,
+            ]}
+            onPress={() => handleOptionSelect(option)}
+          >
+            <Text style={styles.optionText}>{option}</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.energetic}>Energetic</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.categoriesTwo}>
-          <TouchableOpacity>
-            <Text style={styles.concentration}>Concentration</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.expressive}>Expressive</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.categoriesThree}>
-          <TouchableOpacity>
-            <Text style={styles.relaxation}>Relaxation</Text>
-          </TouchableOpacity>
-        </View>
+        ))}
       </View>
-      <View style={styles.privacy}>
-        <Text style={styles.privateBoard}>Private Board</Text>
+      
+      <View style={styles.privacyContainer}>
+        <Text style={styles.text}>Private Board</Text>
         <Switch
-        trackColor={{ false: "#fffffc", true: "#26282c"}}
-        thumbColor={privacy ? "#26282c" : "#fffffc"}
-        onValueChange={toggleSwitch}
-        value={setPrivacy}
-        style={styles.privacyToggle}
+          trackColor={{ false: "#767577", true: "#81b0ff" }}
+          thumbColor={isPrivate ? "#f5dd4b" : "#f4f3f4"}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={togglePrivacy}
+          value={isPrivate}
         />
       </View>
-      <BoardTextModalLM onCloseModal={handleCloseSectionModal} />
     </View>
-  )
-}
+  );
+};
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#26282C",
-  },
-  icons: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginTop: 10,
-  },
-  settings: {
-    marginRight: 315,
-    marginLeft: 10,
-    fontSize: 25,
-    fontFamily: 'BarlowCondensed_400Regular',
-    color: "#CA9CE1",
-  },
-  logo: {
-    marginRight: 10,
-  },
-  headerContainer: {
-    justifyContent: "center",
     alignItems: "center",
-    marginTop: 60,
-  },
-  header: {
-    fontFamily: 'BarlowCondensed_400Regular',
-    fontSize: 35,
     justifyContent: "center",
-    alignItems: "center",
+  },
+  text: {
+    color: '#909090',
+    fontSize: 17,
     marginBottom: 20,
-    marginTop: 20,
-    color: "#909090",
   },
   uploadContainer: {
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 180,
   },
-  upload: {
-    width: 200,
-    height: 200,
+  inputContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 60,
+  },
+  input: {
+    borderRadius: 10,
+    width: 327,
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    borderColor: '#909090',
+    color: '#909090',
+  },
+  imageContainer: {
     alignItems: "center",
     justifyContent: "center",
   },
+  image: {
+    width: 152,
+    height: 152,
+    marginBottom: -120,
+  },
+  uploadIcon: {
+    width: 152,
+    height: 152,
+    marginBottom: 20,
+  },
   upText: {
-    marginTop: 10,
-    fontFamily: 'BarlowCondensed_400Regular',
-    color: "#909090",
+    color: '#909090',
+    marginBottom: -120,
   },
-  inputContainer: {
-    marginTop: 20,
-    paddingHorizontal: 20,
+  optionsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginBottom: 20, // Adjusted marginBottom value
   },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
+  option: {
+    width: '45%', // Adjust the width for 2 columns
+    margin: 5, // Adjust the margin for spacing
     padding: 10,
     borderRadius: 5,
-    marginBottom: 20,
-    fontFamily: 'BarlowCondensed_400Regular',
-    fontSize: 20,
   },
-  categoryText: {
-    fontFamily: 'BarlowCondensed_400Regular',
-    fontSize: 15,
-    marginLeft: 10,
-    color: "#909090",
+  selectedOption: {
+      backgroundColor: '#CA9CE1', // Change the color for the selected option
   },
-  categoriesOne: {
-    flexDirection: "row",
+  optionText: {
+    color: '#ffffff',
   },
-  motivation: {
-    fontFamily: 'BarlowCondensed_400Regular',
-    marginRight: 100,
-    marginLeft: 50,
-    fontSize: 20,
-    color: "#ffffff",
-    marginTop: 10,
-  },
-  energetic: {
-    fontFamily: 'BarlowCondensed_400Regular',
-    marginRight: 25,
-    marginLeft: 25,
-    fontSize: 20,
-    color: "#ffffff",
-    marginTop: 10,
-  },
-  categoriesTwo: {
-    flexDirection: "row",
-  },
-  concentration: {
-    fontFamily: 'BarlowCondensed_400Regular',
-    marginRight: 100,
-    marginLeft: 50,
-    fontSize: 20,
-    color: "#ffffff",
-    marginTop: 10,
-  },
-  expressive: {
-    fontFamily: 'BarlowCondensed_400Regular',
-    marginRight: 25,
-    fontSize: 20,
-    color: "#ffffff",
-    marginTop: 10,
-  },
-  categoriesThree: {
-    flexDirection: "row",
-  },
-  relaxation: {
-    fontFamily: 'BarlowCondensed_400Regular',
-    marginRight: 100,
-    marginLeft: 50,
-    fontSize: 20,
-    color: "#ffffff",
-    marginTop: 10,
-  },
-  privacy: {
-    flexDirection: "row",
-    marginLeft: 25,
-  },
-  privateBoard: {
-    fontFamily: 'BarlowCondensed_400Regular',
-    fontSize: 20,
-    marginRight: 150,
-    marginTop: 20,
-    color: "#909090",
-  },
-  privacyToggle: {
-    marginTop: 20,
+  privacyContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: -500,
   },
 });
 
-export default BoardInfo;
+
+
+export default DescriptionContent;

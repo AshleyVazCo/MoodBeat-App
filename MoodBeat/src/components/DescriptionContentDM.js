@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TouchableOpacity, Text, Image, TextInput } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Text, Image, TextInput, Switch } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 
 const DescriptionContent = () => {
   const [image, setImage] = useState(null);
   const [boardDescription, setBoardDescription] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
+  const [isPrivate, setIsPrivate] = useState(false);
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -23,10 +24,16 @@ const DescriptionContent = () => {
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
   };
+    
+  const togglePrivacy = () => {
+    setIsPrivate((prev) => !prev);
+  };
+
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Screen</Text>
+      <View style={styles.container}>
+              <View style={styles.tabContainer}>
+      <Text style={styles.header}>Board Description</Text>
     
       <View style={styles.uploadContainer}>
         <TouchableOpacity style={styles.imageContainer} onPress={pickImage}>
@@ -43,7 +50,7 @@ const DescriptionContent = () => {
           )}
         </TouchableOpacity>
       </View>
-      
+    
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -74,7 +81,18 @@ const DescriptionContent = () => {
             <Text style={styles.optionText}>{option}</Text>
           </TouchableOpacity>
         ))}
-      </View>
+          </View>
+                <View style={styles.privacyContainer}>
+        <Text style={styles.text}>Private Board</Text>
+        <Switch
+          trackColor={{ false: "#4F4F4F", true: "#4F4F4F" }}
+          thumbColor={isPrivate ? "#FFFFFC" : "#4F4F4F"}
+          ios_backgroundColor="#FFFFFC"
+          onValueChange={togglePrivacy}
+          value={isPrivate}
+        />
+        </View>
+        </View>
     </View>
   );
 };
@@ -82,24 +100,35 @@ const DescriptionContent = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#26282C",
     alignItems: "center",
     justifyContent: "center",
-  },
+    marginBottom: 100,
+    },
+  tabContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    marginLeft: 16,
+    marginRight: 16,
+    },
   text: {
     color: '#909090',
     fontSize: 17,
     marginBottom: 20,
+    },
+  header: {
+    color: '#909090',
+    fontSize: 17,
+    marginBottom: 20,
+    marginLeft: 100
   },
   uploadContainer: {
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 180,
   },
   inputContainer: {
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 60,
   },
   input: {
     borderRadius: 10,
@@ -118,35 +147,39 @@ const styles = StyleSheet.create({
   image: {
     width: 152,
     height: 152,
-    marginBottom: -120,
+    marginBottom: 0,
   },
   uploadIcon: {
     width: 152,
     height: 152,
-    marginBottom: 20,
+    marginBottom: 0,
   },
   upText: {
     color: '#909090',
-    marginBottom: -120,
   },
   optionsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    marginBottom: -400,
+    marginBottom: 0,
   },
   option: {
-    width: '45%', // Adjust the width for 2 columns
-    margin: 5, // Adjust the margin for spacing
+    width: '45%',
+    margin: 5,
     padding: 10,
     borderRadius: 5,
   },
   selectedOption: {
-      backgroundColor: '#CA9CE1', // Change the color for the selected option
+      backgroundColor: '#CA9CE1',
   },
   optionText: {
     color: '#ffffff',
-  },
+    },
+  privacyContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
+    },
 });
 
 export default DescriptionContent;

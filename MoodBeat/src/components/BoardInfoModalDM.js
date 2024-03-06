@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
     width: 380,
     backgroundColor: '#26282C',
     padding: 20,
-    borderRadius: 10,
+    justifyContent: 'space-between',
+    marginBottom: 40,
   },
   closeButtonText: {
     color: '#CA9CE1',

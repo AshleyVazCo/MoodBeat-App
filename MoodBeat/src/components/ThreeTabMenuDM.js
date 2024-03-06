@@ -8,7 +8,7 @@ const ThreeTabMenuDM = () => {
   const [activeTab, setActiveTab] = useState("Description");
 
   return (
-    <View>
+    <View style={styles.tabContainer}>
       <View style={styles.tabBar}>
         <TouchableOpacity
           style={[styles.tabItem, activeTab === "Description" && styles.activeTab]}
@@ -36,10 +36,15 @@ const ThreeTabMenuDM = () => {
         {activeTab === "Text" && <TextContentDM />}
       </View>
     </View>
+
   );
 };
 
 const styles = StyleSheet.create({
+  tabContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
   tabBar: {
     flexDirection: "row",
     justifyContent: "space-evenly",
