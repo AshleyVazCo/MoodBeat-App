@@ -1,137 +1,97 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity, TextInput, Modal, TouchableWithoutFeedback, Keyboard } from "react-native";
-import CreateSectionModalDM from "../components/CreateSectionModalDM";
+import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Image} from "react-native";
+import BoardTextModalLM from "../components/BoardTextModalLM";
+import { Switch } from "react-native-gesture-handler";
 
-const SearchMusic = ({ onCloseModal }) => {
+const BoardInfo = ({ onCloseModal }) => {
+
   const [urlInput, setUrlInput] = useState("");
-  const [createSectionVisible, setCreateSectionModalVisible] = useState(false);
-  const [selectedIcon, setSelectedIcon] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
 
-  const ImportingSongs = () => {
-    // Check if urlInput is a valid URL
-    if (!isValidUrl(urlInput)) {
-      // Set error message for invalid URL
-      setErrorMessage("Invalid URL");
-      return;
-    }
-
-    // Check if an icon is selected
-    if (!selectedIcon) {
-      // Set error message for no selected icon
-      setErrorMessage("Please select an icon");
-      return;
-    }
-
-    // If URL is valid and icon is selected, open the modal
-    setCreateSectionModalVisible(true);
-    console.log("Import Songs pressed");
-  };
-
-  // Function to validate URL
-  const isValidUrl = (url) => {
-    // Regular expression to check URL format
-    const urlPattern = /^(ftp|http|https):\/\/[^ "]+$/;
-    return urlPattern.test(url);
-  };
+  const [privacy, setPrivacy] = useState(false);
+  const toggleSwitch = () => setPrivacy((previousState) => !previousState);
 
   const handleCloseSectionModal = () => {
-    setCreateSectionModalVisible(false);
+    setBoardInfoModalVisible(false);
   };
 
   const handleBack = () => {
     onCloseModal();
   };
 
-  const handleIconPress = (iconName) => {
-    setSelectedIcon(iconName === selectedIcon ? null : iconName);
-    setErrorMessage(""); // Clear error message when an icon is selected
-  };
-
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-        <View style={styles.icons}>
-          <TouchableOpacity onPress={handleBack}>
-            <Text style={styles.settings}>X</Text>
-          </TouchableOpacity>
+    <View style={styles.container}>
+      <View style={styles.icons}>
+        <TouchableOpacity onPress={handleBack}>
+          <Text style={styles.settings}>X</Text>
+        </TouchableOpacity>
           <Image
-            style={styles.logo}
-            source={require('../../assets/icons/logoWhite.png')}
+          style={styles.logo}
+          source={require('../../assets/icons/logoWhite.png')}
+        />
+      </View>
+      <View style={styles.headerContainer}>
+        <Text style={styles.header}>Board Description</Text>
+      </View>
+      <View style={styles.uploadContainer}>
+        <TouchableOpacity>
+          <Image style={styles.upload}
+          source={require('../../assets/images/myloveMinePic.png')} 
           />
-        </View>
-        <View style={styles.headerContainer}>
-          <Text style={styles.header}>Find Your Songs</Text>
-        </View>
-        <View>
-          <Text style={styles.regularText}>Already have songs on another platform? No worries!
-          Just import them here with a simple URL link, click the app it’s on, and have a better mood!</Text>
-        </View>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="URL"
-            placeholderTextColor="#888"
-            value={urlInput}
-            onChangeText={text => setUrlInput(text)}
-            keyboardType="url"
-          />
-          {errorMessage !== "" && <Text style={styles.errorText}>{errorMessage}</Text>}
-        </View>
-        <View style={styles.iconsTwo}>
-          <TouchableOpacity onPress={() => handleIconPress('apple')}>
-            <Image source={require('../../assets/icons/appleTinyIcon.png')}
-              style={[styles.apple, selectedIcon === 'apple' ? styles.selectedIcon : null]}
-            />
+        </TouchableOpacity>
+        <Text style={styles.upText}>Upload cover image</Text>
+      </View>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Board Title"
+          placeholderTextColor="#888"
+          value={urlInput}
+          onChangeText={text => setUrlInput(text)}
+        />
+      </View>
+      <Text style={styles.categoryText}>Select a category below</Text>
+      <View style={styles.cateGories}>
+        <View style={styles.categoriesOne}>
+          <TouchableOpacity>
+            <Text style={styles.motivation}>Motivation</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => handleIconPress('spotify')}>
-            <Image source={require('../../assets/icons/spotifyTinyIcon.png')}
-              style={[styles.spotify, selectedIcon === 'spotify' ? styles.selectedIcon : null]}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => handleIconPress('soundcloud')}>
-            <Image source={require('../../assets/icons/soundcloudTinyIcon.png')}
-              style={[styles.soundcloud, selectedIcon === 'soundcloud' ? styles.selectedIcon : null]}
-            />
+          <TouchableOpacity>
+            <Text style={styles.energetic}>Energetic</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={ImportingSongs}>
-            <Text style={styles.buttonText}>Import Songs</Text>
+        <View style={styles.categoriesTwo}>
+          <TouchableOpacity>
+            <Text style={styles.concentration}>Concentration</Text>
           </TouchableOpacity>
-
-          <Modal
-            animationType="none"
-            transparent={true}
-            visible={createSectionVisible}
-            onRequestClose={handleCloseSectionModal}
-          >
-            <View style={styles.modalContainer}>
-              <TouchableOpacity
-                onPress={handleCloseSectionModal}
-              >
-                <Text style={styles.closeModalButtonText}>X</Text>
-              </TouchableOpacity>
-              <CreateSectionModalDM onCloseModal={handleCloseSectionModal} />
-            </View>
-          </Modal>
+          <TouchableOpacity>
+            <Text style={styles.expressive}>Expressive</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.categoriesThree}>
+          <TouchableOpacity>
+            <Text style={styles.relaxation}>Relaxation</Text>
+          </TouchableOpacity>
         </View>
       </View>
-    </TouchableWithoutFeedback>
+      <View style={styles.privacy}>
+        <Text style={styles.privateBoard}>Private Board</Text>
+        <Switch
+        trackColor={{ false: "#fffffc", true: "#26282c"}}
+        thumbColor={privacy ? "#26282c" : "#fffffc"}
+        onValueChange={toggleSwitch}
+        value={setPrivacy}
+        style={styles.privacyToggle}
+        />
+      </View>
+      <BoardTextModalLM onCloseModal={handleCloseSectionModal} />
+    </View>
   )
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   container: {
-    backgroundColor: '#26282C',
-    height: 760,
-    width: 380,
     flex: 1,
-    borderRadius: 20,
-    padding: 20,
-    borderRadius: 10,
+    backgroundColor: "#26282C",
   },
   icons: {
     flexDirection: "row",
@@ -139,15 +99,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   settings: {
-    marginRight: 275,
+    marginRight: 315,
+    marginLeft: 10,
     fontSize: 25,
     fontFamily: 'BarlowCondensed_400Regular',
-    color: "#CA9CE1"
+    color: "#CA9CE1",
+  },
+  logo: {
+    marginRight: 10,
   },
   headerContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 100,
+    marginTop: 60,
   },
   header: {
     fontFamily: 'BarlowCondensed_400Regular',
@@ -158,14 +122,19 @@ const styles = StyleSheet.create({
     marginTop: 20,
     color: "#909090",
   },
-  regularText: {
-    fontFamily: 'BarlowCondensed_400Regular',
-    fontSize: 20,
-    justifyContent: "center",
+  uploadContainer: {
     alignItems: "center",
-    marginLeft: 50,
-    marginRight: 50,
-    marginBottom: 20,
+    justifyContent: "center",
+  },
+  upload: {
+    width: 200,
+    height: 200,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  upText: {
+    marginTop: 10,
+    fontFamily: 'BarlowCondensed_400Regular',
     color: "#909090",
   },
   inputContainer: {
@@ -181,47 +150,75 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontFamily: 'BarlowCondensed_400Regular',
     fontSize: 20,
-    color: '#909090'
   },
-  iconsTwo: {
+  categoryText: {
+    fontFamily: 'BarlowCondensed_400Regular',
+    fontSize: 15,
+    marginLeft: 10,
+    color: "#909090",
+  },
+  categoriesOne: {
     flexDirection: "row",
-    justifyContent: "space-around",
-    marginTop: 20,
   },
-  buttonContainer: {
-    marginTop: 100,
-    backgroundColor: "#4f4f4f",
-    marginLeft: 100,
+  motivation: {
+    fontFamily: 'BarlowCondensed_400Regular',
     marginRight: 100,
-    borderRadius: 10,
+    marginLeft: 50,
+    fontSize: 20,
+    color: "#ffffff",
+    marginTop: 10,
   },
-  button: {
-    padding: 10,
-    borderRadius: 5,
-    alignItems: "center",
-    justifyContent: "center",
+  energetic: {
+    fontFamily: 'BarlowCondensed_400Regular',
+    marginRight: 25,
+    marginLeft: 25,
+    fontSize: 20,
+    color: "#ffffff",
+    marginTop: 10,
   },
-  buttonText: {
-    color: "#CA9CE1",
-    alignItems: "center",
-    justifyContent: "center",
+  categoriesTwo: {
+    flexDirection: "row",
+  },
+  concentration: {
+    fontFamily: 'BarlowCondensed_400Regular',
+    marginRight: 100,
+    marginLeft: 50,
+    fontSize: 20,
+    color: "#ffffff",
+    marginTop: 10,
+  },
+  expressive: {
+    fontFamily: 'BarlowCondensed_400Regular',
+    marginRight: 25,
+    fontSize: 20,
+    color: "#ffffff",
+    marginTop: 10,
+  },
+  categoriesThree: {
+    flexDirection: "row",
+  },
+  relaxation: {
+    fontFamily: 'BarlowCondensed_400Regular',
+    marginRight: 100,
+    marginLeft: 50,
+    fontSize: 20,
+    color: "#ffffff",
+    marginTop: 10,
+  },
+  privacy: {
+    flexDirection: "row",
+    marginLeft: 25,
+  },
+  privateBoard: {
     fontFamily: 'BarlowCondensed_400Regular',
     fontSize: 20,
+    marginRight: 150,
+    marginTop: 20,
+    color: "#909090",
   },
-  modalContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  privacyToggle: {
+    marginTop: 20,
   },
-  selectedIcon: {
-    width: 40, // slightly bigger
-    height: 40, // slightly bigger
-  },
-  errorText: {
-    color: "red",
-    marginLeft: 20,
-  }
 });
 
-export default SearchMusic;
+export default BoardInfo;

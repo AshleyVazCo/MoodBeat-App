@@ -1,0 +1,152 @@
+import React, { useState } from "react";
+import { StyleSheet, View, TouchableOpacity, Text, Image, TextInput } from "react-native";
+import * as ImagePicker from 'expo-image-picker';
+
+const DescriptionContent = () => {
+  const [image, setImage] = useState(null);
+  const [boardDescription, setBoardDescription] = useState('');
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Screen</Text>
+    
+      <View style={styles.uploadContainer}>
+        <TouchableOpacity style={styles.imageContainer} onPress={pickImage}>
+          {image ? (
+            <Image source={{ uri: image }} style={styles.image} />
+          ) : (
+            <>
+              <Image
+                style={styles.uploadIcon}
+                source={require('../../assets/images/upload.png')}
+              />
+              <Text style={styles.upText}>Upload cover image</Text>
+            </>
+          )}
+        </TouchableOpacity>
+      </View>
+      
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Board Title"
+          placeholderTextColor="#909090"
+          value={boardDescription}
+          onChangeText={(text) => setBoardDescription(text)}
+        />
+      </View>
+      
+      <View style={styles.optionsContainer}>
+        <Text style={styles.text}>Select a category below</Text>
+        {[
+          "Motivation",
+          "Energetic",
+          "Concentration",
+          "Expressive",
+          "Relaxation",
+        ].map((option) => (
+          <TouchableOpacity
+            key={option}
+            style={[
+              styles.option,
+              selectedOption === option && styles.selectedOption,
+            ]}
+            onPress={() => handleOptionSelect(option)}
+          >
+            <Text style={styles.optionText}>{option}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#26282C",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text: {
+    color: '#909090',
+    fontSize: 17,
+    marginBottom: 20,
+  },
+  uploadContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 180,
+  },
+  inputContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 60,
+  },
+  input: {
+    borderRadius: 10,
+    width: 327,
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    borderColor: '#909090',
+    color: '#909090',
+  },
+  imageContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  image: {
+    width: 152,
+    height: 152,
+    marginBottom: -120,
+  },
+  uploadIcon: {
+    width: 152,
+    height: 152,
+    marginBottom: 20,
+  },
+  upText: {
+    color: '#909090',
+    marginBottom: -120,
+  },
+  optionsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginBottom: -400,
+  },
+  option: {
+    width: '45%', // Adjust the width for 2 columns
+    margin: 5, // Adjust the margin for spacing
+    padding: 10,
+    borderRadius: 5,
+  },
+  selectedOption: {
+      backgroundColor: '#CA9CE1', // Change the color for the selected option
+  },
+  optionText: {
+    color: '#ffffff',
+  },
+});
+
+export default DescriptionContent;
