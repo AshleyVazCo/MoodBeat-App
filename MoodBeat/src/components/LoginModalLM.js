@@ -20,6 +20,25 @@ const LoginModalLM = ({ visible, onClose }) => {
     onClose();
   };
 
+  const handleLogin = async () => {
+    try {
+      const response = await axios.get(
+        "https://students.gaim.ucf.edu/~as357903/MoodBeat/Login.php",
+        {
+          username: "username",
+          password: "password",
+        }
+      );
+      if (response.data.message === "Login successful") {
+        navigateToScreen("HomeScreenLM");
+      } else {
+        Alert.alert("Login failed", "Please check your username and password");
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   return (
     <Modal
       animationType="slide"
@@ -52,7 +71,7 @@ const LoginModalLM = ({ visible, onClose }) => {
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.loginButton} onPress={() => navigateToScreen("ProfileScreenDM")}>
+            <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
               <Text style={styles.buttonText}>Login</Text>
               </TouchableOpacity>
           </>
