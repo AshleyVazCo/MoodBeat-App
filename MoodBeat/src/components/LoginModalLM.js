@@ -10,13 +10,13 @@ import {
   Alert,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import VerificationModalLM from "../components/VerificationModalLM";
-// import axios from "axios";
+import VerificationModalDM from '../components/VerificationModalDM';
 
 const LoginModalLM = ({ visible, onClose }) => {
   const navigation = useNavigation();
-  const [isForgotPasswordModalVisible, setForgotPasswordModalVisible] =
-    useState(false);
+  const [isForgotPasswordModalVisible, setForgotPasswordModalVisible] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const navigateToScreen = (screenName) => {
     navigation.navigate(screenName);
@@ -70,6 +70,14 @@ const LoginModalLM = ({ visible, onClose }) => {
       }
     } catch (error) {
       console.error("Error fetching data:", error.message);
+  const handleLogin = () => {
+    if (username.trim() !== '' && password.trim() !== '') {
+      // Perform login actions here
+      navigateToScreen("HomeLM");
+      onClose();
+    } else {
+      // Display an error message or perform other actions for empty fields
+      alert("Please fill in both username and password.");
     }
   };
 
@@ -82,7 +90,7 @@ const LoginModalLM = ({ visible, onClose }) => {
     >
       <View style={styles.container}>
         {isForgotPasswordModalVisible ? (
-          <VerificationModalLM onClose={handleVerificationScreenClose} />
+          <VerificationModalDM onClose={handleVerificationScreenClose} />
         ) : (
           <>
             <TouchableOpacity onPress={onClose} style={styles.closeButton}>
@@ -101,20 +109,24 @@ const LoginModalLM = ({ visible, onClose }) => {
               <TextInput
                 placeholder="Username"
                 style={styles.input}
-                placeholderTextColor={"black"}
+                placeholderTextColor={'#909090'}
+                value={username}
+                onChangeText={setUsername}
               />
               <TextInput
                 placeholder="Password"
                 secureTextEntry
                 style={styles.input}
-                placeholderTextColor={"black"}
+                placeholderTextColor={'#909090'}
+                value={password}
+                onChangeText={setPassword}
               />
               <TouchableOpacity onPress={handleForgotPasswordPress}>
                 <Text style={styles.forgotPasswordLink}>Forgot Password?</Text>
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+            <TouchableOpacity style={styles.loginButton} onPress={handleLogin} disabled={!username || !password}>
               <Text style={styles.buttonText}>Login</Text>
             </TouchableOpacity>
           </>
