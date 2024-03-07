@@ -53,14 +53,14 @@ const LoginModalLM = ({ visible, onClose }) => {
   const handleLogin = async (username, password) => {
     try {
       const response = await fetch(
-        `https://students.gaim.ucf.edu/~as357903/MoodBeat/Login.php?username=${username}&password=${password}`,
+        `https://students.gaim.ucf.edu/~as357903/MoodBeat/Login.php?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
         {
           method: "GET",
         }
       );
 
       const responseText = await response.text();
-      console.log("Response text:", responseText);
+      console.log("Status:", responseText);
 
       const data = JSON.parse(responseText);
       if (data.message === "Login successful") {
