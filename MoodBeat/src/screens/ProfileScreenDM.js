@@ -31,25 +31,25 @@ const ProfileScreenDM = ({ navigation }) => {
             imageSource={require('../../assets/images/ambiencePic.png')}
             title="Ambience"
             cardColor="#339392"
-            onPress={() => navigation.navigate("ProfileScreenLM")}
+            onPress={() => navigation.navigate("ProfileScreenDM")}
           />
           <MoodBoardCard
             imageSource={require('../../assets/images/traditional.png')}
             title="Traditional"
             cardColor="#ECE4D2"
-            onPress={() => navigation.navigate("ProfileScreenLM")}
+            onPress={() => navigation.navigate("ProfileScreenDM")}
           />
           <MoodBoardCard
             imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             title="Enchanted"
             cardColor="#55A3C4"
-            onPress={() => navigation.navigate("ProfileScreenLM")}
+            onPress={() => navigation.navigate("ProfileScreenDM")}
           />
           <MoodBoardCard
             imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             title="Grunge"
             cardColor="#060B07"
-            onPress={() => navigation.navigate("ProfileScreenLM")}
+            onPress={() => navigation.navigate("ProfileScreenDM")}
           />
         </>
       );
