@@ -6,11 +6,6 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import {
-  useFonts,
-  BarlowCondensed_400Regular,
-  BarlowCondensed_500Medium,
-} from "@expo-google-fonts/barlow-condensed";
 
 const BlankModelDM = ({ isVisible, onClose }) => {
 
