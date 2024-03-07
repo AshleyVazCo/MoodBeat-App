@@ -70,16 +70,19 @@ const LoginModalLM = ({ visible, onClose }) => {
       }
     } catch (error) {
       console.error("Error fetching data:", error.message);
-  const handleLogin = () => {
-    if (username.trim() !== '' && password.trim() !== '') {
-      // Perform login actions here
-      navigateToScreen("HomeLM");
-      onClose();
-    } else {
-      // Display an error message or perform other actions for empty fields
-      alert("Please fill in both username and password.");
     }
   };
+  
+  //     const handleLogin = () => {
+  //   if (username.trim() !== '' && password.trim() !== '') {
+  //     // Perform login actions here
+  //     navigateToScreen("HomeLM");
+  //     onClose();
+  //   } else {
+  //     // Display an error message or perform other actions for empty fields
+  //     alert("Please fill in both username and password.");
+  //   }
+  // };
 
   return (
     <Modal
