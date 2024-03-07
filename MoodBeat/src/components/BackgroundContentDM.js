@@ -1,45 +1,59 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, Slider } from "react-native";
+import React, { useState } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import MoodBoardCard from './MoodBoardCard'; // Assuming the file path is correct
+import Slider from '@react-native-community/slider'; // Import the Slider component from @react-native-community/slider
 
-const MoodBoardCard = ({ title, onPress, cardColor }) => {
-  const [currentColor, setCurrentColor] = useState(cardColor);
+const BackgroundContent = () => {
+  const [selectedColor, setSelectedColor] = useState('#123456');
+
+  const moodBoardData = {
+    id: 1,
+    title: 'Mood Board Title',
+    onPress: () => console.log('Card pressed'),
+    cardColor: selectedColor,
+  };
 
   const handleColorChange = (color) => {
-    setCurrentColor(color);
+    setSelectedColor(color);
   };
 
   return (
-    <View style={[styles.card, { backgroundColor: currentColor }]}>
-      <Text style={styles.title}>{title}</Text>
+    <View style={styles.container}>
+      <Text style={styles.header}>Background Color</Text>
+      <Text style={styles.text}>
+        Select a background color for your moodboard by dragging the circle to
+        the color you want, type in a HEX code, or type in the RGB code.
+      </Text>
+
       <Slider
-        style={styles.slider}
+        style={{ width: 200, height: 40 }}
         minimumValue={0}
-        maximumValue={1}
+        maximumValue={100}
         minimumTrackTintColor="#FFFFFF"
         maximumTrackTintColor="#000000"
-        onValueChange={handleColorChange}
+        onValueChange={(value) => console.log(value)} // handle value change
       />
+
+      <MoodBoardCard {...moodBoardData} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  card: {
-    width: 200,
-    height: 200,
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    elevation: 3,
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    marginBottom: 80,
   },
-  title: {
+  text: {
+    color: '#909090',
     fontSize: 20,
-    color: "#FFFFFF",
   },
-  slider: {
-    width: 150,
-    marginTop: 20,
+  header: {
+    color: '#909090',
+    fontSize: 28,
   },
 });
 
-export default MoodBoardCard;
+export default BackgroundContent;
