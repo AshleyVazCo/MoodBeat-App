@@ -10,13 +10,14 @@ import {
   Alert,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import VerificationModalDM from '../components/VerificationModalDM';
+import VerificationModalDM from "../components/VerificationModalDM";
 
 const LoginModalLM = ({ visible, onClose }) => {
   const navigation = useNavigation();
-  const [isForgotPasswordModalVisible, setForgotPasswordModalVisible] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [isForgotPasswordModalVisible, setForgotPasswordModalVisible] =
+    useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigateToScreen = (screenName) => {
     navigation.navigate(screenName);
@@ -53,13 +54,20 @@ const LoginModalLM = ({ visible, onClose }) => {
   const handleLogin = async (username, password) => {
     try {
       const response = await fetch(
-        `https://students.gaim.ucf.edu/~as357903/MoodBeat/Login.php?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
+        `https://students.gaim.ucf.edu/~as357903/MoodBeat/Login.php?username=${encodeURIComponent(
+          username
+        )}&password=${encodeURIComponent(password)}`,
         {
           method: "GET",
         }
       );
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const responseText = await response.text();
+
       console.log("Status:", responseText);
 
       const data = JSON.parse(responseText);
@@ -72,7 +80,7 @@ const LoginModalLM = ({ visible, onClose }) => {
       console.error("Error fetching data:", error.message);
     }
   };
-  
+
   //     const handleLogin = () => {
   //   if (username.trim() !== '' && password.trim() !== '') {
   //     // Perform login actions here
@@ -112,7 +120,7 @@ const LoginModalLM = ({ visible, onClose }) => {
               <TextInput
                 placeholder="Username"
                 style={styles.input}
-                placeholderTextColor={'#909090'}
+                placeholderTextColor={"#909090"}
                 value={username}
                 onChangeText={setUsername}
               />
@@ -120,7 +128,7 @@ const LoginModalLM = ({ visible, onClose }) => {
                 placeholder="Password"
                 secureTextEntry
                 style={styles.input}
-                placeholderTextColor={'#909090'}
+                placeholderTextColor={"#909090"}
                 value={password}
                 onChangeText={setPassword}
               />
@@ -129,7 +137,11 @@ const LoginModalLM = ({ visible, onClose }) => {
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.loginButton} onPress={handleLogin} disabled={!username || !password}>
+            <TouchableOpacity
+              style={styles.loginButton}
+              onPress={handleLogin}
+              disabled={!username || !password}
+            >
               <Text style={styles.buttonText}>Login</Text>
             </TouchableOpacity>
           </>
