@@ -1,40 +1,39 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import MoodBoardCard from './MoodBoardCard'; // Assuming the file path is correct
-import Slider from '@react-native-community/slider'; // Import the Slider component from @react-native-community/slider
+import { StyleSheet, View, Text, TextInput } from 'react-native';
+import MoodBoardCard from './MoodBoardCard'; // Correct path assumed
 
 const BackgroundContent = () => {
-  const [selectedColor, setSelectedColor] = useState('#123456');
-
-  const moodBoardData = {
-    id: 1,
-    title: 'Mood Board Title',
-    onPress: () => console.log('Card pressed'),
-    cardColor: selectedColor,
-  };
+  const [inputValue, setInputValue] = useState('');
+  const [selectedColor, setSelectedColor] = useState('#123456'); // Default color
 
   const handleColorChange = (color) => {
-    setSelectedColor(color);
+    setInputValue(color); // Update inputValue with every change for user feedback
+    // Check if color is in valid HEX format (# followed by exactly 6 letters/numbers)
+    if (/^#[0-9A-F]{6}$/i.test(color)) {
+      setSelectedColor(color); // Update selectedColor only if valid
+    }
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Background Color</Text>
       <Text style={styles.text}>
-        Select a background color for your moodboard by dragging the circle to
-        the color you want, type in a HEX code, or type in the RGB code.
+        Select a background color for your moodboard by typing in a HEX code.
       </Text>
-
-      <Slider
-        style={{ width: 200, height: 40 }}
-        minimumValue={0}
-        maximumValue={100}
-        minimumTrackTintColor="#FFFFFF"
-        maximumTrackTintColor="#000000"
-        onValueChange={(value) => console.log(value)} // handle value change
+      <Text>Enter a Hex Color Code:</Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={handleColorChange}
+        value={inputValue}
+        placeholder="Type color hex code"
+        maxLength={7} // Including the '#' sign
       />
-
-      <MoodBoardCard {...moodBoardData} />
+      <MoodBoardCard
+        id={1}
+        title="Mood Board Title"
+        onPress={() => console.log('Card pressed')}
+        cardColor={selectedColor} // Pass the validated color
+      />
     </View>
   );
 };
@@ -53,6 +52,13 @@ const styles = StyleSheet.create({
   header: {
     color: '#909090',
     fontSize: 28,
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    width: 200,
   },
 });
 
