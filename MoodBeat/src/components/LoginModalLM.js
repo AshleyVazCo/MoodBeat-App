@@ -32,63 +32,47 @@ const LoginModalLM = ({ visible, onClose }) => {
     onClose();
   };
 
+  //Hardcoded login for now (IT WORKS!!!!)
+  const handleLogin = () => {
+    if (username === "Jolijass" && password === "test1") {
+      navigateToScreen("HomeLM");
+      onClose();
+    } else {
+      Alert.alert("Login failed", "Please check your username and password");
+    }
+  };
+
   // const handleLogin = async (username, password) => {
   //   try {
-  //     const response = await axios.get(
-  //       "https://students.gaim.ucf.edu/~as357903/MoodBeat/Login.php",
+  //     const response = await fetch(
+  //       `https://students.gaim.ucf.edu/~as357903/MoodBeat/Login.php?username=${encodeURIComponent(
+  //         username
+  //       )}&password=${encodeURIComponent(password)}`,
   //       {
-  //         username: username,
-  //         password: password,
+  //         method: "POST",
   //       }
   //     );
-  //     if (response.data.message === "Login successful") {
+
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! status: ${response.status}`);
+  //     }
+
+  //     if (typeof password !== "string" && typeof password !== "number") {
+  //       throw new Error("Password must be a string or number");
+  //     } // Need to test this out to see if it works. If not, change response.text() to response.json() to see if it works.
+
+  //     const responseText = await response.text();
+
+  //     console.log("Status:", responseText);
+
+  //     const data = responseText;
+  //     if (data.message === "Login successful") {
   //       navigateToScreen("HomeScreenLM");
   //     } else {
   //       Alert.alert("Login failed", "Please check your username and password");
   //     }
   //   } catch (error) {
   //     console.error("Error fetching data:", error.message);
-  //   }
-  // };
-
-  const handleLogin = async (username, password) => {
-    try {
-      const response = await fetch(
-        `https://students.gaim.ucf.edu/~as357903/MoodBeat/Login.php?username=${encodeURIComponent(
-          username
-        )}&password=${encodeURIComponent(password)}`,
-        {
-          method: "GET",
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const responseText = await response.text();
-
-      console.log("Status:", responseText);
-
-      const data = JSON.parse(responseText);
-      if (data.message === "Login successful") {
-        navigateToScreen("HomeScreenLM");
-      } else {
-        Alert.alert("Login failed", "Please check your username and password");
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error.message);
-    }
-  };
-
-  //     const handleLogin = () => {
-  //   if (username.trim() !== '' && password.trim() !== '') {
-  //     // Perform login actions here
-  //     navigateToScreen("HomeLM");
-  //     onClose();
-  //   } else {
-  //     // Display an error message or perform other actions for empty fields
-  //     alert("Please fill in both username and password.");
   //   }
   // };
 
