@@ -2,7 +2,7 @@ import React from "react";
 import { Modal, View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import ThreeTabMenuDM from "./ThreeTabMenuDM";
 
-const BoardInfoModalDN = ({ isVisible, onClose }) => {
+const BoardInfoModalDM = ({ isVisible, onClose }) => {
   return (
     <Modal transparent visible={isVisible} onRequestClose={onClose}>
       <View style={styles.modalContainer}>
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BoardInfoModalDN;
+export default BoardInfoModalDM;

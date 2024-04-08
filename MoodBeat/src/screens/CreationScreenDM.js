@@ -5,7 +5,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import BoardInfoModalDM from "../components/BoardInfoModalDM";
 import SearchMusicModalDM from "../components/SearchMusicModalDM";
 
-const Creation = ({ navigation }) => {
+const CreationDM = ({ navigation }) => {
   const [boardModalVisible, setBoardModalVisible] = useState(false);
   const [sectionModalVisible, setSectionModalVisible] = useState(false);
 
@@ -205,4 +205,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Creation;
+export default CreationDM;
