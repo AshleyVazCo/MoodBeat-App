@@ -62,26 +62,33 @@ const DescriptionContent = () => {
       </View>
       
       <View style={styles.optionsContainer}>
-        <Text style={styles.text}>Select a category below</Text>
-        {[
-          "Motivation",
-          "Energetic",
-          "Concentration",
-          "Expressive",
-          "Relaxation",
-        ].map((option) => (
-          <TouchableOpacity
-            key={option}
-            style={[
-              styles.option,
-              selectedOption === option && styles.selectedOption,
-            ]}
-            onPress={() => handleOptionSelect(option)}
-          >
-            <Text style={styles.optionText}>{option}</Text>
-          </TouchableOpacity>
-        ))}
-          </View>
+  <Text style={styles.text}>Select a category below</Text>
+  {[
+    "Motivation",
+    "Energetic",
+    "Concentration",
+    "Expressive",
+    "Relaxation",
+  ].map((option) => (
+    <TouchableOpacity
+      key={option}
+      style={[
+        styles.option,
+        selectedOption === option && styles.selectedOption,
+      ]}
+      onPress={() => handleOptionSelect(option)}
+    >
+      {/* Update the Text component style conditionally */}
+      <Text style={[
+        styles.optionText,
+        selectedOption === option ? { color: '#FFFFFC' } : {},
+      ]}>
+        {option}
+      </Text>
+    </TouchableOpacity>
+  ))}
+</View>
+
                 <View style={styles.privacyContainer}>
         <Text style={styles.text}>Private Board</Text>
         <Switch
@@ -170,10 +177,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   selectedOption: {
-      backgroundColor: '#7700E6',
+    backgroundColor: '#7700E6',
+    color: '#FFFFFC',
   },
   optionText: {
-    color: '#FFFFFC',
+    color: '#43357A',
     },
   privacyContainer: {
     flexDirection: "row",

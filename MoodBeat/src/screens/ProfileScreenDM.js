@@ -10,10 +10,8 @@ import {
 import ShareSettingHeaderDM from "../components/ShareSettingHeaderDM";
 import MoodBoardCard from "../components/MoodBoardCard";
 import NavBarDM from "../components/NavBarDM";
-import EditProfileModalDM from "../components/EditProfileDescriptionDM";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import BackgroundColorModalDM from "../components/BackgroundColorModalDM";
-import EditTextModalDM from "../components/EditTextModalDM";
+import ProfileBoardInfoModalDM from "../components/ProfileBoardInfoModalDM";
 
 const ProfileScreenDM = ({ navigation }) => {
   const [selectedTab, setSelectedTab] = useState("Created");
@@ -31,25 +29,7 @@ const ProfileScreenDM = ({ navigation }) => {
             imageSource={require('../../assets/images/ambiencePic.png')}
             title="Ambience"
             cardColor="#339392"
-            onPress={() => navigation.navigate("ProfileScreenDM")}
-          />
-          <MoodBoardCard
-            imageSource={require('../../assets/images/traditional.png')}
-            title="Traditional"
-            cardColor="#ECE4D2"
-            onPress={() => navigation.navigate("ProfileScreenDM")}
-          />
-          <MoodBoardCard
-            imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            title="Enchanted"
-            cardColor="#55A3C4"
-            onPress={() => navigation.navigate("ProfileScreenDM")}
-          />
-          <MoodBoardCard
-            imageSource="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2819&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            title="Grunge"
-            cardColor="#060B07"
-            onPress={() => navigation.navigate("ProfileScreenDM")}
+            onPress={() => navigation.navigate("ProfileSectionDM")}
           />
         </>
       );
@@ -60,16 +40,6 @@ const ProfileScreenDM = ({ navigation }) => {
             imageSource={require('../../assets/images/WinterHaven.png')}
             title="Winter Haven"
             cardColor="#AFC1D7"
-          />
-          <MoodBoardCard
-            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
-            title="Nightlife"
-            cardColor="#161733"
-          />
-          <MoodBoardCard
-            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
-            title="Urban"
-            cardColor="#337FE1"
           />
         </>
       );
@@ -141,7 +111,7 @@ const ProfileScreenDM = ({ navigation }) => {
       >
         {renderCardSet()}
       </ScrollView>
-      <EditProfileModalDM isVisible={modalVisible} onClose={closeModal} />
+        <ProfileBoardInfoModalDM isVisible={modalVisible} onClose={closeModal} />
       <NavBarDM />
     </View>
   );
