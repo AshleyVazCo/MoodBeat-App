@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Image, TextInput, TouchableWithoutFeedback, Keyboard, TouchableOpacity, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  TextInput,
+  TouchableWithoutFeedback,
+  Keyboard,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import NavBarLM from "../components/NavBarLM";
 
 const SearchScreenLM = () => {
@@ -29,18 +38,21 @@ const SearchScreenLM = () => {
         <View style={styles.container}>
           <View style={styles.imgContainer}>
             <Image
-              source={require('../../assets/images/rollerCoasterBackground.png')}
+              source={require("../../assets/images/rollerCoasterBackground.png")}
               style={styles.backgroundImg}
             />
             <View style={styles.headerContainer}>
               <TextInput
                 placeholder="Search..."
                 style={styles.input}
-                placeholderTextColor={'#909090'}
+                placeholderTextColor={"#909090"}
               />
-              <TouchableOpacity onPress={handleFilterPress} style={styles.filterButton}>
+              <TouchableOpacity
+                onPress={handleFilterPress}
+                style={styles.filterButton}
+              >
                 <Image
-                  source={require('../../assets/icons/filterIcon_Light.png')}
+                  source={require("../../assets/icons/filterIcon_Light.png")}
                 />
               </TouchableOpacity>
             </View>
@@ -50,7 +62,9 @@ const SearchScreenLM = () => {
                   <Text
                     style={[
                       styles.filterOption,
-                      selectedFilters.includes("Motivation") && { color: "#7700E6" },
+                      selectedFilters.includes("Motivation") && {
+                        color: "#7700E6",
+                      },
                     ]}
                     onPress={() => toggleFilter("Motivation")}
                   >
@@ -59,7 +73,9 @@ const SearchScreenLM = () => {
                   <Text
                     style={[
                       styles.filterOption,
-                      selectedFilters.includes("Concentration") && { color: "#7700E6" },
+                      selectedFilters.includes("Concentration") && {
+                        color: "#7700E6",
+                      },
                     ]}
                     onPress={() => toggleFilter("Concentration")}
                   >
@@ -68,7 +84,9 @@ const SearchScreenLM = () => {
                   <Text
                     style={[
                       styles.filterOption,
-                      selectedFilters.includes("Relaxation") && { color: "#7700E6" },
+                      selectedFilters.includes("Relaxation") && {
+                        color: "#7700E6",
+                      },
                     ]}
                     onPress={() => toggleFilter("Relaxation")}
                   >
@@ -79,7 +97,9 @@ const SearchScreenLM = () => {
                   <Text
                     style={[
                       styles.filterOption,
-                      selectedFilters.includes("Energetic") && { color: "#7700E6" },
+                      selectedFilters.includes("Energetic") && {
+                        color: "#7700E6",
+                      },
                     ]}
                     onPress={() => toggleFilter("Energetic")}
                   >
@@ -88,14 +108,19 @@ const SearchScreenLM = () => {
                   <Text
                     style={[
                       styles.filterOption,
-                      selectedFilters.includes("Expressive") && { color: "#7700E6" },
+                      selectedFilters.includes("Expressive") && {
+                        color: "#7700E6",
+                      },
                     ]}
                     onPress={() => toggleFilter("Expressive")}
                   >
                     Expressive
                   </Text>
                 </View>
-                <TouchableOpacity style={styles.applyButton} onPress={applyFilters}>
+                <TouchableOpacity
+                  style={styles.applyButton}
+                  onPress={applyFilters}
+                >
                   <Text style={styles.applyButtonText}>Apply</Text>
                 </TouchableOpacity>
               </View>
@@ -119,19 +144,19 @@ const styles = StyleSheet.create({
   },
   imgContainer: {
     height: 740,
-    position: 'relative',
+    position: "relative",
   },
   backgroundImg: {
     height: 765,
     position: "absolute",
   },
   headerContainer: {
-    width: '100%',
+    width: "100%",
     height: 135,
-    backgroundColor: '#FFFFFC',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
+    backgroundColor: "#FFFFFC",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
     paddingHorizontal: 10,
   },
   input: {
@@ -140,28 +165,28 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     padding: 10,
-    borderColor: '#26282C',
-    color: '#26282C',
+    borderColor: "#26282C",
+    color: "#26282C",
     marginRight: 10,
   },
   filterContainer: {
-    position: 'absolute',
+    position: "absolute",
     top: 135,
     right: 0,
-    width: '100%',
+    width: "100%",
     height: 151,
-    backgroundColor: '#FFFFFC',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    backgroundColor: "#FFFFFC",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   filterColumn: {
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     paddingVertical: 10,
   },
   filterOption: {
     fontSize: 18,
-    color: '#26282C',
+    color: "#26282C",
     marginLeft: 25,
   },
   applyButton: {
@@ -170,15 +195,13 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 5,
     marginRight: 10,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   applyButtonText: {
     color: "#FFFFFC",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });
 
 export default SearchScreenLM;
-
-

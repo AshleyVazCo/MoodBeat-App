@@ -32,9 +32,9 @@ const LoginModalLM = ({ visible, onClose }) => {
     onClose();
   };
 
-  //Hardcoded login for now (IT WORKS!!!!)
+  //Hardcoded login for now (IT WORKS!!!!) - Need to change it to Alan's username and password since that's the profile we have in the front end
   const handleLogin = () => {
-    if (username === "Jolijass" && password === "test1") {
+    if (username === "Alan.jpg" && password === "test1") {
       navigateToScreen("HomeLM");
       onClose();
     } else {
@@ -42,7 +42,7 @@ const LoginModalLM = ({ visible, onClose }) => {
     }
   };
 
-  // const handleLogin = async (username, password) => {
+   // const handleLogin = async (username, password) => {
   //   try {
   //     const response = await fetch(
   //       `https://students.gaim.ucf.edu/~as357903/MoodBeat/Login.php?username=${encodeURIComponent(
@@ -75,6 +75,7 @@ const LoginModalLM = ({ visible, onClose }) => {
   //     console.error("Error fetching data:", error.message);
   //   }
   // };
+
 
   return (
     <Modal
