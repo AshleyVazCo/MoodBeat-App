@@ -33,7 +33,7 @@ const ProfileSectionLM = ({ navigation }) => {
             onPress={() => setModalVisible(true)}
           />
           <MoodBoardCardLM
-            imageSource="https://pbs.twimg.com/ext_tw_video_thumb/1356973712625516545/pu/img/ry0ebco4DL5gENed.jpg:large"
+            imageSource={require("../../assets/images/myloveMinePic.png")}
             title="DK Ost"
             // cardColor="#161733"
           />

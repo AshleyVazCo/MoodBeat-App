@@ -1,8 +1,8 @@
 import React from "react";
 import { Modal, View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import ThreeTabMenuDM from "./ThreeTabMenuDM";
+import ProfileTabsMenuDM from "./ProfileTabsMenuDM";
 
-const BoardInfoModalDM = ({ isVisible, onClose }) => {
+const ProfileBoardInfoModalDM = ({ isVisible, onClose }) => {
   return (
     <Modal transparent visible={isVisible} onRequestClose={onClose}>
       <View style={styles.modalContainer}>
@@ -15,7 +15,7 @@ const BoardInfoModalDM = ({ isVisible, onClose }) => {
               <Image source={require('../../assets/icons/logoWhite.png')} />
             </View>
           </View>
-          <ThreeTabMenuDM onClose={onClose} />
+          <ProfileTabsMenuDM onClose={onClose} />
         </View>
       </View>
     </Modal>
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BoardInfoModalDM;
+export default ProfileBoardInfoModalDM;

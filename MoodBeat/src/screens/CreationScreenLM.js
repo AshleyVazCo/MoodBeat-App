@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableHighlight, Image, Modal, TouchableWithoutFeedback } from "react-native";
+import { StyleSheet, View, Text, TouchableHighlight, Image, Modal } from "react-native";
 import NavBarLM from "../components/NavBarLM";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import BoardInfoModalLM from "../components/BoardInfoModalLM";
 import SearchMusicModalLM from "../components/SearchMusicModalLM";
 
-const CreationScreenLM = ({ navigation }) => {
+const CreationLM = ({ navigation }) => {
   const [boardModalVisible, setBoardModalVisible] = useState(false);
   const [sectionModalVisible, setSectionModalVisible] = useState(false);
 
   const handleSettingsPress = () => {
-    navigation.navigate('SettingLM');
     console.log("Settings icon pressed");
+    navigation.navigate('SettingDM');
   };
 
   const handleCreateBoardPress = () => {
@@ -40,12 +40,12 @@ const CreationScreenLM = ({ navigation }) => {
           style={styles.logo}
           source={require('../../assets/icons/logoPurple.png')}
         />
-        <TouchableWithoutFeedback onPress={handleSettingsPress}>
+        <TouchableOpacity onPress={handleSettingsPress} activeOpacity={1}>
           <Image
             source={require('../../assets/icons/settingsIcon_Light.png')}
             style={styles.settings}
           />
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
       </View>
       <View style={styles.headerContainer}>
         <Text style={styles.header}>In the Mood to Create?</Text>
@@ -61,7 +61,7 @@ const CreationScreenLM = ({ navigation }) => {
           underlayColor="#DDDDDD"
         >
           <View style={styles.section}>
-            <Image source={require('../../assets/icons/createSectionIcon_Light.png')} 
+            <Image source={require('../../assets/icons/createSectionIcon_Dark.png')} 
               style={styles.sectionImage}
             />
             <Text style={styles.buttonText}>Create Section</Text>
@@ -74,13 +74,15 @@ const CreationScreenLM = ({ navigation }) => {
           underlayColor="#DDDDDD"
         >
           <View style={styles.board}>
-            <Image source={require('../../assets/icons/boardsIcon_Light.png')} 
+            <Image source={require('../../assets/icons/boardsIcon_Dark.png')} 
             style={styles.boardImage}
             />
             <Text style={styles.buttonText}>Create Board</Text>
           </View>
         </TouchableHighlight>
-        <Modal
+      </View>
+
+      <Modal
             animationType="none"
             transparent={true}
             visible={boardModalVisible}
@@ -91,13 +93,13 @@ const CreationScreenLM = ({ navigation }) => {
               style={styles.closeModalButton}
               onPress={handleCloseBoardModal}
             >
-              <Text style={styles.closeModalButtonText}>Close Modal</Text>
             </TouchableOpacity>
+          {/* Your board modal content here */}
           <BoardInfoModalLM />
           </View>
         </Modal>
 
-       <Modal
+        <Modal
         animationType="none"
         transparent={true}
         visible={sectionModalVisible}
@@ -108,13 +110,10 @@ const CreationScreenLM = ({ navigation }) => {
             style={styles.closeModalButton}
             onPress={handleCloseSectionModal}
           >
-            <Text style={styles.closeModalButtonText}>Close Modal</Text>
           </TouchableOpacity>
           <SearchMusicModalLM onCloseModal={handleCloseSectionModal} />
         </View>
       </Modal>
-
-      </View>
 
       <View style={styles.navBar}>
         <NavBarLM />
@@ -140,20 +139,22 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   buttonText: {
-    fontFamily: 'BarlowCondensed_400Regular',
     fontSize: 30,
+    color: "#26282C",
+    fontFamily: 'BarlowCondensed_400Regular',
   },
   navBar: {
-    backgroundColor: "#FFFFFC",
+    backgroundColor: "#fffffc",
     marginTop: 40,
   },
   header: {
-    fontFamily: 'BarlowCondensed_400Regular',
     fontSize: 40,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 20,
     marginTop: 20,
+    color: "#26282C",
+    fontFamily: 'BarlowCondensed_400Regular',
   },
   headerContainer: {
     justifyContent: "center",
@@ -161,12 +162,13 @@ const styles = StyleSheet.create({
     marginTop: 125,
   },
   regularText: {
-    fontFamily: 'BarlowCondensed_400Regular',
     fontSize: 20,
     justifyContent: "center",
     alignItems: "center",
     marginLeft: 50,
     marginRight: 50,
+    color: "#26282C",
+    fontFamily: 'BarlowCondensed_400Regular',
   },
   icons: {
     flexDirection: "row",
@@ -177,13 +179,11 @@ const styles = StyleSheet.create({
     marginLeft: 175,
   },
   section: {
-    fontFamily: 'BarlowCondensed_400Regular',
     justifyContent: "center",
     alignItems: "center",
     marginLeft: 25,
   },
   board: {
-    fontFamily: 'BarlowCondensed_400Regular',
     justifyContent: "center",
     alignItems: "center",
   },
@@ -203,18 +203,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
-  closeModalButton: {
-    flexDirection: "row",
-    backgroundColor: "#fff",
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 55,
-    marginRight: 250,
-  },
-  closeModalButtonText: {
-    fontFamily: "BarlowCondensed_400Regular",
-    fontSize: 18,
-  },
 });
 
-export default CreationScreenLM;
+export default CreationLM;

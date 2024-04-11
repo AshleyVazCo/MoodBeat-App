@@ -6,9 +6,6 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  TextInput,
-  Switch,
-  TouchableHighlight,
 } from "react-native";
 import {
   useFonts,
