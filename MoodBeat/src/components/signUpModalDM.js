@@ -9,7 +9,7 @@ import {
   Image,
   Alert,
 } from "react-native";
-import SetupProfileModalDM from "./SetupProfileModalDM";
+// import SetupProfileModalDM from "./SetupProfileModalDM";
 import { useNavigation } from "@react-navigation/native";
 
 const SignUpModalLM = ({ visible, onClose }) => {
@@ -18,7 +18,7 @@ const SignUpModalLM = ({ visible, onClose }) => {
   const navigateToScreen = (screenName) => {
     navigation.navigate(screenName);
   };
-  //Hardcoded Sign-up for now - The DM version isn't working. Code is different from LM. Will wait for Alan's final code.
+  //Hardcoded Sign-up for now
   const handleSignUp = () => {
     const FullName = "Alan";
     const Username = "alan.jpg";
@@ -83,7 +83,7 @@ const SignUpModalLM = ({ visible, onClose }) => {
       <Modal
         animationType="slide"
         transparent={true}
-        visible={visible && !showSetupProfileModal}
+        visible={visible}
         onRequestClose={onClose}
       >
         <View style={styles.modalContainer}>
@@ -105,21 +105,21 @@ const SignUpModalLM = ({ visible, onClose }) => {
                 placeholder="Full Name"
                 style={styles.input}
                 placeholderTextColor={"#909090"}
-                value={fullName}
-                onChangeText={(text) => {
-                  setFullName(text);
-                  validateForm();
-                }}
+                // value={fullName}
+                // onChangeText={(text) => {
+                //   setFullName(text);
+                //   validateForm();
+                // }}
               />
               <TextInput
                 placeholder="Email"
                 style={styles.input}
                 placeholderTextColor={"#909090"}
-                value={email}
-                onChangeText={(text) => {
-                  setEmail(text);
-                  validateForm();
-                }}
+                // value={email}
+                // onChangeText={(text) => {
+                //   setEmail(text);
+                //   validateForm();
+                // }}
                 keyboardType="email-address"
                 autoCapitalize="none"
               />
@@ -162,12 +162,12 @@ const SignUpModalLM = ({ visible, onClose }) => {
         </View>
       </Modal>
 
-      {showSetupProfileModal && (
+      {/* {showSetupProfileModal && (
         <SetupProfileModalDM
           visible={showSetupProfileModal}
           onClose={handleSetupProfileModalClose}
         />
-      )}
+      )} */}
     </>
   );
 };
