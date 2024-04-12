@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -14,6 +14,16 @@ import NavBarLM from "../components/NavBarLM";
 const SearchScreenLM = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState([]);
+  const [text, setText] = useState("Jolijass"); // Set default search query
+  const [searchResult, setSearchResult] = useState("");
+
+  useEffect(() => {
+    if (text.toLowerCase() === "jolijass") {
+      setSearchResult("Jolijass");
+    } else {
+      setSearchResult("No user found.");
+    }
+  }, [text]);
 
   const handleFilterPress = () => {
     setIsFilterOpen(!isFilterOpen);
@@ -32,6 +42,10 @@ const SearchScreenLM = () => {
     setIsFilterOpen(false);
   };
 
+  const handleChange = (inputText) => {
+    setText(inputText);
+  };
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.background}>
@@ -46,6 +60,8 @@ const SearchScreenLM = () => {
                 placeholder="Search..."
                 style={styles.input}
                 placeholderTextColor={"#909090"}
+                onChangeText={handleChange}
+                value={text}
               />
               <TouchableOpacity
                 onPress={handleFilterPress}
@@ -56,6 +72,7 @@ const SearchScreenLM = () => {
                 />
               </TouchableOpacity>
             </View>
+            <View style={styles.searchResultContainer}></View>
             {isFilterOpen && (
               <View style={styles.filterContainer}>
                 <View style={styles.filterColumn}>
@@ -63,7 +80,7 @@ const SearchScreenLM = () => {
                     style={[
                       styles.filterOption,
                       selectedFilters.includes("Motivation") && {
-                        color: "#7700E6",
+                        color: "#CA9CE1",
                       },
                     ]}
                     onPress={() => toggleFilter("Motivation")}
@@ -74,7 +91,7 @@ const SearchScreenLM = () => {
                     style={[
                       styles.filterOption,
                       selectedFilters.includes("Concentration") && {
-                        color: "#7700E6",
+                        color: "#CA9CE1",
                       },
                     ]}
                     onPress={() => toggleFilter("Concentration")}
@@ -85,7 +102,7 @@ const SearchScreenLM = () => {
                     style={[
                       styles.filterOption,
                       selectedFilters.includes("Relaxation") && {
-                        color: "#7700E6",
+                        color: "#CA9CE1",
                       },
                     ]}
                     onPress={() => toggleFilter("Relaxation")}
@@ -98,7 +115,7 @@ const SearchScreenLM = () => {
                     style={[
                       styles.filterOption,
                       selectedFilters.includes("Energetic") && {
-                        color: "#7700E6",
+                        color: "#CA9CE1",
                       },
                     ]}
                     onPress={() => toggleFilter("Energetic")}
@@ -109,7 +126,7 @@ const SearchScreenLM = () => {
                     style={[
                       styles.filterOption,
                       selectedFilters.includes("Expressive") && {
-                        color: "#7700E6",
+                        color: "#CA9CE1",
                       },
                     ]}
                     onPress={() => toggleFilter("Expressive")}
@@ -140,7 +157,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    height: 1704,
+    height: 104,
   },
   imgContainer: {
     height: 740,
@@ -148,6 +165,7 @@ const styles = StyleSheet.create({
   },
   backgroundImg: {
     height: 765,
+    marginTop: 120,
     position: "absolute",
   },
   headerContainer: {
