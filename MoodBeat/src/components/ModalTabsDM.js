@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
-// import EditProfileDescriptionLM from "./EditProfileDescriptionLM";
-// import BackgroundColorModalLM from "./BackgroundColorModalLM";
-// import EditTextModalLM from "./EditTextModalLM";
+import EditProfileDescriptionLM from "./EditProfileDescriptionLM";
+import BackgroundColorModalLM from "./BackgroundColorModalLM";
+import EditTextModalLM from "./EditTextModalLM";
 
 const ModalTabsDM = () => {
   const [selectedTab, setSelectedTab] = useState("Description");
 
   // The app breaks when I call this function at the bottom.
 
-  //   const renderComponent = () => {
-  //     if (selectedTab === "Description") {
-  //       return <EditProfileDescriptionLM />;
-  //     } else if (selectedTab === "Background") {
-  //       return <BackgroundColorModalLM />;
-  //     } else if (selectedTab === "Text") {
-  //       return <EditTextModalLM />;
-  //     }
-  //   };
+    // const renderComponent = () => {
+    //   if (selectedTab === "Description") {
+    //     return (<EditProfileDescriptionLM />);
+    //   } else if (selectedTab === "Background") {
+    //     return (<BackgroundColorModalLM />);
+    //   } else if (selectedTab === "Text") {
+    //     return (<EditTextModalLM />);
+    //   }
+    // };
 
   return (
     <View style={styles.tabMenu}>
@@ -67,6 +67,7 @@ const ModalTabsDM = () => {
           Text
         </Text>
       </TouchableHighlight>
+      {/* {renderComponent()} */}
     </View>
   );
 };

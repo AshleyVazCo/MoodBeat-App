@@ -3,39 +3,60 @@ import { StyleSheet, View, Text, TouchableOpacity, Image, TextInput, ScrollView 
 import { useNavigation } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-const SettingScreenDM = () => {
+const SettingScreenLM = () => {
   const navigation = useNavigation();
   const [activeOption, setActiveOption] = useState(null);
+  const [formValues, setFormValues] = useState({
+    fullName: "Alan Giraldo",
+    email: "alangiraldo@ucf.edu",
+    username: "Alan",
+    password: "••••••••",
+    phoneNumber: "407-000-0000",
+  });
 
   const onClose = () => {
     navigation.goBack();
   };
+
   const onLogOutPress = () => {
     navigation.navigate("LoginScreenDM");
   };
+
   const options = [
     { title: "Personal Info", content: "", image: require('../../assets/icons/personalInfoIcon.png') },
     { title: "About", content: "Content for About", image: require('../../assets/icons/aboutIcon.png') },
     { title: "Contact", content: "Content for Contact", image: require('../../assets/icons/contactIcon.png') },
     { title: "Your Account", content: "", image: require('../../assets/icons/accountIcon.png') },
   ];
+
   const aboutContent = [
     { topic: "MoodBeat", description: "MoodBeat is an app dedicated to creating music moodboards based on your mood. Using keywords, we help generate the best boards for you.", image: require('../../assets/icons/logoPurple.png') },
     { topic: "Apple Music", description: "Apple Music is an iOS music application that we pull songs from to add to your moodboards. If you have saved songs, feel free to import them here.", image: require('../../assets/icons/appleTinyIcon.png') },
     { topic: "Spotify", description: "Spotify is one of the most popular music applications that we pull songs from to add to your moodboards. If you have saved songs, feel free to import them here.", image: require('../../assets/icons/spotifyTinyIcon.png') },
     { topic: "Soundcloud", description: "Soundcloud is a music application that we pull songs from local artists to add to your moodboards. If you have saved songs, feel free to import them here.", image: require('../../assets/icons/soundcloudTinyIcon.png') },
   ];
+
   const contactContent = [
     { topic: "Instagram", description: "To check out the latest updates, follow us on Instagram @mood.beat", image: require('../../assets/icons/instagramLM.png') },
     { topic: "Email", description: "For any additional questions or issues with the app, email us at moodbeat@gmail.com.", image: require('../../assets/icons/emailLM.png') },
     { topic: "TikTok", description: "To check out our fun content, follow us on TikTok @mood.beat", image: require('../../assets/icons/tiktokLM.png') },
   ];
-const accountContent = [
-  { title: "Delete Account", onPress: () => handleDeleteAccount(), color: "#FF3B30" },
-  { title: "Dark Mode", onPress: () => navigation.navigate("LoginScreenDM"), color: "#FFFFFF" },
-];
+
+  const accountContent = [
+    { title: "Delete Account", onPress: () => handleDeleteAccount(), color: "#FF3B30" },
+    { title: "Dark Mode", onPress: () => navigation.navigate("LoginScreenDM"), color: "#FFFFFF" },
+  ];
+
   const toggleAccordion = (index) => {
     setActiveOption(activeOption === index ? null : index);
+  };
+
+  const handleChange = (key, value) => {
+    setFormValues({ ...formValues, [key]: value });
+  };
+
+  const saveChanges = () => {
+    console.log("Changes saved:", formValues);
   };
 
   return (
@@ -79,95 +100,59 @@ const accountContent = [
                       placeholder="Full Name"
                       style={styles.input}
                       placeholderTextColor={'#909090'}
+                      value={formValues.fullName}
+                      onChangeText={(text) => handleChange("fullName", text)}
                     />
                     <TextInput
                       placeholder="Email"
                       style={styles.input}
                       placeholderTextColor={'#909090'}
+                      value={formValues.email}
+                      onChangeText={(text) => handleChange("email", text)}
                     />
                     <TextInput
                       placeholder="Username"
                       style={styles.input}
                       placeholderTextColor={'#909090'}
+                      value={formValues.username}
+                      onChangeText={(text) => handleChange("username", text)}
                     />
                     <TextInput
                       placeholder="Password"
                       secureTextEntry
                       style={styles.input}
                       placeholderTextColor={'#909090'}
+                      value={formValues.password}// Password dots
+                      onChangeText={(text) => handleChange("password", text)}
                     />
                     <TextInput
                       placeholder="Phone Number"
                       style={styles.input}
                       placeholderTextColor={'#909090'}
+                      value={formValues.phoneNumber}
+                      onChangeText={(text) => handleChange("phoneNumber", text)}
                     />
                   </>
                 )}
-                {option.title === "About" && (
-                  <>
-                    {aboutContent.map((item, i) => (
-                      <View key={i} style={styles.aboutContentItem}>
-                        <Image source={item.image} style={styles.aboutContentImage} />
-                        <Text style={styles.aboutContentTopic}>{item.topic}</Text>
-                        <Text style={styles.aboutContentDescription}>{item.description}</Text>
-                      </View>
-                    ))}
-                  </>
-                )}
-                {option.title === "Contact" && (
-                  <>
-                    {contactContent.map((item, i) => (
-                      <View key={i} style={styles.contactContentItem}>
-                        <Image source={item.image} style={styles.contactContentImage} />
-                        <Text style={styles.contactContentTopic}>{item.topic}</Text>
-                        <Text style={styles.contactContentDescription}>{item.description}</Text>
-                      </View>
-                    ))}
-                  </>
-                )}
-                {option.title !== "Personal Info" && option.title !== "About" && option.title !== "Contact" && (
-                  <Text style={styles.optionContentText}>{option.content}</Text>
-                )}
-                              {option.title === "Your Account" && (
-                <>
-                  {accountContent.map((item, i) => (
-                  <TouchableOpacity
-                    key={i}
-                    style={[
-                      styles.button,
-                      item.title === "Delete Account" ? styles.deleteButton : styles.darkModeButton,
-                    ]}
-                    onPress={item.onPress}
-                  >
-                    <Text style={[
-                      styles.buttonText,
-                      item.title === "Delete Account" ? styles.deleteButtonText : styles.darkModeButtonText,
-                    ]}>
-                      {item.title === "Light Mode" ? "Dark Mode" : item.title}
-                    </Text>
-                  </TouchableOpacity>
-                  ))}
-                </>
-              )}
               </View>
             )}
           </View>
         ))}
       </ScrollView>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.logOutButton}
-            onPress={onLogOutPress}
-          >
-            <Text style={styles.buttonText}>Log Out</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.saveChangesButton}
-            onPress={() => console.log("Save Changes pressed")}
-          >
-            <Text style={styles.buttonText}>Save Changes</Text>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.logOutButton}
+          onPress={onLogOutPress}
+        >
+          <Text style={styles.buttonText}>Log Out</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.saveChangesButton}
+          onPress={saveChanges}
+        >
+          <Text style={styles.buttonText}>Save Changes</Text>
+        </TouchableOpacity>
+      </View>
     </KeyboardAwareScrollView>
   );
 }
@@ -335,4 +320,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SettingScreenDM;
+export default SettingScreenLM;

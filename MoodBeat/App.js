@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import * as Font from 'expo-font';
+import React, { useState, useEffect } from "react";
+import * as Font from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import CuratorDMScreen from "./src/screens/CuratorDMScreen";
@@ -12,14 +12,14 @@ import ProfileScreenDM from "./src/screens/ProfileScreenDM";
 import ProfileScreenLM from "./src/screens/ProfileScreenLM";
 import ProfileSectionDM from "./src/screens/ProfileSectionDM";
 import ProfileSectionLM from "./src/screens/ProfileSectionLM";
-import CreationScreenLM from './src/screens/CreationScreenLM';
-import CreationScreenDM from './src/screens/CreationScreenDM';
+import CreationScreenLM from "./src/screens/CreationScreenLM";
+import CreationScreenDM from "./src/screens/CreationScreenDM";
 import SettingScreenDM from "./src/screens/SettingScreenDM";
-import SettingScreenLM from './src/screens/SettingScreenLM';
-import HomeScreenDM from './src/screens/HomeScreenDM';
-import HomeScreenLM from './src/screens/HomeScreenLM';
-import SearchScreenDM from './src/screens/SearchScreenDM';
-import SearchScreenLM from './src/screens/SearchScreenLM';
+import SettingScreenLM from "./src/screens/SettingScreenLM";
+import HomeScreenDM from "./src/screens/HomeScreenDM";
+import HomeScreenLM from "./src/screens/HomeScreenLM";
+import SearchScreenDM from "./src/screens/SearchScreenDM";
+import SearchScreenLM from "./src/screens/SearchScreenLM";
 
 const Stack = createStackNavigator();
 
@@ -29,9 +29,9 @@ const App = () => {
   useEffect(() => {
     const loadFonts = async () => {
       await Font.loadAsync({
-        BarlowCondensed_400Regular: require('./assets/Fonts/BarlowCondensed_400Regular.ttf'),
-        BarlowCondensed_ExtraBold: require('./assets/Fonts/BarlowCondensed-ExtraBold.ttf'),
-        BarlowCondensed_Black: require('./assets/Fonts/BarlowCondensed-Black.ttf'),
+        BarlowCondensed_400Regular: require("./assets/Fonts/BarlowCondensed_400Regular.ttf"),
+        BarlowCondensed_ExtraBold: require("./assets/Fonts/BarlowCondensed-ExtraBold.ttf"),
+        BarlowCondensed_Black: require("./assets/Fonts/BarlowCondensed-Black.ttf"),
       });
       setFontLoaded(true);
     };
@@ -45,7 +45,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ProfileScreenLM">
+      <Stack.Navigator initialRouteName="LoginScreenLM">
         <Stack.Screen
           name="CuratorDM"
           component={CuratorDMScreen}
